@@ -1,0 +1,913 @@
+#
+# WT_1
+#
+# 5N_LN
+#
+# V Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_WT_1_5N_LN_2_gene_v <- loc_WT_1_5N_LN_2_gene_v
+#
+# Compare the last entry of the list of V gene calls to that of the functional V genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal V gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_WT_1_5N_LN_2_gene_v$GENE)
+if(str_detect(full_loc_WT_1_5N_LN_2_gene_v$GENE[[a]], V_GENES[[109]]) == FALSE) {
+		full_loc_WT_1_5N_LN_2_gene_v <- add_row(full_loc_WT_1_5N_LN_2_gene_v, GENE=V_GENES[[109]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_WT_1_5N_LN_2_gene_v$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of V genes and ensure that each gene is represented in the data frame
+#
+b <- length(V_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_WT_1_5N_LN_2_gene_v$GENE[[val]], V_GENES[[val]]) == FALSE) {
+		full_loc_WT_1_5N_LN_2_gene_v <- add_row(full_loc_WT_1_5N_LN_2_gene_v, GENE=V_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_WT_1_5N_LN_2_gene_v$Sample[[val]], .before=val)
+	}
+}
+#
+# J Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_WT_1_5N_LN_2_gene_j <- loc_WT_1_5N_LN_2_gene_j
+#
+# Compare the last entry of the list of J Gene calls to that of the functional J Genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal J Gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_WT_1_5N_LN_2_gene_j$GENE)
+if(str_detect(full_loc_WT_1_5N_LN_2_gene_j$GENE[[a]], J_GENES[[8]]) == FALSE) {
+		full_loc_WT_1_5N_LN_2_gene_j <- add_row(full_loc_WT_1_5N_LN_2_gene_j, GENE=J_GENES[[8]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_WT_1_5N_LN_2_gene_j$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of J Genes and ensure that each gene is represented in the data frame
+#
+b <- length(J_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_WT_1_5N_LN_2_gene_j$GENE[[val]], J_GENES[[val]]) == FALSE) {
+		full_loc_WT_1_5N_LN_2_gene_j <- add_row(full_loc_WT_1_5N_LN_2_gene_j, GENE=J_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_WT_1_5N_LN_2_gene_j$Sample[[val]], .before=val)
+	}
+}
+#
+# RAG_1
+#
+# 5N_LN
+#
+# V Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_RAG_1_5N_LN_2_gene_v <- loc_RAG_1_5N_LN_2_gene_v
+#
+# Compare the last entry of the list of V gene calls to that of the functional V genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal V gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_RAG_1_5N_LN_2_gene_v$GENE)
+if(str_detect(full_loc_RAG_1_5N_LN_2_gene_v$GENE[[a]], V_GENES[[109]]) == FALSE) {
+		full_loc_RAG_1_5N_LN_2_gene_v <- add_row(full_loc_RAG_1_5N_LN_2_gene_v, GENE=V_GENES[[109]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5N_LN_2_gene_v$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of V genes and ensure that each gene is represented in the data frame
+#
+b <- length(V_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_RAG_1_5N_LN_2_gene_v$GENE[[val]], V_GENES[[val]]) == FALSE) {
+		full_loc_RAG_1_5N_LN_2_gene_v <- add_row(full_loc_RAG_1_5N_LN_2_gene_v, GENE=V_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5N_LN_2_gene_v$Sample[[val]], .before=val)
+	}
+}
+#
+# J Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_RAG_1_5N_LN_2_gene_j <- loc_RAG_1_5N_LN_2_gene_j
+#
+# Compare the last entry of the list of J Gene calls to that of the functional J Genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal J Gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_RAG_1_5N_LN_2_gene_j$GENE)
+if(str_detect(full_loc_RAG_1_5N_LN_2_gene_j$GENE[[a]], J_GENES[[8]]) == FALSE) {
+		full_loc_RAG_1_5N_LN_2_gene_j <- add_row(full_loc_RAG_1_5N_LN_2_gene_j, GENE=J_GENES[[8]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5N_LN_2_gene_j$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of J Genes and ensure that each gene is represented in the data frame
+#
+b <- length(J_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_RAG_1_5N_LN_2_gene_j$GENE[[val]], J_GENES[[val]]) == FALSE) {
+		full_loc_RAG_1_5N_LN_2_gene_j <- add_row(full_loc_RAG_1_5N_LN_2_gene_j, GENE=J_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5N_LN_2_gene_j$Sample[[val]], .before=val)
+	}
+}
+#
+# 5P_LN
+#
+# V Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_RAG_1_5P_LN_2_gene_v <- loc_RAG_1_5P_LN_2_gene_v
+#
+# Compare the last entry of the list of V gene calls to that of the functional V genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal V gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_RAG_1_5P_LN_2_gene_v$GENE)
+if(str_detect(full_loc_RAG_1_5P_LN_2_gene_v$GENE[[a]], V_GENES[[109]]) == FALSE) {
+		full_loc_RAG_1_5P_LN_2_gene_v <- add_row(full_loc_RAG_1_5P_LN_2_gene_v, GENE=V_GENES[[109]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5P_LN_2_gene_v$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of V genes and ensure that each gene is represented in the data frame
+#
+b <- length(V_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_RAG_1_5P_LN_2_gene_v$GENE[[val]], V_GENES[[val]]) == FALSE) {
+		full_loc_RAG_1_5P_LN_2_gene_v <- add_row(full_loc_RAG_1_5P_LN_2_gene_v, GENE=V_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5P_LN_2_gene_v$Sample[[val]], .before=val)
+	}
+}
+#
+# J Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_RAG_1_5P_LN_2_gene_j <- loc_RAG_1_5P_LN_2_gene_j
+#
+# Compare the last entry of the list of J Gene calls to that of the functional J Genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal J Gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_RAG_1_5P_LN_2_gene_j$GENE)
+if(str_detect(full_loc_RAG_1_5P_LN_2_gene_j$GENE[[a]], J_GENES[[8]]) == FALSE) {
+		full_loc_RAG_1_5P_LN_2_gene_j <- add_row(full_loc_RAG_1_5P_LN_2_gene_j, GENE=J_GENES[[8]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5P_LN_2_gene_j$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of J Genes and ensure that each gene is represented in the data frame
+#
+b <- length(J_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_RAG_1_5P_LN_2_gene_j$GENE[[val]], J_GENES[[val]]) == FALSE) {
+		full_loc_RAG_1_5P_LN_2_gene_j <- add_row(full_loc_RAG_1_5P_LN_2_gene_j, GENE=J_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5P_LN_2_gene_j$Sample[[val]], .before=val)
+	}
+}
+#
+# 5P_LP
+#
+# V Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_RAG_1_5P_LP_2_gene_v <- loc_RAG_1_5P_LP_2_gene_v
+#
+# Compare the last entry of the list of V gene calls to that of the functional V genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal V gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_RAG_1_5P_LP_2_gene_v$GENE)
+if(str_detect(full_loc_RAG_1_5P_LP_2_gene_v$GENE[[a]], V_GENES[[109]]) == FALSE) {
+		full_loc_RAG_1_5P_LP_2_gene_v <- add_row(full_loc_RAG_1_5P_LP_2_gene_v, GENE=V_GENES[[109]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5P_LP_2_gene_v$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of V genes and ensure that each gene is represented in the data frame
+#
+b <- length(V_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_RAG_1_5P_LP_2_gene_v$GENE[[val]], V_GENES[[val]]) == FALSE) {
+		full_loc_RAG_1_5P_LP_2_gene_v <- add_row(full_loc_RAG_1_5P_LP_2_gene_v, GENE=V_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5P_LP_2_gene_v$Sample[[val]], .before=val)
+	}
+}
+#
+# J Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_RAG_1_5P_LP_2_gene_j <- loc_RAG_1_5P_LP_2_gene_j
+#
+# Compare the last entry of the list of J Gene calls to that of the functional J Genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal J Gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_RAG_1_5P_LP_2_gene_j$GENE)
+if(str_detect(full_loc_RAG_1_5P_LP_2_gene_j$GENE[[a]], J_GENES[[8]]) == FALSE) {
+		full_loc_RAG_1_5P_LP_2_gene_j <- add_row(full_loc_RAG_1_5P_LP_2_gene_j, GENE=J_GENES[[8]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5P_LP_2_gene_j$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of J Genes and ensure that each gene is represented in the data frame
+#
+b <- length(J_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_RAG_1_5P_LP_2_gene_j$GENE[[val]], J_GENES[[val]]) == FALSE) {
+		full_loc_RAG_1_5P_LP_2_gene_j <- add_row(full_loc_RAG_1_5P_LP_2_gene_j, GENE=J_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_RAG_1_5P_LP_2_gene_j$Sample[[val]], .before=val)
+	}
+}
+#
+# VH12
+#
+# 5N_LN
+#
+# V Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_VH12_1_5N_LN_2_gene_v <- loc_VH12_1_5N_LN_2_gene_v
+#
+# Compare the last entry of the list of V gene calls to that of the functional V genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal V gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_VH12_1_5N_LN_2_gene_v$GENE)
+if(str_detect(full_loc_VH12_1_5N_LN_2_gene_v$GENE[[a]], V_GENES[[109]]) == FALSE) {
+		full_loc_VH12_1_5N_LN_2_gene_v <- add_row(full_loc_VH12_1_5N_LN_2_gene_v, GENE=V_GENES[[109]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12_1_5N_LN_2_gene_v$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of V genes and ensure that each gene is represented in the data frame
+#
+b <- length(V_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_VH12_1_5N_LN_2_gene_v$GENE[[val]], V_GENES[[val]]) == FALSE) {
+		full_loc_VH12_1_5N_LN_2_gene_v <- add_row(full_loc_VH12_1_5N_LN_2_gene_v, GENE=V_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12_1_5N_LN_2_gene_v$Sample[[val]], .before=val)
+	}
+}
+#
+# J Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_VH12_1_5N_LN_2_gene_j <- loc_VH12_1_5N_LN_2_gene_j
+#
+# Compare the last entry of the list of J Gene calls to that of the functional J Genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal J Gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_VH12_1_5N_LN_2_gene_j$GENE)
+if(str_detect(full_loc_VH12_1_5N_LN_2_gene_j$GENE[[a]], J_GENES[[8]]) == FALSE) {
+		full_loc_VH12_1_5N_LN_2_gene_j <- add_row(full_loc_VH12_1_5N_LN_2_gene_j, GENE=J_GENES[[8]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12_1_5N_LN_2_gene_j$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of J Genes and ensure that each gene is represented in the data frame
+#
+b <- length(J_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_VH12_1_5N_LN_2_gene_j$GENE[[val]], J_GENES[[val]]) == FALSE) {
+		full_loc_VH12_1_5N_LN_2_gene_j <- add_row(full_loc_VH12_1_5N_LN_2_gene_j, GENE=J_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12_1_5N_LN_2_gene_j$Sample[[val]], .before=val)
+	}
+}
+#
+# 5P_LP
+#
+# V Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_VH12_1_5P_LP_2_gene_v <- loc_VH12_1_5P_LP_2_gene_v
+#
+# Compare the last entry of the list of V gene calls to that of the functional V genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal V gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_VH12_1_5P_LP_2_gene_v$GENE)
+if(str_detect(full_loc_VH12_1_5P_LP_2_gene_v$GENE[[a]], V_GENES[[109]]) == FALSE) {
+		full_loc_VH12_1_5P_LP_2_gene_v <- add_row(full_loc_VH12_1_5P_LP_2_gene_v, GENE=V_GENES[[109]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12_1_5P_LP_2_gene_v$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of V genes and ensure that each gene is represented in the data frame
+#
+b <- length(V_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_VH12_1_5P_LP_2_gene_v$GENE[[val]], V_GENES[[val]]) == FALSE) {
+		full_loc_VH12_1_5P_LP_2_gene_v <- add_row(full_loc_VH12_1_5P_LP_2_gene_v, GENE=V_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12_1_5P_LP_2_gene_v$Sample[[val]], .before=val)
+	}
+}
+#
+# J Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_VH12_1_5P_LP_2_gene_j <- loc_VH12_1_5P_LP_2_gene_j
+#
+# Compare the last entry of the list of J Gene calls to that of the functional J Genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal J Gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_VH12_1_5P_LP_2_gene_j$GENE)
+if(str_detect(full_loc_VH12_1_5P_LP_2_gene_j$GENE[[a]], J_GENES[[8]]) == FALSE) {
+		full_loc_VH12_1_5P_LP_2_gene_j <- add_row(full_loc_VH12_1_5P_LP_2_gene_j, GENE=J_GENES[[8]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12_1_5P_LP_2_gene_j$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of J Genes and ensure that each gene is represented in the data frame
+#
+b <- length(J_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_VH12_1_5P_LP_2_gene_j$GENE[[val]], J_GENES[[val]]) == FALSE) {
+		full_loc_VH12_1_5P_LP_2_gene_j <- add_row(full_loc_VH12_1_5P_LP_2_gene_j, GENE=J_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12_1_5P_LP_2_gene_j$Sample[[val]], .before=val)
+	}
+}
+#
+# VH12RAG_1
+#
+# 5N_LN
+#
+# V Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_VH12RAG_1_5N_LN_2_gene_v <- loc_VH12RAG_1_5N_LN_2_gene_v
+#
+# Compare the last entry of the list of V gene calls to that of the functional V genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal V gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_VH12RAG_1_5N_LN_2_gene_v$GENE)
+if(str_detect(full_loc_VH12RAG_1_5N_LN_2_gene_v$GENE[[a]], V_GENES[[109]]) == FALSE) {
+		full_loc_VH12RAG_1_5N_LN_2_gene_v <- add_row(full_loc_VH12RAG_1_5N_LN_2_gene_v, GENE=V_GENES[[109]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12RAG_1_5N_LN_2_gene_v$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of V genes and ensure that each gene is represented in the data frame
+#
+b <- length(V_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_VH12RAG_1_5N_LN_2_gene_v$GENE[[val]], V_GENES[[val]]) == FALSE) {
+		full_loc_VH12RAG_1_5N_LN_2_gene_v <- add_row(full_loc_VH12RAG_1_5N_LN_2_gene_v, GENE=V_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12RAG_1_5N_LN_2_gene_v$Sample[[val]], .before=val)
+	}
+}
+#
+# J Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_VH12RAG_1_5N_LN_2_gene_j <- loc_VH12RAG_1_5N_LN_2_gene_j
+#
+# Compare the last entry of the list of J Gene calls to that of the functional J Genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal J Gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_VH12RAG_1_5N_LN_2_gene_j$GENE)
+if(str_detect(full_loc_VH12RAG_1_5N_LN_2_gene_j$GENE[[a]], J_GENES[[8]]) == FALSE) {
+		full_loc_VH12RAG_1_5N_LN_2_gene_j <- add_row(full_loc_VH12RAG_1_5N_LN_2_gene_j, GENE=J_GENES[[8]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12RAG_1_5N_LN_2_gene_j$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of J Genes and ensure that each gene is represented in the data frame
+#
+b <- length(J_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_VH12RAG_1_5N_LN_2_gene_j$GENE[[val]], J_GENES[[val]]) == FALSE) {
+		full_loc_VH12RAG_1_5N_LN_2_gene_j <- add_row(full_loc_VH12RAG_1_5N_LN_2_gene_j, GENE=J_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12RAG_1_5N_LN_2_gene_j$Sample[[val]], .before=val)
+	}
+}
+#
+# 5P_LP
+#
+# V Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_VH12RAG_1_5P_LP_2_gene_v <- loc_VH12RAG_1_5P_LP_2_gene_v
+#
+# Compare the last entry of the list of V gene calls to that of the functional V genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal V gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_VH12RAG_1_5P_LP_2_gene_v$GENE)
+if(str_detect(full_loc_VH12RAG_1_5P_LP_2_gene_v$GENE[[a]], V_GENES[[109]]) == FALSE) {
+		full_loc_VH12RAG_1_5P_LP_2_gene_v <- add_row(full_loc_VH12RAG_1_5P_LP_2_gene_v, GENE=V_GENES[[109]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12RAG_1_5P_LP_2_gene_v$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of V genes and ensure that each gene is represented in the data frame
+#
+b <- length(V_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_VH12RAG_1_5P_LP_2_gene_v$GENE[[val]], V_GENES[[val]]) == FALSE) {
+		full_loc_VH12RAG_1_5P_LP_2_gene_v <- add_row(full_loc_VH12RAG_1_5P_LP_2_gene_v, GENE=V_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12RAG_1_5P_LP_2_gene_v$Sample[[val]], .before=val)
+	}
+}
+#
+# J Genes
+#
+# Create a secondary data frame to work with so the original frame is maintained for reference
+#
+full_loc_VH12RAG_1_5P_LP_2_gene_j <- loc_VH12RAG_1_5P_LP_2_gene_j
+#
+# Compare the last entry of the list of J Gene calls to that of the functional J Genes (plus pertinent psuedogenes) in the light chain loci
+# If the entries are not identical, add the most proximal J Gene to the data table with count and frequency = 0
+#
+a <- length(full_loc_VH12RAG_1_5P_LP_2_gene_j$GENE)
+if(str_detect(full_loc_VH12RAG_1_5P_LP_2_gene_j$GENE[[a]], J_GENES[[8]]) == FALSE) {
+		full_loc_VH12RAG_1_5P_LP_2_gene_j <- add_row(full_loc_VH12RAG_1_5P_LP_2_gene_j, GENE=J_GENES[[8]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12RAG_1_5P_LP_2_gene_j$Sample[[1]], .after=a)
+	}
+#
+# Go through the functional repertoire of J Genes and ensure that each gene is represented in the data frame
+#
+b <- length(J_GENES)
+x <- c(1:b)
+for (val in x) {
+	if(str_detect(full_loc_VH12RAG_1_5P_LP_2_gene_j$GENE[[val]], J_GENES[[val]]) == FALSE) {
+		full_loc_VH12RAG_1_5P_LP_2_gene_j <- add_row(full_loc_VH12RAG_1_5P_LP_2_gene_j, GENE=J_GENES[[val]], SEQ_COUNT=0, SEQ_FREQ=0, Sample=full_loc_VH12RAG_1_5P_LP_2_gene_j$Sample[[val]], .before=val)
+	}
+}
+#
+#
+# Compile data frames to calculate the mean and standard error of the mean (SEM) frequency of genes usage
+#
+#
+# V Genes
+#
+# WT
+#
+# 5N_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+WT_5N_LN_2_gene_v_stat <- data.frame( SEQ_FREQ_1 = full_loc_WT_1_5N_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_2 = full_loc_WT_2_5N_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_3 = full_loc_WT_3_5N_LN_2_gene_v$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each V gene
+#
+WT_5N_LN_2_gene_v <- mutate(WT_5N_LN_2_gene_v_stat, MEAN_SEQ_FREQ = apply(WT_5N_LN_2_gene_v_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each V gene
+#
+WT_5N_LN_2_gene_v <- mutate(WT_5N_LN_2_gene_v, SEM = apply(WT_5N_LN_2_gene_v_stat, 1, sem))
+#
+# Add the list of V Genes to the data frame
+#
+WT_5N_LN_2_gene_v <- mutate(WT_5N_LN_2_gene_v, V_GENES = V_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+WT_5N_LN_2_gene_v <- mutate(WT_5N_LN_2_gene_v, SAMPLE = full_loc_WT_1_5N_LN_2_gene_v$Sample)
+#
+# RAG
+#
+# 5N_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+RAG_5N_LN_2_gene_v_stat <- data.frame( SEQ_FREQ_1 = full_loc_RAG_1_5N_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_2 = full_loc_RAG_2_5N_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_3 = full_loc_RAG_3_5N_LN_2_gene_v$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each V gene
+#
+RAG_5N_LN_2_gene_v <- mutate(RAG_5N_LN_2_gene_v_stat, MEAN_SEQ_FREQ = apply(RAG_5N_LN_2_gene_v_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each V gene
+#
+RAG_5N_LN_2_gene_v <- mutate(RAG_5N_LN_2_gene_v, SEM = apply(RAG_5N_LN_2_gene_v_stat, 1, sem))
+#
+# Add the list of V Genes to the data frame
+#
+RAG_5N_LN_2_gene_v <- mutate(RAG_5N_LN_2_gene_v, V_GENES = V_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+RAG_5N_LN_2_gene_v <- mutate(RAG_5N_LN_2_gene_v, SAMPLE = full_loc_RAG_1_5N_LN_2_gene_v$Sample)
+#
+# 5P_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+RAG_5P_LN_2_gene_v_stat <- data.frame( SEQ_FREQ_1 = full_loc_RAG_1_5P_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_2 = full_loc_RAG_2_5P_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_3 = full_loc_RAG_3_5P_LN_2_gene_v$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each V gene
+#
+RAG_5P_LN_2_gene_v <- mutate(RAG_5P_LN_2_gene_v_stat, MEAN_SEQ_FREQ = apply(RAG_5P_LN_2_gene_v_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each V gene
+#
+RAG_5P_LN_2_gene_v <- mutate(RAG_5P_LN_2_gene_v, SEM = apply(RAG_5P_LN_2_gene_v_stat, 1, sem))
+#
+# Add the list of V Genes to the data frame
+#
+RAG_5P_LN_2_gene_v <- mutate(RAG_5P_LN_2_gene_v, V_GENES = V_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+RAG_5P_LN_2_gene_v <- mutate(RAG_5P_LN_2_gene_v, SAMPLE = full_loc_RAG_1_5P_LN_2_gene_v$Sample)
+#
+# 5P_LP
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+RAG_5P_LP_2_gene_v_stat <- data.frame( SEQ_FREQ_1 = full_loc_RAG_1_5P_LP_2_gene_v$SEQ_FREQ, SEQ_FREQ_2 = full_loc_RAG_2_5P_LP_2_gene_v$SEQ_FREQ, SEQ_FREQ_3 = full_loc_RAG_3_5P_LP_2_gene_v$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each V gene
+#
+RAG_5P_LP_2_gene_v <- mutate(RAG_5P_LP_2_gene_v_stat, MEAN_SEQ_FREQ = apply(RAG_5P_LP_2_gene_v_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each V gene
+#
+RAG_5P_LP_2_gene_v <- mutate(RAG_5P_LP_2_gene_v, SEM = apply(RAG_5P_LP_2_gene_v_stat, 1, sem))
+#
+# Add the list of V Genes to the data frame
+#
+RAG_5P_LP_2_gene_v <- mutate(RAG_5P_LP_2_gene_v, V_GENES = V_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+RAG_5P_LP_2_gene_v <- mutate(RAG_5P_LP_2_gene_v, SAMPLE = full_loc_RAG_1_5P_LP_2_gene_v$Sample)
+#
+# VH12
+#
+# 5N_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+VH12_5N_LN_2_gene_v_stat <- data.frame( SEQ_FREQ_1 = full_loc_VH12_1_5N_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_2 = full_loc_VH12_2_5N_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_3 = full_loc_VH12_3_5N_LN_2_gene_v$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each V gene
+#
+VH12_5N_LN_2_gene_v <- mutate(VH12_5N_LN_2_gene_v_stat, MEAN_SEQ_FREQ = apply(VH12_5N_LN_2_gene_v_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each V gene
+#
+VH12_5N_LN_2_gene_v <- mutate(VH12_5N_LN_2_gene_v, SEM = apply(VH12_5N_LN_2_gene_v_stat, 1, sem))
+#
+# Add the list of V Genes to the data frame
+#
+VH12_5N_LN_2_gene_v <- mutate(VH12_5N_LN_2_gene_v, V_GENES = V_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+VH12_5N_LN_2_gene_v <- mutate(VH12_5N_LN_2_gene_v, SAMPLE = full_loc_VH12_1_5N_LN_2_gene_v$Sample)
+#
+# 5P_LP
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+VH12_5P_LP_2_gene_v_stat <- data.frame( SEQ_FREQ_1 = full_loc_VH12_1_5P_LP_2_gene_v$SEQ_FREQ, SEQ_FREQ_2 = full_loc_VH12_2_5P_LP_2_gene_v$SEQ_FREQ, SEQ_FREQ_3 = full_loc_VH12_3_5P_LP_2_gene_v$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each V gene
+#
+VH12_5P_LP_2_gene_v <- mutate(VH12_5P_LP_2_gene_v_stat, MEAN_SEQ_FREQ = apply(VH12_5P_LP_2_gene_v_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each V gene
+#
+VH12_5P_LP_2_gene_v <- mutate(VH12_5P_LP_2_gene_v, SEM = apply(VH12_5P_LP_2_gene_v_stat, 1, sem))
+#
+# Add the list of V Genes to the data frame
+#
+VH12_5P_LP_2_gene_v <- mutate(VH12_5P_LP_2_gene_v, V_GENES = V_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+VH12_5P_LP_2_gene_v <- mutate(VH12_5P_LP_2_gene_v, SAMPLE = full_loc_VH12_1_5P_LP_2_gene_v$Sample)
+#
+# VH12 RAG
+#
+# 5N_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+VH12_RAG_5N_LN_2_gene_v_stat <- data.frame( SEQ_FREQ_1 = full_loc_VH12RAG_1_5N_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_2 = full_loc_VH12RAG_2_5N_LN_2_gene_v$SEQ_FREQ, SEQ_FREQ_3 = full_loc_VH12RAG_3_5N_LN_2_gene_v$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each V gene
+#
+VH12_RAG_5N_LN_2_gene_v <- mutate(VH12_RAG_5N_LN_2_gene_v_stat, MEAN_SEQ_FREQ = apply(VH12_RAG_5N_LN_2_gene_v_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each V gene
+#
+VH12_RAG_5N_LN_2_gene_v <- mutate(VH12_RAG_5N_LN_2_gene_v, SEM = apply(VH12_RAG_5N_LN_2_gene_v_stat, 1, sem))
+#
+# Add the list of V Genes to the data frame
+#
+VH12_RAG_5N_LN_2_gene_v <- mutate(VH12_RAG_5N_LN_2_gene_v, V_GENES = V_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+VH12_RAG_5N_LN_2_gene_v <- mutate(VH12_RAG_5N_LN_2_gene_v, SAMPLE = full_loc_VH12RAG_1_5N_LN_2_gene_v$Sample)
+#
+# 5P_LP
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+VH12_RAG_5P_LP_2_gene_v_stat <- data.frame( SEQ_FREQ_1 = full_loc_VH12RAG_1_5P_LP_2_gene_v$SEQ_FREQ, SEQ_FREQ_2 = full_loc_VH12RAG_2_5P_LP_2_gene_v$SEQ_FREQ, SEQ_FREQ_3 = full_loc_VH12RAG_3_5P_LP_2_gene_v$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each V gene
+#
+VH12_RAG_5P_LP_2_gene_v <- mutate(VH12_RAG_5P_LP_2_gene_v_stat, MEAN_SEQ_FREQ = apply(VH12_RAG_5P_LP_2_gene_v_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each V gene
+#
+VH12_RAG_5P_LP_2_gene_v <- mutate(VH12_RAG_5P_LP_2_gene_v, SEM = apply(VH12_RAG_5P_LP_2_gene_v_stat, 1, sem))
+#
+# Add the list of V Genes to the data frame
+#
+VH12_RAG_5P_LP_2_gene_v <- mutate(VH12_RAG_5P_LP_2_gene_v, V_GENES = V_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+VH12_RAG_5P_LP_2_gene_v <- mutate(VH12_RAG_5P_LP_2_gene_v, SAMPLE = full_loc_VH12RAG_1_5P_LP_2_gene_v$Sample)
+#
+#
+# J Genes
+#
+#
+# WT
+#
+# 5N_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+WT_5N_LN_2_gene_j_stat <- data.frame( SEQ_FREQ_1 = full_loc_WT_1_5N_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_2 = full_loc_WT_2_5N_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_3 = full_loc_WT_3_5N_LN_2_gene_j$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each J Gene
+#
+WT_5N_LN_2_gene_j <- mutate(WT_5N_LN_2_gene_j_stat, MEAN_SEQ_FREQ = apply(WT_5N_LN_2_gene_j_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each J Gene
+#
+WT_5N_LN_2_gene_j <- mutate(WT_5N_LN_2_gene_j, SEM = apply(WT_5N_LN_2_gene_j_stat, 1, sem))
+#
+# Add the list of J Genes to the data frame
+#
+WT_5N_LN_2_gene_j <- mutate(WT_5N_LN_2_gene_j, J_GENES = J_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+WT_5N_LN_2_gene_j <- mutate(WT_5N_LN_2_gene_j, SAMPLE = full_loc_WT_1_5N_LN_2_gene_j$Sample)
+#
+# RAG
+#
+# 5N_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+RAG_5N_LN_2_gene_j_stat <- data.frame( SEQ_FREQ_1 = full_loc_RAG_1_5N_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_2 = full_loc_RAG_2_5N_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_3 = full_loc_RAG_3_5N_LN_2_gene_j$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each J Gene
+#
+RAG_5N_LN_2_gene_j <- mutate(RAG_5N_LN_2_gene_j_stat, MEAN_SEQ_FREQ = apply(RAG_5N_LN_2_gene_j_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each J Gene
+#
+RAG_5N_LN_2_gene_j <- mutate(RAG_5N_LN_2_gene_j, SEM = apply(RAG_5N_LN_2_gene_j_stat, 1, sem))
+#
+# Add the list of J Genes to the data frame
+#
+RAG_5N_LN_2_gene_j <- mutate(RAG_5N_LN_2_gene_j, J_GENES = J_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+RAG_5N_LN_2_gene_j <- mutate(RAG_5N_LN_2_gene_j, SAMPLE = full_loc_RAG_1_5N_LN_2_gene_j$Sample)
+#
+# 5P_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+RAG_5P_LN_2_gene_j_stat <- data.frame( SEQ_FREQ_1 = full_loc_RAG_1_5P_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_2 = full_loc_RAG_2_5P_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_3 = full_loc_RAG_3_5P_LN_2_gene_j$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each J Gene
+#
+RAG_5P_LN_2_gene_j <- mutate(RAG_5P_LN_2_gene_j_stat, MEAN_SEQ_FREQ = apply(RAG_5P_LN_2_gene_j_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each J Gene
+#
+RAG_5P_LN_2_gene_j <- mutate(RAG_5P_LN_2_gene_j, SEM = apply(RAG_5P_LN_2_gene_j_stat, 1, sem))
+#
+# Add the list of J Genes to the data frame
+#
+RAG_5P_LN_2_gene_j <- mutate(RAG_5P_LN_2_gene_j, J_GENES = J_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+RAG_5P_LN_2_gene_j <- mutate(RAG_5P_LN_2_gene_j, SAMPLE = full_loc_RAG_1_5P_LN_2_gene_j$Sample)
+#
+# 5P_LP
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+RAG_5P_LP_2_gene_j_stat <- data.frame( SEQ_FREQ_1 = full_loc_RAG_1_5P_LP_2_gene_j$SEQ_FREQ, SEQ_FREQ_2 = full_loc_RAG_2_5P_LP_2_gene_j$SEQ_FREQ, SEQ_FREQ_3 = full_loc_RAG_3_5P_LP_2_gene_j$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each J Gene
+#
+RAG_5P_LP_2_gene_j <- mutate(RAG_5P_LP_2_gene_j_stat, MEAN_SEQ_FREQ = apply(RAG_5P_LP_2_gene_j_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each J Gene
+#
+RAG_5P_LP_2_gene_j <- mutate(RAG_5P_LP_2_gene_j, SEM = apply(RAG_5P_LP_2_gene_j_stat, 1, sem))
+#
+# Add the list of J Genes to the data frame
+#
+RAG_5P_LP_2_gene_j <- mutate(RAG_5P_LP_2_gene_j, J_GENES = J_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+RAG_5P_LP_2_gene_j <- mutate(RAG_5P_LP_2_gene_j, SAMPLE = full_loc_RAG_1_5P_LP_2_gene_j$Sample)
+#
+# VH12
+#
+# 5N_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+VH12_5N_LN_2_gene_j_stat <- data.frame( SEQ_FREQ_1 = full_loc_VH12_1_5N_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_2 = full_loc_VH12_2_5N_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_3 = full_loc_VH12_3_5N_LN_2_gene_j$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each J Gene
+#
+VH12_5N_LN_2_gene_j <- mutate(VH12_5N_LN_2_gene_j_stat, MEAN_SEQ_FREQ = apply(VH12_5N_LN_2_gene_j_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each J Gene
+#
+VH12_5N_LN_2_gene_j <- mutate(VH12_5N_LN_2_gene_j, SEM = apply(VH12_5N_LN_2_gene_j_stat, 1, sem))
+#
+# Add the list of J Genes to the data frame
+#
+VH12_5N_LN_2_gene_j <- mutate(VH12_5N_LN_2_gene_j, J_GENES = J_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+VH12_5N_LN_2_gene_j <- mutate(VH12_5N_LN_2_gene_j, SAMPLE = full_loc_VH12_1_5N_LN_2_gene_j$Sample)
+#
+# 5P_LP
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+VH12_5P_LP_2_gene_j_stat <- data.frame( SEQ_FREQ_1 = full_loc_VH12_1_5P_LP_2_gene_j$SEQ_FREQ, SEQ_FREQ_2 = full_loc_VH12_2_5P_LP_2_gene_j$SEQ_FREQ, SEQ_FREQ_3 = full_loc_VH12_3_5P_LP_2_gene_j$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each J Gene
+#
+VH12_5P_LP_2_gene_j <- mutate(VH12_5P_LP_2_gene_j_stat, MEAN_SEQ_FREQ = apply(VH12_5P_LP_2_gene_j_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each J Gene
+#
+VH12_5P_LP_2_gene_j <- mutate(VH12_5P_LP_2_gene_j, SEM = apply(VH12_5P_LP_2_gene_j_stat, 1, sem))
+#
+# Add the list of J Genes to the data frame
+#
+VH12_5P_LP_2_gene_j <- mutate(VH12_5P_LP_2_gene_j, J_GENES = J_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+VH12_5P_LP_2_gene_j <- mutate(VH12_5P_LP_2_gene_j, SAMPLE = full_loc_VH12_1_5P_LP_2_gene_j$Sample)
+#
+# VH12 RAG
+#
+# 5N_LN
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+VH12_RAG_5N_LN_2_gene_j_stat <- data.frame( SEQ_FREQ_1 = full_loc_VH12RAG_1_5N_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_2 = full_loc_VH12RAG_2_5N_LN_2_gene_j$SEQ_FREQ, SEQ_FREQ_3 = full_loc_VH12RAG_3_5N_LN_2_gene_j$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each J Gene
+#
+VH12_RAG_5N_LN_2_gene_j <- mutate(VH12_RAG_5N_LN_2_gene_j_stat, MEAN_SEQ_FREQ = apply(VH12_RAG_5N_LN_2_gene_j_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each J Gene
+#
+VH12_RAG_5N_LN_2_gene_j <- mutate(VH12_RAG_5N_LN_2_gene_j, SEM = apply(VH12_RAG_5N_LN_2_gene_j_stat, 1, sem))
+#
+# Add the list of J Genes to the data frame
+#
+VH12_RAG_5N_LN_2_gene_j <- mutate(VH12_RAG_5N_LN_2_gene_j, J_GENES = J_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+VH12_RAG_5N_LN_2_gene_j <- mutate(VH12_RAG_5N_LN_2_gene_j, SAMPLE = full_loc_VH12RAG_1_5N_LN_2_gene_j$Sample)
+#
+# 5P_LP
+#
+# Pull the sequence frequency data from each biological replicate into one data frame for statistics calculations
+#
+VH12_RAG_5P_LP_2_gene_j_stat <- data.frame( SEQ_FREQ_1 = full_loc_VH12RAG_1_5P_LP_2_gene_j$SEQ_FREQ, SEQ_FREQ_2 = full_loc_VH12RAG_2_5P_LP_2_gene_j$SEQ_FREQ, SEQ_FREQ_3 = full_loc_VH12RAG_3_5P_LP_2_gene_j$SEQ_FREQ)
+#
+# Calculate the mean sequence frequency in the repertoire for each J Gene
+#
+VH12_RAG_5P_LP_2_gene_j <- mutate(VH12_RAG_5P_LP_2_gene_j_stat, MEAN_SEQ_FREQ = apply(VH12_RAG_5P_LP_2_gene_j_stat, 1, mean))
+#
+# Calculate the standard error of the mean for each J Gene
+#
+VH12_RAG_5P_LP_2_gene_j <- mutate(VH12_RAG_5P_LP_2_gene_j, SEM = apply(VH12_RAG_5P_LP_2_gene_j_stat, 1, sem))
+#
+# Add the list of J Genes to the data frame
+#
+VH12_RAG_5P_LP_2_gene_j <- mutate(VH12_RAG_5P_LP_2_gene_j, J_GENES = J_GENES)
+#
+# Add the sample type to the data frame for grouping purposes
+#
+VH12_RAG_5P_LP_2_gene_j <- mutate(VH12_RAG_5P_LP_2_gene_j, SAMPLE = full_loc_VH12RAG_1_5P_LP_2_gene_j$Sample)
+#
+#
+# Graphs V
+#
+# Combine the individual sample data frames into one summative data frame
+#
+full_graph_2_gene_v <- rbind(WT_5N_LN_2_gene_v, RAG_5N_LN_2_gene_v)
+full_graph_2_gene_v <- rbind(full_graph_2_gene_v, RAG_5P_LN_2_gene_v)
+full_graph_2_gene_v <- rbind(full_graph_2_gene_v, RAG_5P_LP_2_gene_v)
+full_graph_2_gene_v <- rbind(full_graph_2_gene_v, VH12_5N_LN_2_gene_v)
+full_graph_2_gene_v <- rbind(full_graph_2_gene_v, VH12_5P_LP_2_gene_v)
+full_graph_2_gene_v <- rbind(full_graph_2_gene_v, VH12_RAG_5N_LN_2_gene_v)
+full_graph_2_gene_v <- rbind(full_graph_2_gene_v, VH12_RAG_5P_LP_2_gene_v)
+#
+# Reorder the list of genes based on their locations in the light chain loci
+#
+full_graph_2_gene_v$V_GENES <- gsubGene2NumV(full_graph_2_gene_v$V_GENES)
+full_graph_2_gene_v <- full_graph_2_gene_v[mixedorder(full_graph_2_gene_v$V_GENES, decreasing=TRUE),]
+full_graph_2_gene_v$V_GENES <- gsubNum2GeneV(full_graph_2_gene_v$V_GENES)
+full_graph_2_gene_v$V_GENES <- psuedogenes(full_graph_2_gene_v$V_GENES)
+full_graph_2_gene_v$V_GENES <- factor(full_graph_2_gene_v$V_GENES, levels=unique(full_graph_2_gene_v$V_GENES))
+#
+# Reassign factors and levels for the sample types to maintain the desired order in the graphs
+#
+full_graph_2_gene_v$SAMPLE <- factor(full_graph_2_gene_v$SAMPLE, levels=c("WT CD5- PtC-", "dnRAG1 CD5- PtC-", "dnRAG1 CD5+ PtC-", "dnRAG1 CD5+ PtC+", "VH12 CD5- PtC-", "VH12 CD5+ PtC+", "dnRAG1 VH12 CD5- PtC-", "dnRAG1 VH12 CD5+ PtC+"))
+#
+# All V genes, ymax=max
+#
+# Set the position and dodge widths for uniform spacing in the graph
+#
+dodge<-position_dodge(width=0.9)
+#
+full_graph_2_gene_v_plot <- ggplot(data=full_graph_2_gene_v, mapping=aes(x=V_GENES, y=MEAN_SEQ_FREQ), limitsize=FALSE)+geom_col(aes(fill=SAMPLE), position=dodge)+coord_cartesian(ylim =c(0, 1), expand = FALSE)+geom_errorbar(aes(ymin = MEAN_SEQ_FREQ-SEM, ymax = MEAN_SEQ_FREQ+SEM, group=SAMPLE,  linetype="blank"), position=dodge, width = 0.75, show.legend=FALSE )+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=90, face="bold", size=32, hjust=0, vjust=0.5, color = "black"))+theme(axis.text.y=element_text(size=32, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(panel.background=element_rect(fill="white"))+ggtitle("Light Chain Repertoire V Gene Usage")+theme(plot.title = element_text(h=0.5, face="bold", size=48))+labs(x="\nGene Segment", y="Frequency in Repertoire\n")+theme(axis.title = element_text(face="bold", size=40))+theme(legend.text = element_text(size=40, face="bold"))+theme(legend.key.size = unit(0.75, "in"))+theme(legend.position = c(.9,.85))+theme(legend.title=element_blank())+scale_fill_manual(values = cbf_sw)
+#
+# Save the graph as the desired filetype for download and use (.png is recommended but .jpeg was used to accomodate our version of Adobe Acrobat)
+#
+ggsave("full_graph_2_gene_v_plot.jpeg", width=60, height=20, limitsize=FALSE)
+#
+# no title
+#
+# Set the position and dodge widths for uniform spacing in the graph
+#
+dodge<-position_dodge(width=0.9)
+#
+full_graph_2_gene_v_plot_no_title <- ggplot(data=full_graph_2_gene_v, mapping=aes(x=V_GENES, y=MEAN_SEQ_FREQ), limitsize=FALSE)+geom_col(aes(fill=SAMPLE), position=dodge)+coord_cartesian(ylim =c(0, 1), expand = FALSE)+geom_errorbar(aes(ymin = MEAN_SEQ_FREQ-SEM, ymax = MEAN_SEQ_FREQ+SEM, group=SAMPLE,  linetype="blank"), position=dodge, width = 0.75, show.legend=FALSE )+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=90, face="bold", size=32, hjust=0, vjust=0.5, color = "black"))+theme(axis.text.y=element_text(size=32, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(panel.background=element_rect(fill="white"))+ggtitle("Light Chain Repertoire V Gene Usage")+theme(plot.title = element_text(h=0.5, face="bold", size=48, color="white"))+labs(x="\nGene Segment", y="Frequency in Repertoire\n")+theme(axis.title = element_text(face="bold", size=40))+theme(legend.text = element_text(size=40, face="bold"))+theme(legend.key.size = unit(0.75, "in"))+theme(legend.position = c(.9,.85))+theme(legend.title=element_blank())+scale_fill_manual(values = cbf_sw)
+#
+# Save the graph as the desired filetype for download and use (.png is recommended but .jpeg was used to accomodate our version of Adobe Acrobat)
+#
+ggsave("full_graph_2_gene_v_plot_no_title.jpeg", width=60, height=20, limitsize=FALSE)
+#
+# Zoomed in V genes (ymax=0.25)
+#
+# Set the position and dodge widths for uniform spacing in the graph
+#
+dodge<-position_dodge(width=0.9)
+#
+zoomed_full_graph_2_gene_v_plot <- ggplot(data=full_graph_2_gene_v, mapping=aes(x=V_GENES, y=MEAN_SEQ_FREQ), limitsize=FALSE)+geom_col(aes(fill=SAMPLE), position=dodge)+coord_cartesian(ylim =c(0, 0.2) , expand = FALSE)+geom_errorbar(aes(ymin = MEAN_SEQ_FREQ-SEM, ymax = MEAN_SEQ_FREQ+SEM, group=SAMPLE,  linetype="blank"), position=dodge, width = 0.75, show.legend=FALSE )+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=90, face="bold", size=32, hjust=0, vjust=0.5, color = "black"))+theme(axis.text.y=element_text(size=32, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(panel.background=element_rect(fill="white"))+ggtitle("Light Chain Repertoire V Gene Usage, \nEnlarged to show frequencies < 0.25")+theme(plot.title = element_text(h=0.5, face="bold", size=48))+labs(x="\nGene Segment", y="Frequency in Repertoire\n")+theme(axis.title = element_text(face="bold", size=40))+theme(legend.text = element_text(size=40, face="bold"))+theme(legend.key.size = unit(0.75, "in"))+theme(legend.position = c(.9,.85))+theme(legend.title=element_blank())+scale_fill_manual(values = cbf_sw)
+#
+# Save the graph as the desired filetype for download and use (.png is recommended but .jpeg was used to accomodate our version of Adobe Acrobat)
+#
+ggsave("zoomed_full_graph_2_gene_v_plot.jpeg", width=60, height=20, limitsize=FALSE)
+#
+# no title
+#
+zoomed_full_graph_2_gene_v_plot_no_title <- ggplot(data=full_graph_2_gene_v, mapping=aes(x=V_GENES, y=MEAN_SEQ_FREQ), limitsize=FALSE)+geom_col(aes(fill=SAMPLE), position=dodge)+coord_cartesian(ylim =c(0, 0.2) , expand = FALSE)+geom_errorbar(aes(ymin = MEAN_SEQ_FREQ-SEM, ymax = MEAN_SEQ_FREQ+SEM, group=SAMPLE,  linetype="blank"), position=dodge, width = 0.75, show.legend=FALSE )+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=90, face="bold", size=32, hjust=0, vjust=0.5, color = "black"))+theme(axis.text.y=element_text(size=32, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(panel.background=element_rect(fill="white"))+ggtitle("Light Chain Repertoire V Gene Usage, \nEnlarged to show frequencies < 0.25")+theme(plot.title = element_text(h=0.5, face="bold", size=48, color="white"))+labs(x="\nGene Segment", y="Frequency in Repertoire\n")+theme(axis.title = element_text(face="bold", size=40))+theme(legend.text = element_text(size=40, face="bold"))+theme(legend.key.size = unit(0.75, "in"))+theme(legend.position = c(.9,.85))+theme(legend.title=element_blank())+scale_fill_manual(values = cbf_sw)
+#
+# Save the graph as the desired filetype for download and use (.png is recommended but .jpeg was used to accomodate our version of Adobe Acrobat)
+#
+ggsave("zoomed_full_graph_2_gene_v_plot_no_title.jpeg", width=60, height=20, limitsize=FALSE)
+#
+# no legend
+#
+zoomed_full_graph_2_gene_v_plot_no_title_no_legend <- ggplot(data=full_graph_2_gene_v, mapping=aes(x=V_GENES, y=MEAN_SEQ_FREQ), limitsize=FALSE, show.legend=FALSE )+geom_col(aes(fill=SAMPLE), position=dodge, show.legend=FALSE )+coord_cartesian(ylim =c(0, 0.2) , expand = FALSE)+geom_errorbar(aes(ymin = MEAN_SEQ_FREQ-SEM, ymax = MEAN_SEQ_FREQ+SEM, group=SAMPLE,  linetype="blank"), position=dodge, width = 0.75, show.legend=FALSE )+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=90, face="bold", size=32, hjust=0, vjust=0.5, color = "black"))+theme(axis.text.y=element_text(size=32, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(panel.background=element_rect(fill="white"))+ggtitle("Light Chain Repertoire V Gene Usage, \nEnlarged to show frequencies < 0.25")+theme(plot.title = element_text(h=0.5, face="bold", size=48, color="white"))+labs(x="\nGene Segment", y="Frequency in Repertoire\n")+theme(axis.title = element_text(face="bold", size=40))+theme(legend.text = element_text(size=40, face="bold"))+theme(legend.key.size = unit(0.75, "in"))+theme(legend.position = c(.9,.85))+theme(legend.title=element_blank())+scale_fill_manual(values = cbf_sw)
+#
+# Save the graph as the desired filetype for download and use (.png is recommended but .jpeg was used to accomodate our version of Adobe Acrobat)
+#
+ggsave("zoomed_full_graph_2_gene_v_plot_no_title_no_legend.jpeg", width=60, height=20, limitsize=FALSE)
+#
+#
+# Graphs J
+#
+# Combine the individual sample data frames into one summative data frame
+#
+full_graph_2_gene_j <- rbind(WT_5N_LN_2_gene_j, RAG_5N_LN_2_gene_j)
+full_graph_2_gene_j <- rbind(full_graph_2_gene_j, RAG_5P_LN_2_gene_j)
+full_graph_2_gene_j <- rbind(full_graph_2_gene_j, RAG_5P_LP_2_gene_j)
+full_graph_2_gene_j <- rbind(full_graph_2_gene_j, VH12_5N_LN_2_gene_j)
+full_graph_2_gene_j <- rbind(full_graph_2_gene_j, VH12_5P_LP_2_gene_j)
+full_graph_2_gene_j <- rbind(full_graph_2_gene_j, VH12_RAG_5N_LN_2_gene_j)
+full_graph_2_gene_j <- rbind(full_graph_2_gene_j, VH12_RAG_5P_LP_2_gene_j)
+#
+# Reorder the list of genes based on their locations in the light chain loci
+#
+full_graph_2_gene_j$J_GENES <- gsubGene2NumV(full_graph_2_gene_j$J_GENES)
+full_graph_2_gene_j <- full_graph_2_gene_j[mixedorder(full_graph_2_gene_j$J_GENES, decreasing=FALSE),]
+full_graph_2_gene_j$J_GENES <- gsubNum2GeneV(full_graph_2_gene_j$J_GENES)
+full_graph_2_gene_j$J_GENES <- psuedogenes(full_graph_2_gene_j$J_GENES)
+full_graph_2_gene_j$J_GENES <- factor(full_graph_2_gene_j$J_GENES, levels=unique(full_graph_2_gene_j$J_GENES))
+#
+# Reassign factors and levels for the sample types to maintain the desired order in the graphs
+#
+full_graph_2_gene_j$SAMPLE <- factor(full_graph_2_gene_j$SAMPLE, levels=c("WT CD5- PtC-", "dnRAG1 CD5- PtC-", "dnRAG1 CD5+ PtC-", "dnRAG1 CD5+ PtC+", "VH12 CD5- PtC-", "VH12 CD5+ PtC+", "dnRAG1 VH12 CD5- PtC-", "dnRAG1 VH12 CD5+ PtC+"))
+#
+# All J genes, ymax=max
+#
+# Set the position and dodge widths for uniform spacing in the graph
+#
+dodge<-position_dodge(width=0.9)
+#
+full_graph_2_gene_j_plot <- ggplot(data=full_graph_2_gene_j, mapping=aes(x=J_GENES, y=MEAN_SEQ_FREQ), limitsize=FALSE)+geom_col(aes(fill=SAMPLE), position=dodge)+coord_cartesian(ylim =c(0, 1), expand = FALSE)+geom_errorbar(aes(ymin = MEAN_SEQ_FREQ-SEM, ymax = MEAN_SEQ_FREQ+SEM, group=SAMPLE,  linetype="blank", size=2), position=dodge, width = 0.75, show.legend=FALSE )+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=90, face="bold", size=60, hjust=0, vjust=0.5, color = "black"))+theme(axis.text.y=element_text(size=60, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(panel.background=element_rect(fill="white"))+ggtitle("Light Chain Repertoire J Gene Usage")+theme(plot.title = element_text(h=0.5, face="bold", size=48))+labs(x="\nGene Segment", y="Frequency in Repertoire\n")+theme(axis.title = element_text(face="bold", size=60))+theme(legend.text = element_text(size=60, face="bold"))+theme(legend.key.size = unit(0.75, "in"))+theme(legend.position = c(.9,.85))+theme(legend.title=element_blank())+scale_fill_manual(values = cbf_sw)
+#
+# Save the graph as the desired filetype for download and use (.png is recommended but .jpeg was used to accomodate our version of Adobe Acrobat)
+#
+ggsave("full_graph_2_gene_j_plot.jpeg", width=48, height=20, limitsize=FALSE)
+#
+#no title
+#
+# Set the position and dodge widths for uniform spacing in the graph
+#
+dodge<-position_dodge(width=0.9)
+#
+full_graph_2_gene_j_plot_no_title <- ggplot(data=full_graph_2_gene_j, mapping=aes(x=J_GENES, y=MEAN_SEQ_FREQ), limitsize=FALSE)+geom_col(aes(fill=SAMPLE), position=dodge, show.legend=FALSE)+coord_cartesian(ylim =c(0, 1), expand = FALSE)+geom_errorbar(aes(ymin = MEAN_SEQ_FREQ-SEM, ymax = MEAN_SEQ_FREQ+SEM, group=SAMPLE,  linetype="blank"), position=dodge, width = 0.75, size = 4, show.legend=FALSE )+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=60, hjust=0, vjust=0.5, color = "black"))+theme(axis.text.y=element_text(size=60, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(panel.background=element_rect(fill="white"))+ggtitle("Light Chain Repertoire J Gene Usage")+theme(plot.title = element_text(h=0.5, face="bold", size=48, color="white"))+labs(x="\nGene Segment", y="Frequency in Repertoire\n")+theme(axis.title = element_text(face="bold", size=60))+theme(legend.text = element_text(size=60, face="bold"))+scale_fill_manual(values = cbf_sw)
+#
+# Save the graph as the desired filetype for download and use (.png is recommended but .jpeg was used to accomodate our version of Adobe Acrobat)
+#
+ggsave("full_graph_2_gene_j_plot_no_title.jpeg", width=48, height=20, limitsize=FALSE)
+#

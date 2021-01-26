@@ -1,0 +1,165 @@
+#Samples must have been named as follows for IMGT runs:  
+#Sample_atleast-2.fasta --> "Sample 2", 
+#
+#This will result in the IMGT files being returned with the respective names:
+# Sample_2.txz
+#
+#If your naming method varied, make sure to update the file names in the following lines
+#
+#Download updated germlines from IMGT for reference during processing
+#
+fetch_imgtdb.sh -o ~share/germlines/imgt
+#
+cd "DATE"_Seq
+#
+#Create subdirectory for ChangeO and R files (this will be set as the working directory when transitioning to R)
+#
+mkdir "DATE"_Seq_ChangeO_and_R
+#
+#Upload fasta files and IMGT data tables into directory with filezilla
+#
+cd "DATE"_Seq_ChangeO_and_R
+#
+#Sample WT_1_5N_LN
+#
+###For data set with > or = 2 sequences per UMI (with good coverage, this should be the primary data set)
+#
+#Creates a data table from the IMGT file and orinigal FASTA file
+#
+MakeDb.py imgt -i WT_1_5N_LN_2.txz -s WT_1_5N_LN_atleast-2.fasta --regions --scores
+#
+#Selects for functional sequences only
+#
+ParseDb.py select -d WT_1_5N_LN_2_db-pass.tab -f FUNCTIONAL -u T
+#
+#Adds full germline sequences to data table for comaprison and reference
+#
+CreateGermlines.py -d WT_1_5N_LN_2_db-pass_parse-select.tab -g full -r ~/share/germlines/imgt/mouse/vdj/*.fasta
+#
+#Repeat for remainder of samples
+#
+#Sample RAG_1_5N_LN
+#
+###For data set with > or = 2 sequences per UMI (with good coverage, this should be the primary data set)
+#
+#Creates a data table from the IMGT file and orinigal FASTA file
+#
+MakeDb.py imgt -i RAG_1_5N_LN_2.txz -s RAG_1_5N_LN_atleast-2.fasta --regions --scores
+#
+#Selects for functional sequences only
+#
+ParseDb.py select -d RAG_1_5N_LN_2_db-pass.tab -f FUNCTIONAL -u T
+#
+#Adds full germline sequences to data table for comaprison and reference
+#
+CreateGermlines.py -d RAG_1_5N_LN_2_db-pass_parse-select.tab -g full -r ~/share/germlines/imgt/mouse/vdj/*.fasta
+#
+#Repeat for remainder of samples
+#
+#Sample RAG_1_5P_LN
+#
+###For data set with > or = 2 sequences per UMI (with good coverage, this should be the primary data set)
+#
+#Creates a data table from the IMGT file and orinigal FASTA file
+#
+MakeDb.py imgt -i RAG_1_5P_LN_2.txz -s RAG_1_5P_LN_atleast-2.fasta --regions --scores
+#
+#Selects for functional sequences only
+#
+ParseDb.py select -d RAG_1_5P_LN_2_db-pass.tab -f FUNCTIONAL -u T
+#
+#Adds full germline sequences to data table for comaprison and reference
+#
+CreateGermlines.py -d RAG_1_5P_LN_2_db-pass_parse-select.tab -g full -r ~/share/germlines/imgt/mouse/vdj/*.fasta
+#
+#Repeat for remainder of samples
+#
+#Sample RAG_1_5P_LP
+#
+###For data set with > or = 2 sequences per UMI (with good coverage, this should be the primary data set)
+#
+#Creates a data table from the IMGT file and orinigal FASTA file
+#
+MakeDb.py imgt -i RAG_1_5P_LP_2.txz -s RAG_1_5P_LP_atleast-2.fasta --regions --scores
+#
+#Selects for functional sequences only
+#
+ParseDb.py select -d RAG_1_5P_LP_2_db-pass.tab -f FUNCTIONAL -u T
+#
+#Adds full germline sequences to data table for comaprison and reference
+#
+CreateGermlines.py -d RAG_1_5P_LP_2_db-pass_parse-select.tab -g full -r ~/share/germlines/imgt/mouse/vdj/*.fasta
+#
+#Repeat for remainder of samples
+#
+#Sample VH12_1_5N_LN
+#
+###For data set with > or = 2 sequences per UMI (with good coverage, this should be the primary data set)
+#
+#Creates a data table from the IMGT file and orinigal FASTA file
+#
+MakeDb.py imgt -i VH12_1_5N_LN_2.txz -s VH12_1_5N_LN_atleast-2.fasta --regions --scores
+#
+#Selects for functional sequences only
+#
+ParseDb.py select -d VH12_1_5N_LN_2_db-pass.tab -f FUNCTIONAL -u T
+#
+#Adds full germline sequences to data table for comaprison and reference
+#
+CreateGermlines.py -d VH12_1_5N_LN_2_db-pass_parse-select.tab -g full -r ~/share/germlines/imgt/mouse/vdj/*.fasta
+#
+#Repeat for remainder of samples
+#
+#Sample VH12_1_5P_LP
+#
+###For data set with > or = 2 sequences per UMI (with good coverage, this should be the primary data set)
+#
+#Creates a data table from the IMGT file and orinigal FASTA file
+#
+MakeDb.py imgt -i VH12_1_5P_LP_2.txz -s VH12_1_5P_LP_atleast-2.fasta --regions --scores
+#
+#Selects for functional sequences only
+#
+ParseDb.py select -d VH12_1_5P_LP_2_db-pass.tab -f FUNCTIONAL -u T
+#
+#Adds full germline sequences to data table for comaprison and reference
+#
+CreateGermlines.py -d VH12_1_5P_LP_2_db-pass_parse-select.tab -g full -r ~/share/germlines/imgt/mouse/vdj/*.fasta
+#
+#Repeat for remainder of samples
+#
+#Sample VH12RAG_1_5N_LN
+#
+###For data set with > or = 2 sequences per UMI (with good coverage, this should be the primary data set)
+#
+#Creates a data table from the IMGT file and orinigal FASTA file
+#
+MakeDb.py imgt -i VH12RAG_1_5N_LN_2.txz -s VH12RAG_1_5N_LN_atleast-2.fasta --regions --scores
+#
+#Selects for functional sequences only
+#
+ParseDb.py select -d VH12RAG_1_5N_LN_2_db-pass.tab -f FUNCTIONAL -u T
+#
+#Adds full germline sequences to data table for comaprison and reference
+#
+CreateGermlines.py -d VH12RAG_1_5N_LN_2_db-pass_parse-select.tab -g full -r ~/share/germlines/imgt/mouse/vdj/*.fasta
+#
+#Repeat for remainder of samples
+#
+###For data set with > or = 2 sequences per UMI (with good coverage, this should be the primary data set)
+#
+#Creates a data table from the IMGT file and orinigal FASTA file
+#
+MakeDb.py imgt -i VH12RAG_1_5P_LP_2.txz -s VH12RAG_1_5P_LP_atleast-2.fasta --regions --scores
+#
+#Selects for functional sequences only
+#
+ParseDb.py select -d VH12RAG_1_5P_LP_2_db-pass.tab -f FUNCTIONAL -u T
+#
+#Adds full germline sequences to data table for comaprison and reference
+#
+CreateGermlines.py -d VH12RAG_1_5P_LP_2_db-pass_parse-select.tab -g full -r ~/share/germlines/imgt/mouse/vdj/*.fasta
+#
+#Repeat for remainder of samples
+#
+#Data analysis will now continue in R using R Studio or R Studio Server (improves visualization, can be performed in an R shell on the same Linux terminal if desired but it will not be possible to preview graphs)

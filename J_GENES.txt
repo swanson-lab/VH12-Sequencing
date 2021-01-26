@@ -1,0 +1,8 @@
+"x"
+"1" "IGKJ1"
+"2" "IGKJ2"
+"3" "IGKJ4"
+"4" "IGKJ5"
+"5" "IGLJ2"
+"6" "IGLJ3"
+"7" "IGLJ1"

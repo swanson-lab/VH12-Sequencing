@@ -1,0 +1,651 @@
+#
+#Create and enter working directory
+#
+mkdir DATE_Seq
+#
+cd DATE_Seq
+#
+#Create directories for samples
+#
+mkdir WT_1_5N_LN
+#
+mkdir RAG_1_5N_LN
+#
+mkdir RAG_1_5P_LN
+#
+mkdir RAG_1_5P_LP
+#
+mkdir VH12_1_5N_LN
+#
+mkdir VH12_1_5P_LP
+#
+mkdir VH12RAG_1_5N_LN
+#
+mkdir VH12RAG_1_5P_LP
+#
+#Enter directory (folder) containing sequencing files from MiSeq (uploaded via FileZilla)
+#
+#demultiplex data into mouse numbers
+#
+#Make sure to rename output directory!!!
+#
+cd DATE_SW_Seq
+#
+bcl2fastq -o ~/DATE_Seq --use-bases-mask Y*,I6N2,N2I6,Y* --barcode-mismatch 0
+#
+#Return to previous directory
+#
+cd ..
+#
+#Move files into corresponding directories
+#
+mv WT_1_5N_LN_*.fastq.gz WT_1_5N_LN
+#
+mv RAG_1_5N_LN_*.fastq.gz RAG_1_5N_LN
+#
+mv RAG_1_5P_LN_*.fastq.gz RAG_1_5P_LN
+#
+mv RAG_1_5P_LP_*.fastq.gz RAG_1_5P_LP
+#
+mv VH12_1_5N_LN_*.fastq.gz VH12_1_5N_LN
+#
+mv VH12_1_5P_LP_*.fastq.gz VH12_1_5P_LP
+#
+mv VH12RAG_1_5N_LN_*.fastq.gz VH12RAG_1_5N_LN
+#
+mv VH12RAG_1_5P_LP_*.fastq.gz VH12RAG_1_5P_LP
+#
+#Run pipeline for each sample within respective directory
+#
+#Sample WT_1_5N_LN
+#
+#Enter directory containing files for Sample WT_1_5N_LN
+#
+cd WT_1_5N_LN
+#
+#unzip files
+#
+gunzip *.gz
+#
+#Filter sequences by quality
+#
+FilterSeq.py quality -s WT_1_5N_LN_S1_L001_R1_001.fastq -q 20 --outname WT_1_5N_LN_R1 --log FS1.log
+FilterSeq.py quality -s WT_1_5N_LN_S1_L001_R2_001.fastq -q 20 --outname WT_1_5N_LN_R2 --log FS2.log
+#
+#Mask primer squences
+#
+MaskPrimers.py score -s WT_1_5N_LN_R1_quality-pass.fastq -p ../V_primers.fasta --start 0 --mode mask --outname WT_1_5N_LN_R1 --log MP1.log
+MaskPrimers.py score -s WT_1_5N_LN_R2_quality-pass.fastq -p ../C_primers.fasta --start 15 --mode cut --barcode --outname WT_1_5N_LN_R2 --log MP2.log
+#
+#Sorts and matches sequence records with matching coordinates across files
+#
+PairSeq.py -1 WT_1_5N_LN_R1_primers-pass.fastq -2 WT_1_5N_LN_R2_primers-pass.fastq --2f BARCODE --coord illumina
+#
+#Builds a consensus sequence for each set of input sequences
+#
+BuildConsensus.py -s WT_1_5N_LN_R1_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --prcons 0.6 --maxerror 0.1 --maxgap 0.5 --outname WT_1_5N_LN_R1 --log BC1.log
+BuildConsensus.py -s WT_1_5N_LN_R2_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --maxerror 0.1 --maxgap 0.5 --outname WT_1_5N_LN_R2 --log BC2.log
+#
+#Sorts and matches sequence records with matching coordinates across files again
+#
+PairSeq.py -1 WT_1_5N_LN_R1_consensus-pass.fastq -2 WT_1_5N_LN_R2_consensus-pass.fastq --coord presto --1f CONSCOUNT --2f CONSCOUNT PRCONS
+#
+#Assembles paired-end reads into a single sequence
+#
+AssemblePairs.py align -1 WT_1_5N_LN_R1_consensus-pass_pair-pass.fastq -2 WT_1_5N_LN_R2_consensus-pass_pair-pass.fastq --coord presto --rc tail --1f CONSCOUNT --2f CONSCOUNT PRCONS --outname WT_1_5N_LN --log AP.log
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers
+#
+ParseHeaders.py collapse -s WT_1_5N_LN_assemble-pass.fastq -f CONSCOUNT --act min
+#
+#Removes duplicate sequences from FASTA/FASTQ file
+#
+CollapseSeq.py -s WT_1_5N_LN*reheader.fastq -n 20 --inner --uf PRCONS --cf CONSCOUNT --act sum --outname WT_1_5N_LN --failed
+#
+#duplicate and rename file for conversion to fasta
+#
+cp WT_1_5N_LN_collapse-unique.fastq WT_1_5N_LN_collapse-unique_all.fastq
+#
+#convert fastq to fasta to upload to IMGT
+#
+paste - - - - < WT_1_5N_LN_collapse-unique_all.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "\t" "\n" > WT_1_5N_LN_collapse-unique_all.fasta
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers and parses records in the console log of pRESTO modules
+#
+ParseHeaders.py table -s WT_1_5N_LN_collapse-unique.fastq -f ID PRCONS CONSCOUNT DUPCOUNT
+ParseLog.py -l FS1.log FS2.log -f ID QUALITY
+ParseLog.py -l MP1.log MP2.log -f ID PRIMER BARCODE ERROR
+ParseLog.py -l BC1.log BC2.log -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR
+ParseLog.py -l AP.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2
+#
+#Repeat for division based on UMI
+#
+#Sorts, samples, and splits FASTQ sequence files into groups with 2+ or one UMI
+#
+SplitSeq.py group -s WT_1_5N_LN_collapse-unique.fastq -f CONSCOUNT --num 2 --outname WT_1_5N_LN --fasta
+#
+cd ..
+#
+#Run pipeline for each sample within respective directory
+#
+#Sample RAG_1_5N_LN
+#
+#Enter directory containing files for Sample RAG_1_5N_LN
+#
+cd RAG_1_5N_LN
+#
+#unzip files
+#
+gunzip *.gz
+#
+#Filter sequences by quality
+#
+FilterSeq.py quality -s RAG_1_5N_LN_S2_L001_R1_001.fastq -q 20 --outname RAG_1_5N_LN_R1 --log FS1.log
+FilterSeq.py quality -s RAG_1_5N_LN_S2_L001_R2_001.fastq -q 20 --outname RAG_1_5N_LN_R2 --log FS2.log
+#
+#Mask primer squences
+#
+MaskPrimers.py score -s RAG_1_5N_LN_R1_quality-pass.fastq -p ../V_primers.fasta --start 0 --mode mask --outname RAG_1_5N_LN_R1 --log MP1.log
+MaskPrimers.py score -s RAG_1_5N_LN_R2_quality-pass.fastq -p ../C_primers.fasta --start 15 --mode cut --barcode --outname RAG_1_5N_LN_R2 --log MP2.log
+#
+#Sorts and matches sequence records with matching coordinates across files
+#
+PairSeq.py -1 RAG_1_5N_LN_R1_primers-pass.fastq -2 RAG_1_5N_LN_R2_primers-pass.fastq --2f BARCODE --coord illumina
+#
+#Builds a consensus sequence for each set of input sequences
+#
+BuildConsensus.py -s RAG_1_5N_LN_R1_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --prcons 0.6 --maxerror 0.1 --maxgap 0.5 --outname RAG_1_5N_LN_R1 --log BC1.log
+BuildConsensus.py -s RAG_1_5N_LN_R2_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --maxerror 0.1 --maxgap 0.5 --outname RAG_1_5N_LN_R2 --log BC2.log
+#
+#Sorts and matches sequence records with matching coordinates across files again
+#
+PairSeq.py -1 RAG_1_5N_LN_R1_consensus-pass.fastq -2 RAG_1_5N_LN_R2_consensus-pass.fastq --coord presto --1f CONSCOUNT --2f CONSCOUNT PRCONS
+#
+#Assembles paired-end reads into a single sequence
+#
+AssemblePairs.py align -1 RAG_1_5N_LN_R1_consensus-pass_pair-pass.fastq -2 RAG_1_5N_LN_R2_consensus-pass_pair-pass.fastq --coord presto --rc tail --1f CONSCOUNT --2f CONSCOUNT PRCONS --outname RAG_1_5N_LN --log AP.log
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers
+#
+ParseHeaders.py collapse -s RAG_1_5N_LN_assemble-pass.fastq -f CONSCOUNT --act min
+#
+#Removes duplicate sequences from FASTA/FASTQ file
+#
+CollapseSeq.py -s RAG_1_5N_LN*reheader.fastq -n 20 --inner --uf PRCONS --cf CONSCOUNT --act sum --outname RAG_1_5N_LN --failed
+#
+#duplicate and rename file for conversion to fasta
+#
+cp RAG_1_5N_LN_collapse-unique.fastq RAG_1_5N_LN_collapse-unique_all.fastq
+#
+#convert fastq to fasta to upload to IMGT
+#
+paste - - - - < RAG_1_5N_LN_collapse-unique_all.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "\t" "\n" > RAG_1_5N_LN_collapse-unique_all.fasta
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers and parses records in the console log of pRESTO modules
+#
+ParseHeaders.py table -s RAG_1_5N_LN_collapse-unique.fastq -f ID PRCONS CONSCOUNT DUPCOUNT
+ParseLog.py -l FS1.log FS2.log -f ID QUALITY
+ParseLog.py -l MP1.log MP2.log -f ID PRIMER BARCODE ERROR
+ParseLog.py -l BC1.log BC2.log -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR
+ParseLog.py -l AP.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2
+#
+#Repeat for division based on UMI
+#
+#Sorts, samples, and splits FASTQ sequence files into groups with 2+ or one UMI
+#
+SplitSeq.py group -s RAG_1_5N_LN_collapse-unique.fastq -f CONSCOUNT --num 2 --outname RAG_1_5N_LN --fasta
+#
+cd ..
+#
+#Run pipeline for each sample within respective directory
+#
+#Sample RAG_1_5P_LN
+#
+#Enter directory containing files for Sample RAG_1_5P_LN
+#
+cd RAG_1_5P_LN
+#
+#unzip files
+#
+gunzip *.gz
+#
+#Filter sequences by quality
+#
+FilterSeq.py quality -s RAG_1_5P_LN_S3_L001_R1_001.fastq -q 20 --outname RAG_1_5P_LN_R1 --log FS1.log
+FilterSeq.py quality -s RAG_1_5P_LN_S3_L001_R2_001.fastq -q 20 --outname RAG_1_5P_LN_R2 --log FS2.log
+#
+#Mask primer squences
+#
+MaskPrimers.py score -s RAG_1_5P_LN_R1_quality-pass.fastq -p ../V_primers.fasta --start 0 --mode mask --outname RAG_1_5P_LN_R1 --log MP1.log
+MaskPrimers.py score -s RAG_1_5P_LN_R2_quality-pass.fastq -p ../C_primers.fasta --start 15 --mode cut --barcode --outname RAG_1_5P_LN_R2 --log MP2.log
+#
+#Sorts and matches sequence records with matching coordinates across files
+#
+PairSeq.py -1 RAG_1_5P_LN_R1_primers-pass.fastq -2 RAG_1_5P_LN_R2_primers-pass.fastq --2f BARCODE --coord illumina
+#
+#Builds a consensus sequence for each set of input sequences
+#
+BuildConsensus.py -s RAG_1_5P_LN_R1_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --prcons 0.6 --maxerror 0.1 --maxgap 0.5 --outname RAG_1_5P_LN_R1 --log BC1.log
+BuildConsensus.py -s RAG_1_5P_LN_R2_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --maxerror 0.1 --maxgap 0.5 --outname RAG_1_5P_LN_R2 --log BC2.log
+#
+#Sorts and matches sequence records with matching coordinates across files again
+#
+PairSeq.py -1 RAG_1_5P_LN_R1_consensus-pass.fastq -2 RAG_1_5P_LN_R2_consensus-pass.fastq --coord presto --1f CONSCOUNT --2f CONSCOUNT PRCONS
+#
+#Assembles paired-end reads into a single sequence
+#
+AssemblePairs.py align -1 RAG_1_5P_LN_R1_consensus-pass_pair-pass.fastq -2 RAG_1_5P_LN_R2_consensus-pass_pair-pass.fastq --coord presto --rc tail --1f CONSCOUNT --2f CONSCOUNT PRCONS --outname RAG_1_5P_LN --log AP.log
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers
+#
+ParseHeaders.py collapse -s RAG_1_5P_LN_assemble-pass.fastq -f CONSCOUNT --act min
+#
+#Removes duplicate sequences from FASTA/FASTQ file
+#
+CollapseSeq.py -s RAG_1_5P_LN*reheader.fastq -n 20 --inner --uf PRCONS --cf CONSCOUNT --act sum --outname RAG_1_5P_LN --failed
+#
+#duplicate and rename file for conversion to fasta
+#
+cp RAG_1_5P_LN_collapse-unique.fastq RAG_1_5P_LN_collapse-unique_all.fastq
+#
+#convert fastq to fasta to upload to IMGT
+#
+paste - - - - < RAG_1_5P_LN_collapse-unique_all.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "\t" "\n" > RAG_1_5P_LN_collapse-unique_all.fasta
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers and parses records in the console log of pRESTO modules
+#
+ParseHeaders.py table -s RAG_1_5P_LN_collapse-unique.fastq -f ID PRCONS CONSCOUNT DUPCOUNT
+ParseLog.py -l FS1.log FS2.log -f ID QUALITY
+ParseLog.py -l MP1.log MP2.log -f ID PRIMER BARCODE ERROR
+ParseLog.py -l BC1.log BC2.log -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR
+ParseLog.py -l AP.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2
+#
+#Repeat for division based on UMI
+#
+#Sorts, samples, and splits FASTQ sequence files into groups with 2+ or one UMI
+#
+SplitSeq.py group -s RAG_1_5P_LN_collapse-unique.fastq -f CONSCOUNT --num 2 --outname RAG_1_5P_LN --fasta
+#
+cd ..
+#
+#Run pipeline for each sample within respective directory
+#
+#Sample RAG_1_5P_LP
+#
+#Enter directory containing files for Sample RAG_1_5P_LP
+#
+cd RAG_1_5P_LP
+#
+#unzip files
+#
+gunzip *.gz
+#
+#Filter sequences by quality
+#
+FilterSeq.py quality -s RAG_1_5P_LP_S4_L001_R1_001.fastq -q 20 --outname RAG_1_5P_LP_R1 --log FS1.log
+FilterSeq.py quality -s RAG_1_5P_LP_S4_L001_R2_001.fastq -q 20 --outname RAG_1_5P_LP_R2 --log FS2.log
+#
+#Mask primer squences
+#
+MaskPrimers.py score -s RAG_1_5P_LP_R1_quality-pass.fastq -p ../V_primers.fasta --start 0 --mode mask --outname RAG_1_5P_LP_R1 --log MP1.log
+MaskPrimers.py score -s RAG_1_5P_LP_R2_quality-pass.fastq -p ../C_primers.fasta --start 15 --mode cut --barcode --outname RAG_1_5P_LP_R2 --log MP2.log
+#
+#Sorts and matches sequence records with matching coordinates across files
+#
+PairSeq.py -1 RAG_1_5P_LP_R1_primers-pass.fastq -2 RAG_1_5P_LP_R2_primers-pass.fastq --2f BARCODE --coord illumina
+#
+#Builds a consensus sequence for each set of input sequences
+#
+BuildConsensus.py -s RAG_1_5P_LP_R1_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --prcons 0.6 --maxerror 0.1 --maxgap 0.5 --outname RAG_1_5P_LP_R1 --log BC1.log
+BuildConsensus.py -s RAG_1_5P_LP_R2_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --maxerror 0.1 --maxgap 0.5 --outname RAG_1_5P_LP_R2 --log BC2.log
+#
+#Sorts and matches sequence records with matching coordinates across files again
+#
+PairSeq.py -1 RAG_1_5P_LP_R1_consensus-pass.fastq -2 RAG_1_5P_LP_R2_consensus-pass.fastq --coord presto --1f CONSCOUNT --2f CONSCOUNT PRCONS
+#
+#Assembles paired-end reads into a single sequence
+#
+AssemblePairs.py align -1 RAG_1_5P_LP_R1_consensus-pass_pair-pass.fastq -2 RAG_1_5P_LP_R2_consensus-pass_pair-pass.fastq --coord presto --rc tail --1f CONSCOUNT --2f CONSCOUNT PRCONS --outname RAG_1_5P_LP --log AP.log
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers
+#
+ParseHeaders.py collapse -s RAG_1_5P_LP_assemble-pass.fastq -f CONSCOUNT --act min
+#
+#Removes duplicate sequences from FASTA/FASTQ file
+#
+CollapseSeq.py -s RAG_1_5P_LP*reheader.fastq -n 20 --inner --uf PRCONS --cf CONSCOUNT --act sum --outname RAG_1_5P_LP --failed
+#
+#duplicate and rename file for conversion to fasta
+#
+cp RAG_1_5P_LP_collapse-unique.fastq RAG_1_5P_LP_collapse-unique_all.fastq
+#
+#convert fastq to fasta to upload to IMGT
+#
+paste - - - - < RAG_1_5P_LP_collapse-unique_all.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "\t" "\n" > RAG_1_5P_LP_collapse-unique_all.fasta
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers and parses records in the console log of pRESTO modules
+#
+ParseHeaders.py table -s RAG_1_5P_LP_collapse-unique.fastq -f ID PRCONS CONSCOUNT DUPCOUNT
+ParseLog.py -l FS1.log FS2.log -f ID QUALITY
+ParseLog.py -l MP1.log MP2.log -f ID PRIMER BARCODE ERROR
+ParseLog.py -l BC1.log BC2.log -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR
+ParseLog.py -l AP.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2
+#
+#Repeat for division based on UMI
+#
+#Sorts, samples, and splits FASTQ sequence files into groups with 2+ or one UMI
+#
+SplitSeq.py group -s RAG_1_5P_LP_collapse-unique.fastq -f CONSCOUNT --num 2 --outname RAG_1_5P_LP --fasta
+#
+cd ..
+#
+#Run pipeline for each sample within respective directory
+#
+#Sample VH12_1_5N_LN
+#
+#Enter directory containing files for Sample VH12_1_5N_LN
+#
+cd VH12_1_5N_LN
+#
+#unzip files
+#
+gunzip *.gz
+#
+#Filter sequences by quality
+#
+FilterSeq.py quality -s VH12_1_5N_LN_S5_L001_R1_001.fastq -q 20 --outname VH12_1_5N_LN_R1 --log FS1.log
+FilterSeq.py quality -s VH12_1_5N_LN_S5_L001_R2_001.fastq -q 20 --outname VH12_1_5N_LN_R2 --log FS2.log
+#
+#Mask primer squences
+#
+MaskPrimers.py score -s VH12_1_5N_LN_R1_quality-pass.fastq -p ../V_primers.fasta --start 0 --mode mask --outname VH12_1_5N_LN_R1 --log MP1.log
+MaskPrimers.py score -s VH12_1_5N_LN_R2_quality-pass.fastq -p ../C_primers.fasta --start 15 --mode cut --barcode --outname VH12_1_5N_LN_R2 --log MP2.log
+#
+#Sorts and matches sequence records with matching coordinates across files
+#
+PairSeq.py -1 VH12_1_5N_LN_R1_primers-pass.fastq -2 VH12_1_5N_LN_R2_primers-pass.fastq --2f BARCODE --coord illumina
+#
+#Builds a consensus sequence for each set of input sequences
+#
+BuildConsensus.py -s VH12_1_5N_LN_R1_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --prcons 0.6 --maxerror 0.1 --maxgap 0.5 --outname VH12_1_5N_LN_R1 --log BC1.log
+BuildConsensus.py -s VH12_1_5N_LN_R2_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --maxerror 0.1 --maxgap 0.5 --outname VH12_1_5N_LN_R2 --log BC2.log
+#
+#Sorts and matches sequence records with matching coordinates across files again
+#
+PairSeq.py -1 VH12_1_5N_LN_R1_consensus-pass.fastq -2 VH12_1_5N_LN_R2_consensus-pass.fastq --coord presto --1f CONSCOUNT --2f CONSCOUNT PRCONS
+#
+#Assembles paired-end reads into a single sequence
+#
+AssemblePairs.py align -1 VH12_1_5N_LN_R1_consensus-pass_pair-pass.fastq -2 VH12_1_5N_LN_R2_consensus-pass_pair-pass.fastq --coord presto --rc tail --1f CONSCOUNT --2f CONSCOUNT PRCONS --outname VH12_1_5N_LN --log AP.log
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers
+#
+ParseHeaders.py collapse -s VH12_1_5N_LN_assemble-pass.fastq -f CONSCOUNT --act min
+#
+#Removes duplicate sequences from FASTA/FASTQ file
+#
+CollapseSeq.py -s VH12_1_5N_LN*reheader.fastq -n 20 --inner --uf PRCONS --cf CONSCOUNT --act sum --outname VH12_1_5N_LN --failed
+#
+#duplicate and rename file for conversion to fasta
+#
+cp VH12_1_5N_LN_collapse-unique.fastq VH12_1_5N_LN_collapse-unique_all.fastq
+#
+#convert fastq to fasta to upload to IMGT
+#
+paste - - - - < VH12_1_5N_LN_collapse-unique_all.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "\t" "\n" > VH12_1_5N_LN_collapse-unique_all.fasta
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers and parses records in the console log of pRESTO modules
+#
+ParseHeaders.py table -s VH12_1_5N_LN_collapse-unique.fastq -f ID PRCONS CONSCOUNT DUPCOUNT
+ParseLog.py -l FS1.log FS2.log -f ID QUALITY
+ParseLog.py -l MP1.log MP2.log -f ID PRIMER BARCODE ERROR
+ParseLog.py -l BC1.log BC2.log -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR
+ParseLog.py -l AP.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2
+#
+#Repeat for division based on UMI
+#
+#Sorts, samples, and splits FASTQ sequence files into groups with 2+ or one UMI
+#
+SplitSeq.py group -s VH12_1_5N_LN_collapse-unique.fastq -f CONSCOUNT --num 2 --outname VH12_1_5N_LN --fasta
+#
+cd ..
+#
+#Run pipeline for each sample within respective directory
+#
+#Sample VH12_1_5P_LP
+#
+#Enter directory containing files for Sample VH12_1_5P_LP
+#
+cd VH12_1_5P_LP
+#
+#unzip files
+#
+gunzip *.gz
+#
+#Filter sequences by quality
+#
+FilterSeq.py quality -s VH12_1_5P_LP_S6_L001_R1_001.fastq -q 20 --outname VH12_1_5P_LP_R1 --log FS1.log
+FilterSeq.py quality -s VH12_1_5P_LP_S6_L001_R2_001.fastq -q 20 --outname VH12_1_5P_LP_R2 --log FS2.log
+#
+#Mask primer squences
+#
+MaskPrimers.py score -s VH12_1_5P_LP_R1_quality-pass.fastq -p ../V_primers.fasta --start 0 --mode mask --outname VH12_1_5P_LP_R1 --log MP1.log
+MaskPrimers.py score -s VH12_1_5P_LP_R2_quality-pass.fastq -p ../C_primers.fasta --start 15 --mode cut --barcode --outname VH12_1_5P_LP_R2 --log MP2.log
+#
+#Sorts and matches sequence records with matching coordinates across files
+#
+PairSeq.py -1 VH12_1_5P_LP_R1_primers-pass.fastq -2 VH12_1_5P_LP_R2_primers-pass.fastq --2f BARCODE --coord illumina
+#
+#Builds a consensus sequence for each set of input sequences
+#
+BuildConsensus.py -s VH12_1_5P_LP_R1_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --prcons 0.6 --maxerror 0.1 --maxgap 0.5 --outname VH12_1_5P_LP_R1 --log BC1.log
+BuildConsensus.py -s VH12_1_5P_LP_R2_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --maxerror 0.1 --maxgap 0.5 --outname VH12_1_5P_LP_R2 --log BC2.log
+#
+#Sorts and matches sequence records with matching coordinates across files again
+#
+PairSeq.py -1 VH12_1_5P_LP_R1_consensus-pass.fastq -2 VH12_1_5P_LP_R2_consensus-pass.fastq --coord presto --1f CONSCOUNT --2f CONSCOUNT PRCONS
+#
+#Assembles paired-end reads into a single sequence
+#
+AssemblePairs.py align -1 VH12_1_5P_LP_R1_consensus-pass_pair-pass.fastq -2 VH12_1_5P_LP_R2_consensus-pass_pair-pass.fastq --coord presto --rc tail --1f CONSCOUNT --2f CONSCOUNT PRCONS --outname VH12_1_5P_LP --log AP.log
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers
+#
+ParseHeaders.py collapse -s VH12_1_5P_LP_assemble-pass.fastq -f CONSCOUNT --act min
+#
+#Removes duplicate sequences from FASTA/FASTQ file
+#
+CollapseSeq.py -s VH12_1_5P_LP*reheader.fastq -n 20 --inner --uf PRCONS --cf CONSCOUNT --act sum --outname VH12_1_5P_LP --failed
+#
+#duplicate and rename file for conversion to fasta
+#
+cp VH12_1_5P_LP_collapse-unique.fastq VH12_1_5P_LP_collapse-unique_all.fastq
+#
+#convert fastq to fasta to upload to IMGT
+#
+paste - - - - < VH12_1_5P_LP_collapse-unique_all.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "\t" "\n" > VH12_1_5P_LP_collapse-unique_all.fasta
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers and parses records in the console log of pRESTO modules
+#
+ParseHeaders.py table -s VH12_1_5P_LP_collapse-unique.fastq -f ID PRCONS CONSCOUNT DUPCOUNT
+ParseLog.py -l FS1.log FS2.log -f ID QUALITY
+ParseLog.py -l MP1.log MP2.log -f ID PRIMER BARCODE ERROR
+ParseLog.py -l BC1.log BC2.log -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR
+ParseLog.py -l AP.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2
+#
+#Repeat for division based on UMI
+#
+#Sorts, samples, and splits FASTQ sequence files into groups with 2+ or one UMI
+#
+SplitSeq.py group -s VH12_1_5P_LP_collapse-unique.fastq -f CONSCOUNT --num 2 --outname VH12_1_5P_LP --fasta
+#
+cd ..
+#
+#Run pipeline for each sample within respective directory
+#
+#Sample VH12_1_RAG_1_5N_LN
+#
+#Enter directory containing files for Sample VH12_1_RAG_1_5N_LN
+#
+cd VH12_1_RAG_1_5N_LN
+#
+#unzip files
+#
+gunzip *.gz
+#
+#Filter sequences by quality
+#
+FilterSeq.py quality -s VH12_1_RAG_1_5N_LN_S7_L001_R1_001.fastq -q 20 --outname VH12_1_RAG_1_5N_LN_R1 --log FS1.log
+FilterSeq.py quality -s VH12_1_RAG_1_5N_LN_S7_L001_R2_001.fastq -q 20 --outname VH12_1_RAG_1_5N_LN_R2 --log FS2.log
+#
+#Mask primer squences
+#
+MaskPrimers.py score -s VH12_1_RAG_1_5N_LN_R1_quality-pass.fastq -p ../V_primers.fasta --start 0 --mode mask --outname VH12_1_RAG_1_5N_LN_R1 --log MP1.log
+MaskPrimers.py score -s VH12_1_RAG_1_5N_LN_R2_quality-pass.fastq -p ../C_primers.fasta --start 15 --mode cut --barcode --outname VH12_1_RAG_1_5N_LN_R2 --log MP2.log
+#
+#Sorts and matches sequence records with matching coordinates across files
+#
+PairSeq.py -1 VH12_1_RAG_1_5N_LN_R1_primers-pass.fastq -2 VH12_1_RAG_1_5N_LN_R2_primers-pass.fastq --2f BARCODE --coord illumina
+#
+#Builds a consensus sequence for each set of input sequences
+#
+BuildConsensus.py -s VH12_1_RAG_1_5N_LN_R1_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --prcons 0.6 --maxerror 0.1 --maxgap 0.5 --outname VH12_1_RAG_1_5N_LN_R1 --log BC1.log
+BuildConsensus.py -s VH12_1_RAG_1_5N_LN_R2_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --maxerror 0.1 --maxgap 0.5 --outname VH12_1_RAG_1_5N_LN_R2 --log BC2.log
+#
+#Sorts and matches sequence records with matching coordinates across files again
+#
+PairSeq.py -1 VH12_1_RAG_1_5N_LN_R1_consensus-pass.fastq -2 VH12_1_RAG_1_5N_LN_R2_consensus-pass.fastq --coord presto --1f CONSCOUNT --2f CONSCOUNT PRCONS
+#
+#Assembles paired-end reads into a single sequence
+#
+AssemblePairs.py align -1 VH12_1_RAG_1_5N_LN_R1_consensus-pass_pair-pass.fastq -2 VH12_1_RAG_1_5N_LN_R2_consensus-pass_pair-pass.fastq --coord presto --rc tail --1f CONSCOUNT --2f CONSCOUNT PRCONS --outname VH12_1_RAG_1_5N_LN --log AP.log
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers
+#
+ParseHeaders.py collapse -s VH12_1_RAG_1_5N_LN_assemble-pass.fastq -f CONSCOUNT --act min
+#
+#Removes duplicate sequences from FASTA/FASTQ file
+#
+CollapseSeq.py -s VH12_1_RAG_1_5N_LN*reheader.fastq -n 20 --inner --uf PRCONS --cf CONSCOUNT --act sum --outname VH12_1_RAG_1_5N_LN --failed
+#
+#duplicate and rename file for conversion to fasta
+#
+cp VH12_1_RAG_1_5N_LN_collapse-unique.fastq VH12_1_RAG_1_5N_LN_collapse-unique_all.fastq
+#
+#convert fastq to fasta to upload to IMGT
+#
+paste - - - - < VH12_1_RAG_1_5N_LN_collapse-unique_all.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "\t" "\n" > VH12_1_RAG_1_5N_LN_collapse-unique_all.fasta
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers and parses records in the console log of pRESTO modules
+#
+ParseHeaders.py table -s VH12_1_RAG_1_5N_LN_collapse-unique.fastq -f ID PRCONS CONSCOUNT DUPCOUNT
+ParseLog.py -l FS1.log FS2.log -f ID QUALITY
+ParseLog.py -l MP1.log MP2.log -f ID PRIMER BARCODE ERROR
+ParseLog.py -l BC1.log BC2.log -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR
+ParseLog.py -l AP.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2
+#
+#Repeat for division based on UMI
+#
+#Sorts, samples, and splits FASTQ sequence files into groups with 2+ or one UMI
+#
+SplitSeq.py group -s VH12_1_RAG_1_5N_LN_collapse-unique.fastq -f CONSCOUNT --num 2 --outname VH12_1_RAG_1_5N_LN --fasta
+#
+cd ..
+#
+#Run pipeline for each sample within respective directory
+#
+#Sample "X"
+#
+#Enter directory containing files for Sample "X"
+#
+cd "X"
+#
+#unzip files
+#
+gunzip *.gz
+#
+#Filter sequences by quality
+#
+FilterSeq.py quality -s "X"_S8_L001_R1_001.fastq -q 20 --outname "X"_R1 --log FS1.log
+FilterSeq.py quality -s "X"_S8_L001_R2_001.fastq -q 20 --outname "X"_R2 --log FS2.log
+#
+#Mask primer squences
+#
+MaskPrimers.py score -s "X"_R1_quality-pass.fastq -p ../V_primers.fasta --start 0 --mode mask --outname "X"_R1 --log MP1.log
+MaskPrimers.py score -s "X"_R2_quality-pass.fastq -p ../C_primers.fasta --start 15 --mode cut --barcode --outname "X"_R2 --log MP2.log
+#
+#Sorts and matches sequence records with matching coordinates across files
+#
+PairSeq.py -1 "X"_R1_primers-pass.fastq -2 "X"_R2_primers-pass.fastq --2f BARCODE --coord illumina
+#
+#Builds a consensus sequence for each set of input sequences
+#
+BuildConsensus.py -s "X"_R1_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --prcons 0.6 --maxerror 0.1 --maxgap 0.5 --outname "X"_R1 --log BC1.log
+BuildConsensus.py -s "X"_R2_primers-pass_pair-pass.fastq --bf BARCODE --pf PRIMER \
+    --maxerror 0.1 --maxgap 0.5 --outname "X"_R2 --log BC2.log
+#
+#Sorts and matches sequence records with matching coordinates across files again
+#
+PairSeq.py -1 "X"_R1_consensus-pass.fastq -2 "X"_R2_consensus-pass.fastq --coord presto --1f CONSCOUNT --2f CONSCOUNT PRCONS
+#
+#Assembles paired-end reads into a single sequence
+#
+AssemblePairs.py align -1 "X"_R1_consensus-pass_pair-pass.fastq -2 "X"_R2_consensus-pass_pair-pass.fastq --coord presto --rc tail --1f CONSCOUNT --2f CONSCOUNT PRCONS --outname "X" --log AP.log
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers
+#
+ParseHeaders.py collapse -s "X"_assemble-pass.fastq -f CONSCOUNT --act min
+#
+#Removes duplicate sequences from FASTA/FASTQ file
+#
+CollapseSeq.py -s "X"*reheader.fastq -n 20 --inner --uf PRCONS --cf CONSCOUNT --act sum --outname "X" --failed
+#
+#duplicate and rename file for conversion to fasta
+#
+cp "X"_collapse-unique.fastq "X"_collapse-unique_all.fastq
+#
+#convert fastq to fasta to upload to IMGT
+#
+paste - - - - < "X"_collapse-unique_all.fastq | cut -f 1,2 | sed 's/^@/>/' | tr "\t" "\n" > "X"_collapse-unique_all.fasta
+#
+#Parses pRESTO annotations in FASTA/FASTQ sequence headers and parses records in the console log of pRESTO modules
+#
+ParseHeaders.py table -s "X"_collapse-unique.fastq -f ID PRCONS CONSCOUNT DUPCOUNT
+ParseLog.py -l FS1.log FS2.log -f ID QUALITY
+ParseLog.py -l MP1.log MP2.log -f ID PRIMER BARCODE ERROR
+ParseLog.py -l BC1.log BC2.log -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR
+ParseLog.py -l AP.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2
+#
+#Repeat for division based on UMI
+#
+#Sorts, samples, and splits FASTQ sequence files into groups with 2+ or one UMI
+#
+SplitSeq.py group -s "X"_collapse-unique.fastq -f CONSCOUNT --num 2 --outname "X" --fasta
+#
+cd ..
+#
+#Run pipeline for each sample within respective directory
+#
+#Using FileZilla, download the 3 FASTA files that were created in each directory (3/sample) and upload them to IMGT High-V Quest for annotation
+#
+#When uplaoding to IMGT, use the follwoing guide for sample entry to ensure compatibility with file names in subsequent processing steps
+#
+#Samples must be named as follows for IMGT runs: 
+#Sample_collapse-unique_all.fasta--> "Sample all", 
+#Sample_atleast-2.fasta --> "Sample 2", 
+#Sample_under-2.fasta --> "Sample 1"

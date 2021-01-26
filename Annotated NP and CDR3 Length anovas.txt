@@ -1,0 +1,403 @@
+#
+# Use one way ANOVAs to compare the differences in CDR3 length distributions and number of sequences with NP nucleotides > 5
+#
+pull_37_seq_240_5N_LN_2<-mutate(pull_37_seq_240_5N_LN_2, Sample = "WT CD5- Liposome-")
+pull_37_seq_239_5N_LN_2<-mutate(pull_37_seq_239_5N_LN_2, Sample = "Rag CD5- Liposome-")
+pull_37_seq_239_5P_LN_2<-mutate(pull_37_seq_239_5P_LN_2, Sample = "Rag CD5+ Liposome-")
+pull_37_seq_239_5P_LP_2<-mutate(pull_37_seq_239_5P_LP_2, Sample = "Rag CD5+ Liposome+")
+pull_37_seq_241_252_5N_LN_2<-mutate(pull_37_seq_241_252_5N_LN_2, Sample = "Vh12 CD5- Liposome-")
+pull_37_seq_241_252_5P_LP_2<-mutate(pull_37_seq_241_252_5P_LP_2, Sample = "Vh12 CD5+ Liposome+")
+pull_37_seq_242_248_5N_LN_2<-mutate(pull_37_seq_242_248_5N_LN_2, Sample = "Vh12 Rag CD5- Liposome-")
+pull_37_seq_242_248_5P_LP_2<-mutate(pull_37_seq_242_248_5P_LP_2, Sample = "Vh12 Rag CD5+ Liposome+")
+#
+pull_37_seq_NP_length_2_EXP2<-rbind(pull_37_seq_240_5N_LN_2, pull_37_seq_239_5N_LN_2)
+pull_37_seq_NP_length_2_EXP2<-rbind(pull_37_seq_NP_length_2_EXP2, pull_37_seq_239_5P_LN_2)
+pull_37_seq_NP_length_2_EXP2<-rbind(pull_37_seq_NP_length_2_EXP2, pull_37_seq_239_5P_LP_2)
+pull_37_seq_NP_length_2_EXP2<-rbind(pull_37_seq_NP_length_2_EXP2, pull_37_seq_241_252_5N_LN_2)
+pull_37_seq_NP_length_2_EXP2<-rbind(pull_37_seq_NP_length_2_EXP2, pull_37_seq_241_252_5P_LP_2)
+pull_37_seq_NP_length_2_EXP2<-rbind(pull_37_seq_NP_length_2_EXP2, pull_37_seq_242_248_5N_LN_2)
+pull_37_seq_NP_length_2_EXP2<-rbind(pull_37_seq_NP_length_2_EXP2, pull_37_seq_242_248_5P_LP_2)
+#
+pull_37_seq_NP_length_2_EXP2 <- mutate(pull_37_seq_NP_length_2_EXP2, CDR3_LENGTH = str_length(pull_37_seq_NP_length_2_EXP2$CDR3_IMGT))
+#
+pull_37_seq_NP_length_2_EXP2$Sample <- factor(pull_37_seq_NP_length_2_EXP2$Sample, levels=c("WT CD5- Liposome-", "Rag CD5- Liposome-", "Rag CD5+ Liposome-", "Rag CD5+ Liposome+", "Vh12 CD5- Liposome-", "Vh12 CD5+ Liposome+", "Vh12 Rag CD5- Liposome-", "Vh12 Rag CD5+ Liposome+"))
+#
+NP1_EXP2_seq_37_summary <- group_by(pull_37_seq_NP_length_2_EXP2, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(NP1_LENGTH, na.rm = TRUE),
+    sd = sd(NP1_LENGTH, na.rm = TRUE)
+  )
+
+aov_EXP2 <- aov(NP1_LENGTH ~ Sample, data = pull_37_seq_NP_length_2_EXP2)
+summary(aov_EXP2)
+aov_EXP2_tuk <- TukeyHSD(aov_EXP2)
+
+
+CDR3_EXP2_seq_37_summary <- group_by(pull_37_seq_NP_length_2_EXP2, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+CDR3_EXP2_seq_37_summary
+
+aov_EXP2_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = pull_37_seq_NP_length_2_EXP2)
+summary(aov_EXP2_cdr3)
+aov_EXP2_tuk_cdr3 <- TukeyHSD(aov_EXP2_cdr3)
+aov_EXP2_tuk_cdr3
+
+#Plot J UMI 2
+#
+pull_37_seq_249_5N_LN_2<-mutate(pull_37_seq_249_5N_LN_2, Sample = "WT CD5- Liposome-")
+pull_37_seq_254_5N_LN_2<-mutate(pull_37_seq_254_5N_LN_2, Sample = "Rag CD5- Liposome-")
+pull_37_seq_254_5P_LN_2<-mutate(pull_37_seq_254_5P_LN_2, Sample = "Rag CD5+ Liposome-")
+pull_37_seq_254_5P_LP_2<-mutate(pull_37_seq_254_5P_LP_2, Sample = "Rag CD5+ Liposome+")
+pull_37_seq_255_257_5N_LN_2<-mutate(pull_37_seq_255_257_5N_LN_2, Sample = "Vh12 CD5- Liposome-")
+pull_37_seq_255_257_5P_LP_2<-mutate(pull_37_seq_255_257_5P_LP_2, Sample = "Vh12 CD5+ Liposome+")
+pull_37_seq_253_259_5N_LN_2<-mutate(pull_37_seq_253_259_5N_LN_2, Sample = "Vh12 Rag CD5- Liposome-")
+pull_37_seq_253_259_5P_LP_2<-mutate(pull_37_seq_253_259_5P_LP_2, Sample = "Vh12 Rag CD5+ Liposome+")
+
+#
+pull_37_seq_NP_length_2_EXP1<-rbind(pull_37_seq_249_5N_LN_2, pull_37_seq_254_5N_LN_2)
+pull_37_seq_NP_length_2_EXP1<-rbind(pull_37_seq_NP_length_2_EXP1, pull_37_seq_254_5P_LN_2)
+pull_37_seq_NP_length_2_EXP1<-rbind(pull_37_seq_NP_length_2_EXP1, pull_37_seq_254_5P_LP_2)
+pull_37_seq_NP_length_2_EXP1<-rbind(pull_37_seq_NP_length_2_EXP1, pull_37_seq_255_257_5N_LN_2)
+pull_37_seq_NP_length_2_EXP1<-rbind(pull_37_seq_NP_length_2_EXP1, pull_37_seq_255_257_5P_LP_2)
+pull_37_seq_NP_length_2_EXP1<-rbind(pull_37_seq_NP_length_2_EXP1, pull_37_seq_253_259_5N_LN_2)
+pull_37_seq_NP_length_2_EXP1<-rbind(pull_37_seq_NP_length_2_EXP1, pull_37_seq_253_259_5P_LP_2)
+#
+pull_37_seq_NP_length_2_EXP1 <- mutate(pull_37_seq_NP_length_2_EXP1, CDR3_LENGTH = str_length(pull_37_seq_NP_length_2_EXP1$CDR3_IMGT))
+#
+pull_37_seq_NP_length_2_EXP1$Sample <- factor(pull_37_seq_NP_length_2_EXP1$Sample, levels=c("WT CD5- Liposome-", "Rag CD5- Liposome-", "Rag CD5+ Liposome-", "Rag CD5+ Liposome+", "Vh12 CD5- Liposome-", "Vh12 CD5+ Liposome+", "Vh12 Rag CD5- Liposome-", "Vh12 Rag CD5+ Liposome+"))
+#
+NP1_EXP1_seq_37_summary <- group_by(pull_37_seq_NP_length_2_EXP1, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(NP1_LENGTH, na.rm = TRUE),
+    sd = sd(NP1_LENGTH, na.rm = TRUE)
+  )
+
+aov_EXP1 <- aov(NP1_LENGTH ~ Sample, data = pull_37_seq_NP_length_2_EXP1)
+summary(aov_EXP1)
+aov_EXP1_tuk <- TukeyHSD(aov_EXP1)
+
+
+CDR3_EXP1_seq_37_summary <- group_by(pull_37_seq_NP_length_2_EXP1, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+CDR3_EXP1_seq_37_summary
+
+aov_EXP1_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = pull_37_seq_NP_length_2_EXP1)
+summary(aov_EXP1_cdr3)
+aov_EXP1_tuk_cdr3 <- TukeyHSD(aov_EXP1_cdr3)
+aov_EXP1_tuk_cdr3
+
+
+#
+#Plot J UMI 2
+#
+pull_486_seq_240_5N_LN_2<-mutate(pull_486_seq_240_5N_LN_2, Sample = "WT CD5- Liposome-")
+pull_486_seq_239_5N_LN_2<-mutate(pull_486_seq_239_5N_LN_2, Sample = "Rag CD5- Liposome-")
+pull_486_seq_239_5P_LN_2<-mutate(pull_486_seq_239_5P_LN_2, Sample = "Rag CD5+ Liposome-")
+pull_486_seq_239_5P_LP_2<-mutate(pull_486_seq_239_5P_LP_2, Sample = "Rag CD5+ Liposome+")
+pull_486_seq_241_252_5N_LN_2<-mutate(pull_486_seq_241_252_5N_LN_2, Sample = "Vh12 CD5- Liposome-")
+pull_486_seq_241_252_5P_LP_2<-mutate(pull_486_seq_241_252_5P_LP_2, Sample = "Vh12 CD5+ Liposome+")
+pull_486_seq_242_248_5N_LN_2<-mutate(pull_486_seq_242_248_5N_LN_2, Sample = "Vh12 Rag CD5- Liposome-")
+pull_486_seq_242_248_5P_LP_2<-mutate(pull_486_seq_242_248_5P_LP_2, Sample = "Vh12 Rag CD5+ Liposome+")
+#
+pull_486_seq_NP_length_2_EXP2<-rbind(pull_486_seq_240_5N_LN_2, pull_486_seq_239_5N_LN_2)
+pull_486_seq_NP_length_2_EXP2<-rbind(pull_486_seq_NP_length_2_EXP2, pull_486_seq_239_5P_LN_2)
+pull_486_seq_NP_length_2_EXP2<-rbind(pull_486_seq_NP_length_2_EXP2, pull_486_seq_239_5P_LP_2)
+pull_486_seq_NP_length_2_EXP2<-rbind(pull_486_seq_NP_length_2_EXP2, pull_486_seq_241_252_5N_LN_2)
+pull_486_seq_NP_length_2_EXP2<-rbind(pull_486_seq_NP_length_2_EXP2, pull_486_seq_241_252_5P_LP_2)
+pull_486_seq_NP_length_2_EXP2<-rbind(pull_486_seq_NP_length_2_EXP2, pull_486_seq_242_248_5N_LN_2)
+pull_486_seq_NP_length_2_EXP2<-rbind(pull_486_seq_NP_length_2_EXP2, pull_486_seq_242_248_5P_LP_2)
+#
+pull_486_seq_NP_length_2_EXP2 <- mutate(pull_486_seq_NP_length_2_EXP2, CDR3_LENGTH = str_length(pull_486_seq_NP_length_2_EXP2$CDR3_IMGT))
+#
+pull_486_seq_NP_length_2_EXP2$Sample <- factor(pull_486_seq_NP_length_2_EXP2$Sample, levels=c("WT CD5- Liposome-", "Rag CD5- Liposome-", "Rag CD5+ Liposome-", "Rag CD5+ Liposome+", "Vh12 CD5- Liposome-", "Vh12 CD5+ Liposome+", "Vh12 Rag CD5- Liposome-", "Vh12 Rag CD5+ Liposome+"))
+#
+NP1_EXP2_seq_486_summary <- group_by(pull_486_seq_NP_length_2_EXP2, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(NP1_LENGTH, na.rm = TRUE),
+    sd = sd(NP1_LENGTH, na.rm = TRUE)
+  )
+
+aov_EXP2_486 <- aov(NP1_LENGTH ~ Sample, data = pull_486_seq_NP_length_2_EXP2)
+summary(aov_EXP2_486)
+aov_EXP2_486_tuk <- TukeyHSD(aov_EXP2_486)
+aov_EXP2_486_tuk
+
+
+#Plot J UMI 2
+#
+pull_486_seq_249_5N_LN_2<-mutate(pull_486_seq_249_5N_LN_2, Sample = "WT CD5- Liposome-")
+pull_486_seq_254_5N_LN_2<-mutate(pull_486_seq_254_5N_LN_2, Sample = "Rag CD5- Liposome-")
+pull_486_seq_254_5P_LN_2<-mutate(pull_486_seq_254_5P_LN_2, Sample = "Rag CD5+ Liposome-")
+pull_486_seq_254_5P_LP_2<-mutate(pull_486_seq_254_5P_LP_2, Sample = "Rag CD5+ Liposome+")
+pull_486_seq_255_257_5N_LN_2<-mutate(pull_486_seq_255_257_5N_LN_2, Sample = "Vh12 CD5- Liposome-")
+pull_486_seq_255_257_5P_LP_2<-mutate(pull_486_seq_255_257_5P_LP_2, Sample = "Vh12 CD5+ Liposome+")
+pull_486_seq_253_259_5N_LN_2<-mutate(pull_486_seq_253_259_5N_LN_2, Sample = "Vh12 Rag CD5- Liposome-")
+pull_486_seq_253_259_5P_LP_2<-mutate(pull_486_seq_253_259_5P_LP_2, Sample = "Vh12 Rag CD5+ Liposome+")
+
+#
+pull_486_seq_NP_length_2_EXP1<-rbind(pull_486_seq_249_5N_LN_2, pull_486_seq_254_5N_LN_2)
+pull_486_seq_NP_length_2_EXP1<-rbind(pull_486_seq_NP_length_2_EXP1, pull_486_seq_254_5P_LN_2)
+pull_486_seq_NP_length_2_EXP1<-rbind(pull_486_seq_NP_length_2_EXP1, pull_486_seq_254_5P_LP_2)
+pull_486_seq_NP_length_2_EXP1<-rbind(pull_486_seq_NP_length_2_EXP1, pull_486_seq_255_257_5N_LN_2)
+pull_486_seq_NP_length_2_EXP1<-rbind(pull_486_seq_NP_length_2_EXP1, pull_486_seq_255_257_5P_LP_2)
+pull_486_seq_NP_length_2_EXP1<-rbind(pull_486_seq_NP_length_2_EXP1, pull_486_seq_253_259_5N_LN_2)
+pull_486_seq_NP_length_2_EXP1<-rbind(pull_486_seq_NP_length_2_EXP1, pull_486_seq_253_259_5P_LP_2)
+#
+pull_486_seq_NP_length_2_EXP1 <- mutate(pull_486_seq_NP_length_2_EXP1, CDR3_LENGTH = str_length(pull_486_seq_NP_length_2_EXP1$CDR3_IMGT))
+#
+pull_486_seq_NP_length_2_EXP1$Sample <- factor(pull_486_seq_NP_length_2_EXP1$Sample, levels=c("WT CD5- Liposome-", "Rag CD5- Liposome-", "Rag CD5+ Liposome-", "Rag CD5+ Liposome+", "Vh12 CD5- Liposome-", "Vh12 CD5+ Liposome+", "Vh12 Rag CD5- Liposome-", "Vh12 Rag CD5+ Liposome+"))
+#
+NP1_EXP1_seq_486_summary <- group_by(pull_486_seq_NP_length_2_EXP1, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(NP1_LENGTH, na.rm = TRUE),
+    sd = sd(NP1_LENGTH, na.rm = TRUE)
+  )
+
+aov_EXP1_486 <- aov(NP1_LENGTH ~ Sample, data = pull_486_seq_NP_length_2_EXP1)
+summary(aov_EXP1_486)
+aov_EXP1_486_tuk <- TukeyHSD(aov_EXP1_486)
+aov_EXP1_486_tuk
+
+
+NP1_EXP1_seq_486_np5_summary <- group_by(pull_486_seq_NP_length_2_EXP1, Sample) %>%
+   summarise(
+     count = n(),
+     np5 = sum(NP1_LENGTH>5),
+     freq = sum(NP1_LENGTH>5)/n(),
+     )
+NP1_EXP1_seq_486_np5_summary
+
+NP1_EXP2_seq_486_np5_summary <- group_by(pull_486_seq_NP_length_2_EXP2, Sample) %>%
+   summarise(
+     count = n(),
+     np5 = sum(NP1_LENGTH>5),
+     freq = sum(NP1_LENGTH>5)/n(),
+     )
+NP1_EXP2_seq_486_np5_summary
+
+
+NP1_EXP1_seq_491_np5_summary <- group_by(pull_491_seq_NP_length_2_EXP1, Sample) %>%
+   summarise(
+     count = n(),
+     np5 = sum(NP1_LENGTH>5),
+     freq = sum(NP1_LENGTH>5)/n(),
+     )
+NP1_EXP1_seq_491_np5_summary
+
+NP1_EXP2_seq_491_np5_summary <- group_by(pull_491_seq_NP_length_2_EXP2, Sample) %>%
+   summarise(
+     count = n(),
+     np5 = sum(NP1_LENGTH>5),
+     freq = sum(NP1_LENGTH>5)/n(),
+     )
+NP1_EXP2_seq_491_np5_summary
+
+
+#
+#Plot J UMI 2
+#
+pull_491_seq_240_5N_LN_2<-mutate(pull_491_seq_240_5N_LN_2, Sample = "WT CD5- Liposome-")
+pull_491_seq_239_5N_LN_2<-mutate(pull_491_seq_239_5N_LN_2, Sample = "Rag CD5- Liposome-")
+pull_491_seq_239_5P_LN_2<-mutate(pull_491_seq_239_5P_LN_2, Sample = "Rag CD5+ Liposome-")
+pull_491_seq_239_5P_LP_2<-mutate(pull_491_seq_239_5P_LP_2, Sample = "Rag CD5+ Liposome+")
+pull_491_seq_241_252_5N_LN_2<-mutate(pull_491_seq_241_252_5N_LN_2, Sample = "Vh12 CD5- Liposome-")
+pull_491_seq_241_252_5P_LP_2<-mutate(pull_491_seq_241_252_5P_LP_2, Sample = "Vh12 CD5+ Liposome+")
+pull_491_seq_242_248_5N_LN_2<-mutate(pull_491_seq_242_248_5N_LN_2, Sample = "Vh12 Rag CD5- Liposome-")
+pull_491_seq_242_248_5P_LP_2<-mutate(pull_491_seq_242_248_5P_LP_2, Sample = "Vh12 Rag CD5+ Liposome+")
+#
+pull_491_seq_NP_length_2_EXP2<-rbind(pull_491_seq_240_5N_LN_2, pull_491_seq_239_5N_LN_2)
+pull_491_seq_NP_length_2_EXP2<-rbind(pull_491_seq_NP_length_2_EXP2, pull_491_seq_239_5P_LN_2)
+pull_491_seq_NP_length_2_EXP2<-rbind(pull_491_seq_NP_length_2_EXP2, pull_491_seq_239_5P_LP_2)
+pull_491_seq_NP_length_2_EXP2<-rbind(pull_491_seq_NP_length_2_EXP2, pull_491_seq_241_252_5N_LN_2)
+pull_491_seq_NP_length_2_EXP2<-rbind(pull_491_seq_NP_length_2_EXP2, pull_491_seq_241_252_5P_LP_2)
+pull_491_seq_NP_length_2_EXP2<-rbind(pull_491_seq_NP_length_2_EXP2, pull_491_seq_242_248_5N_LN_2)
+pull_491_seq_NP_length_2_EXP2<-rbind(pull_491_seq_NP_length_2_EXP2, pull_491_seq_242_248_5P_LP_2)
+#
+pull_491_seq_NP_length_2_EXP2 <- mutate(pull_491_seq_NP_length_2_EXP2, CDR3_LENGTH = str_length(pull_491_seq_NP_length_2_EXP2$CDR3_IMGT))
+#
+pull_491_seq_NP_length_2_EXP2$Sample <- factor(pull_491_seq_NP_length_2_EXP2$Sample, levels=c("WT CD5- Liposome-", "Rag CD5- Liposome-", "Rag CD5+ Liposome-", "Rag CD5+ Liposome+", "Vh12 CD5- Liposome-", "Vh12 CD5+ Liposome+", "Vh12 Rag CD5- Liposome-", "Vh12 Rag CD5+ Liposome+"))
+#
+NP1_EXP2_seq_491_summary <- group_by(pull_491_seq_NP_length_2_EXP2, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(NP1_LENGTH, na.rm = TRUE),
+    sd = sd(NP1_LENGTH, na.rm = TRUE)
+  )
+
+aov_EXP2 <- aov(NP1_LENGTH ~ Sample, data = pull_491_seq_NP_length_2_EXP2)
+summary(aov_EXP2)
+aov_EXP2_tuk <- TukeyHSD(aov_EXP2)
+
+
+CDR3_EXP2_seq_491_summary <- group_by(pull_491_seq_NP_length_2_EXP2, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+CDR3_EXP2_seq_491_summary
+
+aov_EXP2_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = pull_491_seq_NP_length_2_EXP2)
+summary(aov_EXP2_cdr3)
+aov_EXP2_tuk_cdr3 <- TukeyHSD(aov_EXP2_cdr3)
+aov_EXP2_tuk_cdr3
+
+#Plot J UMI 2
+#
+pull_491_seq_249_5N_LN_2<-mutate(pull_491_seq_249_5N_LN_2, Sample = "WT CD5- Liposome-")
+pull_491_seq_254_5N_LN_2<-mutate(pull_491_seq_254_5N_LN_2, Sample = "Rag CD5- Liposome-")
+pull_491_seq_254_5P_LN_2<-mutate(pull_491_seq_254_5P_LN_2, Sample = "Rag CD5+ Liposome-")
+pull_491_seq_254_5P_LP_2<-mutate(pull_491_seq_254_5P_LP_2, Sample = "Rag CD5+ Liposome+")
+pull_491_seq_255_257_5N_LN_2<-mutate(pull_491_seq_255_257_5N_LN_2, Sample = "Vh12 CD5- Liposome-")
+pull_491_seq_255_257_5P_LP_2<-mutate(pull_491_seq_255_257_5P_LP_2, Sample = "Vh12 CD5+ Liposome+")
+pull_491_seq_253_259_5N_LN_2<-mutate(pull_491_seq_253_259_5N_LN_2, Sample = "Vh12 Rag CD5- Liposome-")
+pull_491_seq_253_259_5P_LP_2<-mutate(pull_491_seq_253_259_5P_LP_2, Sample = "Vh12 Rag CD5+ Liposome+")
+
+#
+pull_491_seq_NP_length_2_EXP1<-rbind(pull_491_seq_249_5N_LN_2, pull_491_seq_254_5N_LN_2)
+pull_491_seq_NP_length_2_EXP1<-rbind(pull_491_seq_NP_length_2_EXP1, pull_491_seq_254_5P_LN_2)
+pull_491_seq_NP_length_2_EXP1<-rbind(pull_491_seq_NP_length_2_EXP1, pull_491_seq_254_5P_LP_2)
+pull_491_seq_NP_length_2_EXP1<-rbind(pull_491_seq_NP_length_2_EXP1, pull_491_seq_255_257_5N_LN_2)
+pull_491_seq_NP_length_2_EXP1<-rbind(pull_491_seq_NP_length_2_EXP1, pull_491_seq_255_257_5P_LP_2)
+pull_491_seq_NP_length_2_EXP1<-rbind(pull_491_seq_NP_length_2_EXP1, pull_491_seq_253_259_5N_LN_2)
+pull_491_seq_NP_length_2_EXP1<-rbind(pull_491_seq_NP_length_2_EXP1, pull_491_seq_253_259_5P_LP_2)
+#
+pull_491_seq_NP_length_2_EXP1 <- mutate(pull_491_seq_NP_length_2_EXP1, CDR3_LENGTH = str_length(pull_491_seq_NP_length_2_EXP1$CDR3_IMGT))
+#
+pull_491_seq_NP_length_2_EXP1$Sample <- factor(pull_491_seq_NP_length_2_EXP1$Sample, levels=c("WT CD5- Liposome-", "Rag CD5- Liposome-", "Rag CD5+ Liposome-", "Rag CD5+ Liposome+", "Vh12 CD5- Liposome-", "Vh12 CD5+ Liposome+", "Vh12 Rag CD5- Liposome-", "Vh12 Rag CD5+ Liposome+"))
+#
+NP1_EXP1_seq_491_summary <- group_by(pull_491_seq_NP_length_2_EXP1, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(NP1_LENGTH, na.rm = TRUE),
+    sd = sd(NP1_LENGTH, na.rm = TRUE)
+  )
+
+aov_EXP1 <- aov(NP1_LENGTH ~ Sample, data = pull_491_seq_NP_length_2_EXP1)
+summary(aov_EXP1)
+aov_EXP1_tuk <- TukeyHSD(aov_EXP1)
+
+
+CDR3_EXP1_seq_491_summary <- group_by(pull_491_seq_NP_length_2_EXP1, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+CDR3_EXP1_seq_491_summary
+
+aov_EXP1_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = pull_491_seq_NP_length_2_EXP1)
+summary(aov_EXP1_cdr3)
+aov_EXP1_tuk_cdr3 <- TukeyHSD(aov_EXP1_cdr3)
+aov_EXP1_tuk_cdr3
+
+
+#
+#Plot J UMI 2
+#
+pull_14126_seq_240_5N_LN_2<-mutate(pull_14126_seq_240_5N_LN_2, Sample = "WT CD5- Liposome-")
+pull_14126_seq_239_5N_LN_2<-mutate(pull_14126_seq_239_5N_LN_2, Sample = "Rag CD5- Liposome-")
+pull_14126_seq_239_5P_LN_2<-mutate(pull_14126_seq_239_5P_LN_2, Sample = "Rag CD5+ Liposome-")
+pull_14126_seq_239_5P_LP_2<-mutate(pull_14126_seq_239_5P_LP_2, Sample = "Rag CD5+ Liposome+")
+pull_14126_seq_241_252_5N_LN_2<-mutate(pull_14126_seq_241_252_5N_LN_2, Sample = "Vh12 CD5- Liposome-")
+pull_14126_seq_241_252_5P_LP_2<-mutate(pull_14126_seq_241_252_5P_LP_2, Sample = "Vh12 CD5+ Liposome+")
+pull_14126_seq_242_248_5N_LN_2<-mutate(pull_14126_seq_242_248_5N_LN_2, Sample = "Vh12 Rag CD5- Liposome-")
+pull_14126_seq_242_248_5P_LP_2<-mutate(pull_14126_seq_242_248_5P_LP_2, Sample = "Vh12 Rag CD5+ Liposome+")
+#
+pull_14126_seq_NP_length_2_EXP2<-rbind(pull_14126_seq_240_5N_LN_2, pull_14126_seq_239_5N_LN_2)
+pull_14126_seq_NP_length_2_EXP2<-rbind(pull_14126_seq_NP_length_2_EXP2, pull_14126_seq_239_5P_LN_2)
+pull_14126_seq_NP_length_2_EXP2<-rbind(pull_14126_seq_NP_length_2_EXP2, pull_14126_seq_239_5P_LP_2)
+pull_14126_seq_NP_length_2_EXP2<-rbind(pull_14126_seq_NP_length_2_EXP2, pull_14126_seq_241_252_5N_LN_2)
+pull_14126_seq_NP_length_2_EXP2<-rbind(pull_14126_seq_NP_length_2_EXP2, pull_14126_seq_241_252_5P_LP_2)
+pull_14126_seq_NP_length_2_EXP2<-rbind(pull_14126_seq_NP_length_2_EXP2, pull_14126_seq_242_248_5N_LN_2)
+pull_14126_seq_NP_length_2_EXP2<-rbind(pull_14126_seq_NP_length_2_EXP2, pull_14126_seq_242_248_5P_LP_2)
+#
+pull_14126_seq_NP_length_2_EXP2 <- mutate(pull_14126_seq_NP_length_2_EXP2, CDR3_LENGTH = str_length(pull_14126_seq_NP_length_2_EXP2$CDR3_IMGT))
+#
+pull_14126_seq_NP_length_2_EXP2$Sample <- factor(pull_14126_seq_NP_length_2_EXP2$Sample, levels=c("WT CD5- Liposome-", "Rag CD5- Liposome-", "Rag CD5+ Liposome-", "Rag CD5+ Liposome+", "Vh12 CD5- Liposome-", "Vh12 CD5+ Liposome+", "Vh12 Rag CD5- Liposome-", "Vh12 Rag CD5+ Liposome+"))
+#
+NP1_EXP2_seq_14126_summary <- group_by(pull_14126_seq_NP_length_2_EXP2, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(NP1_LENGTH, na.rm = TRUE),
+    sd = sd(NP1_LENGTH, na.rm = TRUE)
+  )
+
+aov_EXP2 <- aov(NP1_LENGTH ~ Sample, data = pull_14126_seq_NP_length_2_EXP2)
+summary(aov_EXP2)
+aov_EXP2_tuk <- TukeyHSD(aov_EXP2)
+
+
+CDR3_EXP2_seq_14126_summary <- group_by(pull_14126_seq_NP_length_2_EXP2, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+CDR3_EXP2_seq_14126_summary
+
+aov_EXP2_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = pull_14126_seq_NP_length_2_EXP2)
+summary(aov_EXP2_cdr3)
+aov_EXP2_tuk_cdr3 <- TukeyHSD(aov_EXP2_cdr3)
+aov_EXP2_tuk_cdr3
+
+#Plot J UMI 2
+#
+pull_14126_seq_249_5N_LN_2<-mutate(pull_14126_seq_249_5N_LN_2, Sample = "WT CD5- Liposome-")
+pull_14126_seq_254_5N_LN_2<-mutate(pull_14126_seq_254_5N_LN_2, Sample = "Rag CD5- Liposome-")
+pull_14126_seq_254_5P_LN_2<-mutate(pull_14126_seq_254_5P_LN_2, Sample = "Rag CD5+ Liposome-")
+pull_14126_seq_254_5P_LP_2<-mutate(pull_14126_seq_254_5P_LP_2, Sample = "Rag CD5+ Liposome+")
+pull_14126_seq_255_257_5N_LN_2<-mutate(pull_14126_seq_255_257_5N_LN_2, Sample = "Vh12 CD5- Liposome-")
+pull_14126_seq_255_257_5P_LP_2<-mutate(pull_14126_seq_255_257_5P_LP_2, Sample = "Vh12 CD5+ Liposome+")
+pull_14126_seq_253_259_5N_LN_2<-mutate(pull_14126_seq_253_259_5N_LN_2, Sample = "Vh12 Rag CD5- Liposome-")
+pull_14126_seq_253_259_5P_LP_2<-mutate(pull_14126_seq_253_259_5P_LP_2, Sample = "Vh12 Rag CD5+ Liposome+")
+
+#
+pull_14126_seq_NP_length_2_EXP1<-rbind(pull_14126_seq_249_5N_LN_2, pull_14126_seq_254_5N_LN_2)
+pull_14126_seq_NP_length_2_EXP1<-rbind(pull_14126_seq_NP_length_2_EXP1, pull_14126_seq_254_5P_LN_2)
+pull_14126_seq_NP_length_2_EXP1<-rbind(pull_14126_seq_NP_length_2_EXP1, pull_14126_seq_254_5P_LP_2)
+pull_14126_seq_NP_length_2_EXP1<-rbind(pull_14126_seq_NP_length_2_EXP1, pull_14126_seq_255_257_5N_LN_2)
+pull_14126_seq_NP_length_2_EXP1<-rbind(pull_14126_seq_NP_length_2_EXP1, pull_14126_seq_255_257_5P_LP_2)
+pull_14126_seq_NP_length_2_EXP1<-rbind(pull_14126_seq_NP_length_2_EXP1, pull_14126_seq_253_259_5N_LN_2)
+pull_14126_seq_NP_length_2_EXP1<-rbind(pull_14126_seq_NP_length_2_EXP1, pull_14126_seq_253_259_5P_LP_2)
+#
+pull_14126_seq_NP_length_2_EXP1 <- mutate(pull_14126_seq_NP_length_2_EXP1, CDR3_LENGTH = str_length(pull_14126_seq_NP_length_2_EXP1$CDR3_IMGT))
+#
+pull_14126_seq_NP_length_2_EXP1$Sample <- factor(pull_14126_seq_NP_length_2_EXP1$Sample, levels=c("WT CD5- Liposome-", "Rag CD5- Liposome-", "Rag CD5+ Liposome-", "Rag CD5+ Liposome+", "Vh12 CD5- Liposome-", "Vh12 CD5+ Liposome+", "Vh12 Rag CD5- Liposome-", "Vh12 Rag CD5+ Liposome+"))
+#
+NP1_EXP1_seq_14126_summary <- group_by(pull_14126_seq_NP_length_2_EXP1, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(NP1_LENGTH, na.rm = TRUE),
+    sd = sd(NP1_LENGTH, na.rm = TRUE)
+  )
+
+aov_EXP1 <- aov(NP1_LENGTH ~ Sample, data = pull_14126_seq_NP_length_2_EXP1)
+summary(aov_EXP1)
+aov_EXP1_tuk <- TukeyHSD(aov_EXP1)
+
+
+CDR3_EXP1_seq_14126_summary <- group_by(pull_14126_seq_NP_length_2_EXP1, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+CDR3_EXP1_seq_14126_summary
+
+aov_EXP1_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = pull_14126_seq_NP_length_2_EXP1)
+summary(aov_EXP1_cdr3)
+aov_EXP1_tuk_cdr3 <- TukeyHSD(aov_EXP1_cdr3)
+aov_EXP1_tuk_cdr3

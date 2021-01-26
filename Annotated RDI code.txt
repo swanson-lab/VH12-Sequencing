@@ -1,0 +1,446 @@
+# Set up data table to calculate RDI and VDJ Counts
+#
+# WT 1, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_WT_1_5N_LN_2 <- mutate(loc_WT_1_5N_LN_2, GENOTYPE = "WT")
+loc_WT_1_5N_LN_2 <- mutate(loc_WT_1_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_WT_1_5N_LN_2 <- mutate(loc_WT_1_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_WT_1_5N_LN_2 <- mutate(loc_WT_1_5N_LN_2, EXP = "1")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+WT_5N_LN_1 <- select(loc_WT_1_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# WT 2, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_WT_2_5N_LN_2 <- mutate(loc_WT_2_5N_LN_2, GENOTYPE = "WT")
+loc_WT_2_5N_LN_2 <- mutate(loc_WT_2_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_WT_2_5N_LN_2 <- mutate(loc_WT_2_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_WT_2_5N_LN_2 <- mutate(loc_WT_2_5N_LN_2, EXP = "2")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+WT_5N_LN_2 <- select(loc_WT_2_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# WT 3, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_WT_3_5N_LN_2 <- mutate(loc_WT_3_5N_LN_2, GENOTYPE = "WT")
+loc_WT_3_5N_LN_2 <- mutate(loc_WT_3_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_WT_3_5N_LN_2 <- mutate(loc_WT_3_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_WT_3_5N_LN_2 <- mutate(loc_WT_3_5N_LN_2, EXP = "3")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+WT_5N_LN_3 <- select(loc_WT_3_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# Combine the three replicate tables into one data frame per sample type
+#
+WT_5N_LN <- bind_rows(WT_5N_LN_1, WT_5N_LN_2, WT_5N_LN_3)
+#
+# Combine the different phenotypes into one data frame per genotype
+#
+WT <- WT_5N_LN
+#
+# Simplify the names of the gene calls
+#
+WT <- mutate(WT, V_CALL = getGene(WT$V_CALL))
+WT <- mutate(WT, J_CALL = getGene(WT$J_CALL))
+#
+# Add a column with both the V and J gene calls
+#
+WT <- mutate(WT, GENE = paste(V_CALL, ",", J_CALL))
+#
+# RAG 1, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_1_5N_LN_2 <- mutate(loc_RAG_1_5N_LN_2, GENOTYPE = "dnRAG1")
+loc_RAG_1_5N_LN_2 <- mutate(loc_RAG_1_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_RAG_1_5N_LN_2 <- mutate(loc_RAG_1_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_1_5N_LN_2 <- mutate(loc_RAG_1_5N_LN_2, EXP = "1")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5N_LN_1 <- select(loc_RAG_1_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# RAG 2, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_2_5N_LN_2 <- mutate(loc_RAG_2_5N_LN_2, GENOTYPE = "dnRAG1")
+loc_RAG_2_5N_LN_2 <- mutate(loc_RAG_2_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_RAG_2_5N_LN_2 <- mutate(loc_RAG_2_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_2_5N_LN_2 <- mutate(loc_RAG_2_5N_LN_2, EXP = "2")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5N_LN_2 <- select(loc_RAG_2_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# RAG 3, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_3_5N_LN_2 <- mutate(loc_RAG_3_5N_LN_2, GENOTYPE = "dnRAG1")
+loc_RAG_3_5N_LN_2 <- mutate(loc_RAG_3_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_RAG_3_5N_LN_2 <- mutate(loc_RAG_3_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_3_5N_LN_2 <- mutate(loc_RAG_3_5N_LN_2, EXP = "3")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5N_LN_3 <- select(loc_RAG_3_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# Combine the three replicate tables into one data frame per sample type
+#
+dnRAG1_5N_LN <- bind_rows(dnRAG1_5N_LN_1, dnRAG1_5N_LN_2, dnRAG1_5N_LN_3)
+#
+# RAG 1, 5P LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_1_5P_LN_2 <- mutate(loc_RAG_1_5P_LN_2, GENOTYPE = "dnRAG1")
+loc_RAG_1_5P_LN_2 <- mutate(loc_RAG_1_5P_LN_2, PHENOTYPE = "CD5+ PtC-")
+loc_RAG_1_5P_LN_2 <- mutate(loc_RAG_1_5P_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_1_5P_LN_2 <- mutate(loc_RAG_1_5P_LN_2, EXP = "1")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5P_LN_1 <- select(loc_RAG_1_5P_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# RAG 2, 5P LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_2_5P_LN_2 <- mutate(loc_RAG_2_5P_LN_2, GENOTYPE = "dnRAG1")
+loc_RAG_2_5P_LN_2 <- mutate(loc_RAG_2_5P_LN_2, PHENOTYPE = "CD5+ PtC-")
+loc_RAG_2_5P_LN_2 <- mutate(loc_RAG_2_5P_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_2_5P_LN_2 <- mutate(loc_RAG_2_5P_LN_2, EXP = "2")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5P_LN_2 <- select(loc_RAG_2_5P_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# RAG 3, 5P LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_3_5P_LN_2 <- mutate(loc_RAG_3_5P_LN_2, GENOTYPE = "dnRAG1")
+loc_RAG_3_5P_LN_2 <- mutate(loc_RAG_3_5P_LN_2, PHENOTYPE = "CD5+ PtC-")
+loc_RAG_3_5P_LN_2 <- mutate(loc_RAG_3_5P_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_3_5P_LN_2 <- mutate(loc_RAG_3_5P_LN_2, EXP = "3")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5P_LN_3 <- select(loc_RAG_3_5P_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# Combine the three replicate tables into one data frame per sample type
+#
+dnRAG1_5P_LN <- bind_rows(dnRAG1_5P_LN_1, dnRAG1_5P_LN_2, dnRAG1_5P_LN_3)
+#
+# RAG 1, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_1_5P_LP_2 <- mutate(loc_RAG_1_5P_LP_2, GENOTYPE = "dnRAG1")
+loc_RAG_1_5P_LP_2 <- mutate(loc_RAG_1_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_RAG_1_5P_LP_2 <- mutate(loc_RAG_1_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_1_5P_LP_2 <- mutate(loc_RAG_1_5P_LP_2, EXP = "1")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5P_LP_1 <- select(loc_RAG_1_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# RAG 2, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_2_5P_LP_2 <- mutate(loc_RAG_2_5P_LP_2, GENOTYPE = "dnRAG1")
+loc_RAG_2_5P_LP_2 <- mutate(loc_RAG_2_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_RAG_2_5P_LP_2 <- mutate(loc_RAG_2_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_2_5P_LP_2 <- mutate(loc_RAG_2_5P_LP_2, EXP = "2")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5P_LP_2 <- select(loc_RAG_2_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# RAG 3, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_RAG_3_5P_LP_2 <- mutate(loc_RAG_3_5P_LP_2, GENOTYPE = "dnRAG1")
+loc_RAG_3_5P_LP_2 <- mutate(loc_RAG_3_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_RAG_3_5P_LP_2 <- mutate(loc_RAG_3_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_RAG_3_5P_LP_2 <- mutate(loc_RAG_3_5P_LP_2, EXP = "3")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_5P_LP_3 <- select(loc_RAG_3_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# Combine the three replicate tables into one data frame per sample type
+#
+dnRAG1_5P_LP <- bind_rows(dnRAG1_5P_LP_1, dnRAG1_5P_LP_2, dnRAG1_5P_LP_3)
+#
+# Combine the different phenotypes into one data frame per genotype
+#
+dnRAG1 <- bind_rows(dnRAG1_5N_LN, dnRAG1_5P_LN, dnRAG1_5P_LP)
+#
+# Simplify the names of the gene calls
+#
+dnRAG1 <- mutate(dnRAG1, V_CALL = getGene(dnRAG1$V_CALL))
+dnRAG1 <- mutate(dnRAG1, J_CALL = getGene(dnRAG1$J_CALL))
+#
+# Add a column with both the V and J gene calls
+#
+dnRAG1 <- mutate(dnRAG1, GENE = paste(V_CALL, ",", J_CALL))
+#
+# VH12 1, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12_1_5N_LN_2 <- mutate(loc_VH12_1_5N_LN_2, GENOTYPE = "VH12")
+loc_VH12_1_5N_LN_2 <- mutate(loc_VH12_1_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_VH12_1_5N_LN_2 <- mutate(loc_VH12_1_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12_1_5N_LN_2 <- mutate(loc_VH12_1_5N_LN_2, EXP = "1")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+VH12_5N_LN_1 <- select(loc_VH12_1_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# VH12 2, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12_2_5N_LN_2 <- mutate(loc_VH12_2_5N_LN_2, GENOTYPE = "VH12")
+loc_VH12_2_5N_LN_2 <- mutate(loc_VH12_2_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_VH12_2_5N_LN_2 <- mutate(loc_VH12_2_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12_2_5N_LN_2 <- mutate(loc_VH12_2_5N_LN_2, EXP = "2")
+VH12_5N_LN_2 <- select(loc_VH12_2_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# VH12 3, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12_3_5N_LN_2 <- mutate(loc_VH12_3_5N_LN_2, GENOTYPE = "VH12")
+loc_VH12_3_5N_LN_2 <- mutate(loc_VH12_3_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_VH12_3_5N_LN_2 <- mutate(loc_VH12_3_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12_3_5N_LN_2 <- mutate(loc_VH12_3_5N_LN_2, EXP = "3")
+VH12_5N_LN_3 <- select(loc_VH12_3_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# Combine the three replicate tables into one data frame per sample type
+#
+VH12_5N_LN <- bind_rows(VH12_5N_LN_1, VH12_5N_LN_2, VH12_5N_LN_3)
+#
+# VH12 1, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12_1_5P_LP_2 <- mutate(loc_VH12_1_5P_LP_2, GENOTYPE = "VH12")
+loc_VH12_1_5P_LP_2 <- mutate(loc_VH12_1_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_VH12_1_5P_LP_2 <- mutate(loc_VH12_1_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12_1_5P_LP_2 <- mutate(loc_VH12_1_5P_LP_2, EXP = "1")
+VH12_5P_LP_1 <- select(loc_VH12_1_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# VH12 2, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12_2_5P_LP_2 <- mutate(loc_VH12_2_5P_LP_2, GENOTYPE = "VH12")
+loc_VH12_2_5P_LP_2 <- mutate(loc_VH12_2_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_VH12_2_5P_LP_2 <- mutate(loc_VH12_2_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12_2_5P_LP_2 <- mutate(loc_VH12_2_5P_LP_2, EXP = "2")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+VH12_5P_LP_2 <- select(loc_VH12_2_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# VH12 3, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12_3_5P_LP_2 <- mutate(loc_VH12_3_5P_LP_2, GENOTYPE = "VH12")
+loc_VH12_3_5P_LP_2 <- mutate(loc_VH12_3_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_VH12_3_5P_LP_2 <- mutate(loc_VH12_3_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12_3_5P_LP_2 <- mutate(loc_VH12_3_5P_LP_2, EXP = "3")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+VH12_5P_LP_3 <- select(loc_VH12_3_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# Combine the three replicate tables into one data frame per sample type
+#
+VH12_5P_LP <- bind_rows(VH12_5P_LP_1, VH12_5P_LP_2, VH12_5P_LP_3)
+#
+# Combine the different phenotypes into one data frame per genotype
+#
+VH12 <- bind_rows(VH12_5N_LN, VH12_5P_LP)
+#
+# Simplify the names of the gene calls
+#
+VH12 <- mutate(VH12, V_CALL = getGene(VH12$V_CALL))
+VH12 <- mutate(VH12, J_CALL = getGene(VH12$J_CALL))
+#
+# Add a column with both the V and J gene calls
+#
+VH12 <- mutate(VH12, GENE = paste(V_CALL, ",", J_CALL))
+#
+# VH12RAG 1, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12RAG_1_5N_LN_2 <- mutate(loc_VH12RAG_1_5N_LN_2, GENOTYPE = "dnRAG1 VH12")
+loc_VH12RAG_1_5N_LN_2 <- mutate(loc_VH12RAG_1_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_VH12RAG_1_5N_LN_2 <- mutate(loc_VH12RAG_1_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12RAG_1_5N_LN_2 <- mutate(loc_VH12RAG_1_5N_LN_2, EXP = "1")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_VH12_5N_LN_1 <- select(loc_VH12RAG_1_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# VH12RAG 2, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12RAG_2_5N_LN_2 <- mutate(loc_VH12RAG_2_5N_LN_2, GENOTYPE = "dnRAG1 VH12")
+loc_VH12RAG_2_5N_LN_2 <- mutate(loc_VH12RAG_2_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_VH12RAG_2_5N_LN_2 <- mutate(loc_VH12RAG_2_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12RAG_2_5N_LN_2 <- mutate(loc_VH12RAG_2_5N_LN_2, EXP = "2")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_VH12_5N_LN_2 <- select(loc_VH12RAG_2_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# VH12RAG 3, 5N LN
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12RAG_3_5N_LN_2 <- mutate(loc_VH12RAG_3_5N_LN_2, GENOTYPE = "dnRAG1 VH12")
+loc_VH12RAG_3_5N_LN_2 <- mutate(loc_VH12RAG_3_5N_LN_2, PHENOTYPE = "CD5- PtC-")
+loc_VH12RAG_3_5N_LN_2 <- mutate(loc_VH12RAG_3_5N_LN_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12RAG_3_5N_LN_2 <- mutate(loc_VH12RAG_3_5N_LN_2, EXP = "3")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_VH12_5N_LN_3 <- select(loc_VH12RAG_3_5N_LN_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# Combine the three replicate tables into one data frame per sample type
+#
+dnRAG1_VH12_5N_LN <- bind_rows(dnRAG1_VH12_5N_LN_1, dnRAG1_VH12_5N_LN_2, dnRAG1_VH12_5N_LN_3)
+#
+# VH12RAG 1, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12RAG_1_5P_LP_2 <- mutate(loc_VH12RAG_1_5P_LP_2, GENOTYPE = "dnRAG1 VH12")
+loc_VH12RAG_1_5P_LP_2 <- mutate(loc_VH12RAG_1_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_VH12RAG_1_5P_LP_2 <- mutate(loc_VH12RAG_1_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12RAG_1_5P_LP_2 <- mutate(loc_VH12RAG_1_5P_LP_2, EXP = "1")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_VH12_5P_LP_1 <- select(loc_VH12RAG_1_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# VH12RAG 2, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12RAG_2_5P_LP_2 <- mutate(loc_VH12RAG_2_5P_LP_2, GENOTYPE = "dnRAG1 VH12")
+loc_VH12RAG_2_5P_LP_2 <- mutate(loc_VH12RAG_2_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_VH12RAG_2_5P_LP_2 <- mutate(loc_VH12RAG_2_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12RAG_2_5P_LP_2 <- mutate(loc_VH12RAG_2_5P_LP_2, EXP = "2")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_VH12_5P_LP_2 <- select(loc_VH12RAG_2_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# VH12RAG 3, 5P LP
+#
+# Add the genotype, phenotype, sample type, and experiment/replicate number to each data frame
+#
+loc_VH12RAG_3_5P_LP_2 <- mutate(loc_VH12RAG_3_5P_LP_2, GENOTYPE = "dnRAG1 VH12")
+loc_VH12RAG_3_5P_LP_2 <- mutate(loc_VH12RAG_3_5P_LP_2, PHENOTYPE = "CD5+ PtC+")
+loc_VH12RAG_3_5P_LP_2 <- mutate(loc_VH12RAG_3_5P_LP_2, SAMPLE = paste(GENOTYPE, PHENOTYPE))
+loc_VH12RAG_3_5P_LP_2 <- mutate(loc_VH12RAG_3_5P_LP_2, EXP = "3")
+#
+# Select only the necessary columns (gene calls and annotations) from the data frame
+#
+dnRAG1_VH12_5P_LP_3 <- select(loc_VH12RAG_3_5P_LP_2, V_CALL, J_CALL, GENOTYPE, PHENOTYPE, SAMPLE, EXP)
+#
+# Combine the three replicate tables into one data frame per sample type
+#
+dnRAG1_VH12_5P_LP <- bind_rows(dnRAG1_VH12_5P_LP_1, dnRAG1_VH12_5P_LP_2, dnRAG1_VH12_5P_LP_3)
+#
+# Combine the different phenotypes into one data frame per genotype
+#
+dnRAG1_VH12 <- bind_rows(dnRAG1_VH12_5N_LN, dnRAG1_VH12_5P_LP)
+#
+# Simplify the names of the gene calls
+#
+dnRAG1_VH12 <- mutate(dnRAG1_VH12, V_CALL = getGene(dnRAG1_VH12$V_CALL))
+dnRAG1_VH12 <- mutate(dnRAG1_VH12, J_CALL = getGene(dnRAG1_VH12$J_CALL))
+#
+# Add a column with both the V and J gene calls
+#
+dnRAG1_VH12 <- mutate(dnRAG1_VH12, GENE = paste(V_CALL, ",", J_CALL))
+#
+# Combine genotype tables into one complete data frame
+#
+all_reps <- bind_rows(WT, dnRAG1, VH12, dnRAG1_VH12)
+#
+# Assign genes and seqannot for VDJ counts
+#
+genes <- select(all_reps, V_CALL, J_CALL)
+seqAnnot <- select(all_reps, SAMPLE, EXP)
+#
+# Calculate VDJ counts
+#
+vdjMan <- calcVDJcounts(genes, seqAnnot)
+#
+# Assign the preferred order to the list of sequence annotations and gene counts
+#
+vdjMan <- vdjMan[, c("WT CD5- PtC- 1", "WT CD5- PtC- 2", "WT CD5- PtC- 3", "dnRAG1 CD5- PtC- 1", "dnRAG1 CD5- PtC- 2", "dnRAG1 CD5- PtC- 3", "dnRAG1 CD5+ PtC- 1", "dnRAG1 CD5+ PtC- 2", "dnRAG1 CD5+ PtC- 3", "dnRAG1 CD5+ PtC+ 1", "dnRAG1 CD5+ PtC+ 2", "dnRAG1 CD5+ PtC+ 3", "VH12 CD5- PtC- 1", "VH12 CD5- PtC- 2", "VH12 CD5- PtC- 3", "VH12 CD5+ PtC+ 1", "VH12 CD5+ PtC+ 2", "VH12 CD5+ PtC+ 3", "dnRAG1 VH12 CD5- PtC- 1", "dnRAG1 VH12 CD5- PtC- 2", "dnRAG1 VH12 CD5- PtC- 3", "dnRAG1 VH12 CD5+ PtC+ 1", "dnRAG1 VH12 CD5+ PtC+ 2", "dnRAG1 VH12 CD5+ PtC+ 3")]
+#
+# Calculate RDI, units are log fold change
+#
+rdiMan <- calcRDI(vdjMan, distMethod = "euclidean")
+#
+# Transform the RDI output into a matrix to create a heat map in Microsoft Excel
+#
+rdiMan_mat <- as.matrix(rdiMan)
+#
+# Plot cluster dendrogram for RDI
+#
+plot(hclust(rdiMan), main="Heirarchical Clustering by Repertoire Dissimilarity Index", sub= " ", xlab="Genotype, Phenotype, and Replicate", ylab="\nLog Fold Change", cex=2, cex.axis=1.5, cex.lab=2, cex.main=3, lwd=3)
+#
+# Annotations to be added to plot in Illustrator: 
+# xlab="Genotype, Phenotype, and Replicate"
+# ylab="Log Fold Change"
+#
+# Repeat for RDI based on grouping the replicates together
+# Use only the genotype and phenotype annotations, not the replicate number
+#
+seqAnnot_grouped <- select(all_reps, GENOTYPE, PHENOTYPE)
+#
+# Calculate VDJ counts
+vdjMan_grouped <- calcVDJcounts(genes, seqAnnot_grouped)
+#
+# Assign the preferred order to the list of sequence annotations and gene counts
+#
+vdjMan_grouped <- vdjMan_grouped[, c("WT CD5- PtC-", "dnRAG1 CD5- PtC-", "dnRAG1 CD5+ PtC-", "dnRAG1 CD5+ PtC+", "VH12 CD5- PtC-", "VH12 CD5+ PtC+", "dnRAG1 VH12 CD5- PtC-", "dnRAG1 VH12 CD5+ PtC+")]
+#
+# Calculate RDI, units are log fold change
+#
+rdiMan_grouped <- calcRDI(vdjMan_grouped, distMethod = "euclidean")
+#
+# Plot cluster dendrogram for RDI
+#
+plot(hclust(rdiMan_grouped), main="Heirarchical Clustering by Repertoire Dissimilarity Index", sub= " ", xlab=" ", ylab= " ", cex=2, cex.axis=1.5, cex.lab=2, cex.main=3, lwd=3)
+#
+# Annotations to be added to plot in Illustrator: 
+# xlab="Genotype and Phenotype"
+# ylab="Log Fold Change"
+#

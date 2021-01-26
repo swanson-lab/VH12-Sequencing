@@ -1,0 +1,2709 @@
+#
+# Translate the basepairs in the CDR3 to amino acids
+#
+# WT_1
+#
+# 5N LN
+#
+loc_WT_1_5N_LN_all <- mutate(loc_WT_1_5N_LN_all, CDR3_AA = translateDNA(loc_WT_1_5N_LN_all$CDR3_IMGT))
+#
+loc_WT_1_5N_LN_2 <- mutate(loc_WT_1_5N_LN_2, CDR3_AA = translateDNA(loc_WT_1_5N_LN_2$CDR3_IMGT))
+#
+loc_WT_1_5N_LN_1 <- mutate(loc_WT_1_5N_LN_1, CDR3_AA = translateDNA(loc_WT_1_5N_LN_1$CDR3_IMGT))
+#
+# RAG_1
+#
+# 5N LN
+#
+loc_RAG_1_5N_LN_all <- mutate(loc_RAG_1_5N_LN_all, CDR3_AA = translateDNA(loc_RAG_1_5N_LN_all$CDR3_IMGT))
+#
+loc_RAG_1_5N_LN_2 <- mutate(loc_RAG_1_5N_LN_2, CDR3_AA = translateDNA(loc_RAG_1_5N_LN_2$CDR3_IMGT))
+#
+loc_RAG_1_5N_LN_1 <- mutate(loc_RAG_1_5N_LN_1, CDR3_AA = translateDNA(loc_RAG_1_5N_LN_1$CDR3_IMGT))
+#
+# 5P LN
+#
+loc_RAG_1_5P_LN_all <- mutate(loc_RAG_1_5P_LN_all, CDR3_AA = translateDNA(loc_RAG_1_5P_LN_all$CDR3_IMGT))
+#
+loc_RAG_1_5P_LN_2 <- mutate(loc_RAG_1_5P_LN_2, CDR3_AA = translateDNA(loc_RAG_1_5P_LN_2$CDR3_IMGT))
+#
+loc_RAG_1_5P_LN_1 <- mutate(loc_RAG_1_5P_LN_1, CDR3_AA = translateDNA(loc_RAG_1_5P_LN_1$CDR3_IMGT))
+#
+# 5P LP
+#
+loc_RAG_1_5P_LP_all <- mutate(loc_RAG_1_5P_LP_all, CDR3_AA = translateDNA(loc_RAG_1_5P_LP_all$CDR3_IMGT))
+#
+loc_RAG_1_5P_LP_2 <- mutate(loc_RAG_1_5P_LP_2, CDR3_AA = translateDNA(loc_RAG_1_5P_LP_2$CDR3_IMGT))
+#
+loc_RAG_1_5P_LP_1 <- mutate(loc_RAG_1_5P_LP_1, CDR3_AA = translateDNA(loc_RAG_1_5P_LP_1$CDR3_IMGT))
+#
+# VH12_1
+#
+# 5N LN
+#
+loc_VH12_1_5N_LN_all <- mutate(loc_VH12_1_5N_LN_all, CDR3_AA = translateDNA(loc_VH12_1_5N_LN_all$CDR3_IMGT))
+#
+loc_VH12_1_5N_LN_2 <- mutate(loc_VH12_1_5N_LN_2, CDR3_AA = translateDNA(loc_VH12_1_5N_LN_2$CDR3_IMGT))
+#
+loc_VH12_1_5N_LN_1 <- mutate(loc_VH12_1_5N_LN_1, CDR3_AA = translateDNA(loc_VH12_1_5N_LN_1$CDR3_IMGT))
+#
+# 5P LP
+#
+loc_VH12_1_5P_LP_all <- mutate(loc_VH12_1_5P_LP_all, CDR3_AA = translateDNA(loc_VH12_1_5P_LP_all$CDR3_IMGT))
+#
+loc_VH12_1_5P_LP_2 <- mutate(loc_VH12_1_5P_LP_2, CDR3_AA = translateDNA(loc_VH12_1_5P_LP_2$CDR3_IMGT))
+#
+loc_VH12_1_5P_LP_1 <- mutate(loc_VH12_1_5P_LP_1, CDR3_AA = translateDNA(loc_VH12_1_5P_LP_1$CDR3_IMGT))
+#
+# VH12RAG_1
+#
+# 5N LN
+#
+loc_VH12RAG_1_5N_LN_all <- mutate(loc_VH12RAG_1_5N_LN_all, CDR3_AA = translateDNA(loc_VH12RAG_1_5N_LN_all$CDR3_IMGT))
+#
+loc_VH12RAG_1_5N_LN_2 <- mutate(loc_VH12RAG_1_5N_LN_2, CDR3_AA = translateDNA(loc_VH12RAG_1_5N_LN_2$CDR3_IMGT))
+#
+loc_VH12RAG_1_5N_LN_1 <- mutate(loc_VH12RAG_1_5N_LN_1, CDR3_AA = translateDNA(loc_VH12RAG_1_5N_LN_1$CDR3_IMGT))
+#
+# 5P LP
+#
+loc_VH12RAG_1_5P_LP_all <- mutate(loc_VH12RAG_1_5P_LP_all, CDR3_AA = translateDNA(loc_VH12RAG_1_5P_LP_all$CDR3_IMGT))
+#
+loc_VH12RAG_1_5P_LP_2 <- mutate(loc_VH12RAG_1_5P_LP_2, CDR3_AA = translateDNA(loc_VH12RAG_1_5P_LP_2$CDR3_IMGT))
+#
+loc_VH12RAG_1_5P_LP_1 <- mutate(loc_VH12RAG_1_5P_LP_1, CDR3_AA = translateDNA(loc_VH12RAG_1_5P_LP_1$CDR3_IMGT))
+#
+#
+#
+# Sample WT_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_37_seq_WT_1_5N_LN_2 <- mutate(pull_37_seq_WT_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_37_seq_WT_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_37_seq_WT_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_37_seq_WT_1_5N_LN_2 <- filter(pull_37_seq_WT_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# Sample RAG_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_37_seq_RAG_1_5N_LN_2 <- mutate(pull_37_seq_RAG_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_37_seq_RAG_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_37_seq_RAG_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_37_seq_RAG_1_5N_LN_2 <- filter(pull_37_seq_RAG_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_37_seq_RAG_1_5P_LN_2 <- mutate(pull_37_seq_RAG_1_5P_LN_2, CDR3_AA_LENGTH = str_length(pull_37_seq_RAG_1_5P_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_37_seq_RAG_1_5P_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_37_seq_RAG_1_5P_LN_2 <- filter(pull_37_seq_RAG_1_5P_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_37_seq_RAG_1_5P_LP_2 <- mutate(pull_37_seq_RAG_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_37_seq_RAG_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_37_seq_RAG_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_37_seq_RAG_1_5P_LP_2 <- filter(pull_37_seq_RAG_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+# Sample VH12_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_37_seq_VH12_1_5N_LN_2 <- mutate(pull_37_seq_VH12_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_37_seq_VH12_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_37_seq_VH12_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_37_seq_VH12_1_5N_LN_2 <- filter(pull_37_seq_VH12_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_37_seq_VH12_1_5P_LP_2 <- mutate(pull_37_seq_VH12_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_37_seq_VH12_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_37_seq_VH12_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_37_seq_VH12_1_5P_LP_2 <- filter(pull_37_seq_VH12_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+# Sample VH12RAG_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_37_seq_VH12RAG_1_5N_LN_2 <- mutate(pull_37_seq_VH12RAG_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_37_seq_VH12RAG_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_37_seq_VH12RAG_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_37_seq_VH12RAG_1_5N_LN_2 <- filter(pull_37_seq_VH12RAG_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_37_seq_VH12RAG_1_5P_LP_2 <- mutate(pull_37_seq_VH12RAG_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_37_seq_VH12RAG_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_37_seq_VH12RAG_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_37_seq_VH12RAG_1_5P_LP_2 <- filter(pull_37_seq_VH12RAG_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+#
+# Vk 4-86
+#
+# Sample WT_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_486_seq_WT_1_5N_LN_2 <- mutate(pull_486_seq_WT_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_486_seq_WT_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_486_seq_WT_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_486_seq_WT_1_5N_LN_2 <- filter(pull_486_seq_WT_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# Sample RAG_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_486_seq_RAG_1_5N_LN_2 <- mutate(pull_486_seq_RAG_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_486_seq_RAG_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_486_seq_RAG_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_486_seq_RAG_1_5N_LN_2 <- filter(pull_486_seq_RAG_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_486_seq_RAG_1_5P_LN_2 <- mutate(pull_486_seq_RAG_1_5P_LN_2, CDR3_AA_LENGTH = str_length(pull_486_seq_RAG_1_5P_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_486_seq_RAG_1_5P_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_486_seq_RAG_1_5P_LN_2 <- filter(pull_486_seq_RAG_1_5P_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_486_seq_RAG_1_5P_LP_2 <- mutate(pull_486_seq_RAG_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_486_seq_RAG_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_486_seq_RAG_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_486_seq_RAG_1_5P_LP_2 <- filter(pull_486_seq_RAG_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+# Sample VH12_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_486_seq_VH12_1_5N_LN_2 <- mutate(pull_486_seq_VH12_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_486_seq_VH12_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_486_seq_VH12_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_486_seq_VH12_1_5N_LN_2 <- filter(pull_486_seq_VH12_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+#UMI 2
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_486_seq_VH12_1_5P_LP_2 <- mutate(pull_486_seq_VH12_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_486_seq_VH12_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_486_seq_VH12_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_486_seq_VH12_1_5P_LP_2 <- filter(pull_486_seq_VH12_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+# Sample VH12RAG_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_486_seq_VH12RAG_1_5N_LN_2 <- mutate(pull_486_seq_VH12RAG_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_486_seq_VH12RAG_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_486_seq_VH12RAG_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_486_seq_VH12RAG_1_5N_LN_2 <- filter(pull_486_seq_VH12RAG_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_486_seq_VH12RAG_1_5P_LP_2 <- mutate(pull_486_seq_VH12RAG_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_486_seq_VH12RAG_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_486_seq_VH12RAG_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_486_seq_VH12RAG_1_5P_LP_2 <- filter(pull_486_seq_VH12RAG_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+#
+# Vk 4-91
+#
+# Sample WT_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_491_seq_WT_1_5N_LN_2 <- mutate(pull_491_seq_WT_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_491_seq_WT_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_491_seq_WT_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_491_seq_WT_1_5N_LN_2 <- filter(pull_491_seq_WT_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# Sample RAG_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_491_seq_RAG_1_5N_LN_2 <- mutate(pull_491_seq_RAG_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_491_seq_RAG_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_491_seq_RAG_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_491_seq_RAG_1_5N_LN_2 <- filter(pull_491_seq_RAG_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_491_seq_RAG_1_5P_LN_2 <- mutate(pull_491_seq_RAG_1_5P_LN_2, CDR3_AA_LENGTH = str_length(pull_491_seq_RAG_1_5P_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_491_seq_RAG_1_5P_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_491_seq_RAG_1_5P_LN_2 <- filter(pull_491_seq_RAG_1_5P_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_491_seq_RAG_1_5P_LP_2 <- mutate(pull_491_seq_RAG_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_491_seq_RAG_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_491_seq_RAG_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_491_seq_RAG_1_5P_LP_2 <- filter(pull_491_seq_RAG_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+# Sample VH12_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_491_seq_VH12_1_5N_LN_2 <- mutate(pull_491_seq_VH12_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_491_seq_VH12_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_491_seq_VH12_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_491_seq_VH12_1_5N_LN_2 <- filter(pull_491_seq_VH12_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_491_seq_VH12_1_5P_LP_2 <- mutate(pull_491_seq_VH12_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_491_seq_VH12_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_491_seq_VH12_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_491_seq_VH12_1_5P_LP_2 <- filter(pull_491_seq_VH12_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+# Sample VH12RAG_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_491_seq_VH12RAG_1_5N_LN_2 <- mutate(pull_491_seq_VH12RAG_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_491_seq_VH12RAG_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_491_seq_VH12RAG_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_491_seq_VH12RAG_1_5N_LN_2 <- filter(pull_491_seq_VH12RAG_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_491_seq_VH12RAG_1_5P_LP_2 <- mutate(pull_491_seq_VH12RAG_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_491_seq_VH12RAG_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_491_seq_VH12RAG_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_491_seq_VH12RAG_1_5P_LP_2 <- filter(pull_491_seq_VH12RAG_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+#
+# Vk 14-126
+#
+# Sample WT_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_14126_seq_WT_1_5N_LN_2 <- mutate(pull_14126_seq_WT_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_14126_seq_WT_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_14126_seq_WT_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_14126_seq_WT_1_5N_LN_2 <- filter(pull_14126_seq_WT_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# Sample RAG_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_14126_seq_RAG_1_5N_LN_2 <- mutate(pull_14126_seq_RAG_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_14126_seq_RAG_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_14126_seq_RAG_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_14126_seq_RAG_1_5N_LN_2 <- filter(pull_14126_seq_RAG_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_14126_seq_RAG_1_5P_LN_2 <- mutate(pull_14126_seq_RAG_1_5P_LN_2, CDR3_AA_LENGTH = str_length(pull_14126_seq_RAG_1_5P_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_14126_seq_RAG_1_5P_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_14126_seq_RAG_1_5P_LN_2 <- filter(pull_14126_seq_RAG_1_5P_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_14126_seq_RAG_1_5P_LP_2 <- mutate(pull_14126_seq_RAG_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_14126_seq_RAG_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_14126_seq_RAG_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_14126_seq_RAG_1_5P_LP_2 <- filter(pull_14126_seq_RAG_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+# Sample VH12_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_14126_seq_VH12_1_5N_LN_2 <- mutate(pull_14126_seq_VH12_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_14126_seq_VH12_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_14126_seq_VH12_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_14126_seq_VH12_1_5N_LN_2 <- filter(pull_14126_seq_VH12_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_14126_seq_VH12_1_5P_LP_2 <- mutate(pull_14126_seq_VH12_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_14126_seq_VH12_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_14126_seq_VH12_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_14126_seq_VH12_1_5P_LP_2 <- filter(pull_14126_seq_VH12_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+# Sample VH12RAG_1
+#
+# 5N LN
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_14126_seq_VH12RAG_1_5N_LN_2 <- mutate(pull_14126_seq_VH12RAG_1_5N_LN_2, CDR3_AA_LENGTH = str_length(pull_14126_seq_VH12RAG_1_5N_LN_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_14126_seq_VH12RAG_1_5N_LN_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_14126_seq_VH12RAG_1_5N_LN_2 <- filter(pull_14126_seq_VH12RAG_1_5N_LN_2, CDR3_AA_LENGTH == M)
+#
+# 5P LP
+#
+# Add the length of the CDR3 (in amino acids) to the data frame
+#
+pull_14126_seq_VH12RAG_1_5P_LP_2 <- mutate(pull_14126_seq_VH12RAG_1_5P_LP_2, CDR3_AA_LENGTH = str_length(pull_14126_seq_VH12RAG_1_5P_LP_2$CDR3_AA))
+#
+# Find the most common (the mode) length of the CDR3
+#
+M <- getmode(pull_14126_seq_VH12RAG_1_5P_LP_2$CDR3_AA_LENGTH)
+#
+# Select only sequences of the mode length to create the sequence logo
+#
+logo_14126_seq_VH12RAG_1_5P_LP_2 <- filter(pull_14126_seq_VH12RAG_1_5P_LP_2, CDR3_AA_LENGTH == M)
+#
+#
+# Vk 3-7
+#
+# WT
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_37_WT_5N_LN_2 <- rbind(logo_37_seq_WT_1_5N_LN_2, logo_37_seq_WT_3_5N_LN_2)
+seq_logo_37_WT_5N_LN_2 <- rbind(seq_logo_37_WT_5N_LN_2, logo_37_seq_WT_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_37_WT_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_WT_5N_LN_2 <- ggseqlogo(seq_logo_37_WT_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_37_WT_5N_LN_2.jpeg", width=14, height=10)
+#
+# dnRAG1
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_37_dnRAG1_5N_LN_2 <- rbind(logo_37_seq_RAG_1_5N_LN_2, logo_37_seq_RAG_3_5N_LN_2)
+seq_logo_37_dnRAG1_5N_LN_2 <- rbind(seq_logo_37_dnRAG1_5N_LN_2, logo_37_seq_RAG_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_37_dnRAG1_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_dnRAG1_5N_LN_2 <- ggseqlogo(seq_logo_37_dnRAG1_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_37_dnRAG1_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_37_dnRAG1_5P_LN_2 <- rbind(logo_37_seq_RAG_1_5P_LN_2, logo_37_seq_RAG_3_5P_LN_2)
+seq_logo_37_dnRAG1_5P_LN_2 <- rbind(seq_logo_37_dnRAG1_5P_LN_2, logo_37_seq_RAG_2_5P_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_37_dnRAG1_5P_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_dnRAG1_5P_LN_2 <- ggseqlogo(seq_logo_37_dnRAG1_5P_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_37_dnRAG1_5P_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_37_dnRAG1_5P_LP_2 <- rbind(logo_37_seq_RAG_1_5P_LP_2, logo_37_seq_RAG_3_5P_LP_2)
+seq_logo_37_dnRAG1_5P_LP_2 <- rbind(seq_logo_37_dnRAG1_5P_LP_2, logo_37_seq_RAG_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_37_dnRAG1_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_dnRAG1_5P_LP_2 <- ggseqlogo(seq_logo_37_dnRAG1_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_37_dnRAG1_5P_LP_2.jpeg", width=14, height=10)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_37_VH12_5N_LN_2 <- rbind(logo_37_seq_VH12_1_5N_LN_2, logo_37_seq_VH12_3_5N_LN_2)
+seq_logo_37_VH12_5N_LN_2 <- rbind(seq_logo_37_VH12_5N_LN_2, logo_37_seq_VH12_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_37_VH12_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_VH12_5N_LN_2 <- ggseqlogo(seq_logo_37_VH12_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_37_VH12_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_37_VH12_5P_LP_2 <- rbind(logo_37_seq_VH12_1_5P_LP_2, logo_37_seq_VH12_3_5P_LP_2)
+seq_logo_37_VH12_5P_LP_2 <- rbind(seq_logo_37_VH12_5P_LP_2, logo_37_seq_VH12_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_37_VH12_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_VH12_5P_LP_2 <- ggseqlogo(seq_logo_37_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_37_VH12_5P_LP_2.jpeg", width=14, height=10)
+#
+# dnRAG1_VH12
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_37_dnRAG1_VH12_5N_LN_2 <- rbind(logo_37_seq_VH12RAG_1_5N_LN_2, logo_37_seq_VH12RAG_3_5N_LN_2)
+seq_logo_37_dnRAG1_VH12_5N_LN_2 <- rbind(seq_logo_37_dnRAG1_VH12_5N_LN_2, logo_37_seq_VH12RAG_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_37_dnRAG1_VH12_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_dnRAG1_VH12_5N_LN_2 <- ggseqlogo(seq_logo_37_dnRAG1_VH12_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_37_dnRAG1_VH12_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_37_dnRAG1_VH12_5P_LP_2 <- rbind(logo_37_seq_VH12RAG_1_5P_LP_2, logo_37_seq_VH12RAG_3_5P_LP_2)
+seq_logo_37_dnRAG1_VH12_5P_LP_2 <- rbind(seq_logo_37_dnRAG1_VH12_5P_LP_2, logo_37_seq_VH12RAG_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_37_dnRAG1_VH12_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_dnRAG1_VH12_5P_LP_2 <- ggseqlogo(seq_logo_37_dnRAG1_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_37_dnRAG1_VH12_5P_LP_2.jpeg", width=14, height=10)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_37_dnRAG1_VH12_5P_LP_2_axis_legend <- ggseqlogo(seq_logo_37_dnRAG1_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(axis.text=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+theme(legend.key.size = unit(0.75, "in"))+theme(legend.text = element_text(size=32, face="bold"))+theme(legend.title=element_blank())
+ggsave("graph_seq_logo_37_dnRAG1_VH12_5P_LP_2_axis_legend.jpeg", width=15, height=11)
+#
+#
+# Vk 4-86
+#
+#
+# WT
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_486_WT_5N_LN_2 <- rbind(logo_486_seq_WT_1_5N_LN_2, logo_486_seq_WT_3_5N_LN_2)
+seq_logo_486_WT_5N_LN_2 <- rbind(seq_logo_486_WT_5N_LN_2, logo_486_seq_WT_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_486_WT_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_486_WT_5N_LN_2 <- ggseqlogo(seq_logo_486_WT_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_486_WT_5N_LN_2.jpeg", width=14, height=10)
+#
+# dnRAG1
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_486_dnRAG1_5N_LN_2 <- rbind(logo_486_seq_RAG_1_5N_LN_2, logo_486_seq_RAG_3_5N_LN_2)
+seq_logo_486_dnRAG1_5N_LN_2 <- rbind(seq_logo_486_dnRAG1_5N_LN_2, logo_486_seq_RAG_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_486_dnRAG1_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_486_dnRAG1_5N_LN_2 <- ggseqlogo(seq_logo_486_dnRAG1_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_486_dnRAG1_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_486_dnRAG1_5P_LN_2 <- rbind(logo_486_seq_RAG_1_5P_LN_2, logo_486_seq_RAG_3_5P_LN_2)
+seq_logo_486_dnRAG1_5P_LN_2 <- rbind(seq_logo_486_dnRAG1_5P_LN_2, logo_486_seq_RAG_2_5P_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_486_dnRAG1_5P_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_486_dnRAG1_5P_LN_2 <- ggseqlogo(seq_logo_486_dnRAG1_5P_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_486_dnRAG1_5P_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_486_dnRAG1_5P_LP_2 <- rbind(logo_486_seq_RAG_1_5P_LP_2, logo_486_seq_RAG_3_5P_LP_2)
+seq_logo_486_dnRAG1_5P_LP_2 <- rbind(seq_logo_486_dnRAG1_5P_LP_2, logo_486_seq_RAG_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_486_dnRAG1_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_486_dnRAG1_5P_LP_2 <- ggseqlogo(seq_logo_486_dnRAG1_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_486_dnRAG1_5P_LP_2.jpeg", width=14, height=10)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_486_VH12_5N_LN_2 <- rbind(logo_486_seq_VH12_1_5N_LN_2, logo_486_seq_VH12_3_5N_LN_2)
+seq_logo_486_VH12_5N_LN_2 <- rbind(seq_logo_486_VH12_5N_LN_2, logo_486_seq_VH12_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_486_VH12_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_486_VH12_5N_LN_2 <- ggseqlogo(seq_logo_486_VH12_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_486_VH12_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_486_VH12_5P_LP_2 <- rbind(logo_486_seq_VH12_1_5P_LP_2, logo_486_seq_VH12_3_5P_LP_2)
+seq_logo_486_VH12_5P_LP_2 <- rbind(seq_logo_486_VH12_5P_LP_2, logo_486_seq_VH12_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_486_VH12_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_486_VH12_5P_LP_2 <- ggseqlogo(seq_logo_486_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_486_VH12_5P_LP_2.jpeg", width=14, height=10)
+#
+# dnRAG1_VH12
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_486_dnRAG1_VH12_5N_LN_2 <- rbind(logo_486_seq_VH12RAG_1_5N_LN_2, logo_486_seq_VH12RAG_3_5N_LN_2)
+seq_logo_486_dnRAG1_VH12_5N_LN_2 <- rbind(seq_logo_486_dnRAG1_VH12_5N_LN_2, logo_486_seq_VH12RAG_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_486_dnRAG1_VH12_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_486_dnRAG1_VH12_5N_LN_2 <- ggseqlogo(seq_logo_486_dnRAG1_VH12_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_486_dnRAG1_VH12_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_486_dnRAG1_VH12_5P_LP_2 <- rbind(logo_486_seq_VH12RAG_2_5P_LP_2, logo_486_seq_VH12RAG_3_5P_LP_2)
+seq_logo_486_dnRAG1_VH12_5P_LP_2 <- rbind(seq_logo_486_dnRAG1_VH12_5P_LP_2, logo_486_seq_VH12RAG_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_486_dnRAG1_VH12_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_486_dnRAG1_VH12_5P_LP_2 <- ggseqlogo(seq_logo_486_dnRAG1_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_486_dnRAG1_VH12_5P_LP_2.jpeg", width=14, height=10)
+#
+#
+# Vk 4-91
+#
+#
+# WT
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_491_WT_5N_LN_2 <- rbind(logo_491_seq_WT_1_5N_LN_2, logo_491_seq_WT_3_5N_LN_2)
+seq_logo_491_WT_5N_LN_2 <- rbind(seq_logo_491_WT_5N_LN_2, logo_491_seq_WT_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_491_WT_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_491_WT_5N_LN_2 <- ggseqlogo(seq_logo_491_WT_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_491_WT_5N_LN_2.jpeg", width=14, height=10)
+#
+# dnRAG1
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_491_dnRAG1_5N_LN_2 <- rbind(logo_491_seq_RAG_1_5N_LN_2, logo_491_seq_RAG_3_5N_LN_2)
+seq_logo_491_dnRAG1_5N_LN_2 <- rbind(seq_logo_491_dnRAG1_5N_LN_2, logo_491_seq_RAG_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_491_dnRAG1_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_491_dnRAG1_5N_LN_2 <- ggseqlogo(seq_logo_491_dnRAG1_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_491_dnRAG1_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_491_dnRAG1_5P_LN_2 <- rbind(logo_491_seq_RAG_1_5P_LN_2, logo_491_seq_RAG_3_5P_LN_2)
+seq_logo_491_dnRAG1_5P_LN_2 <- rbind(seq_logo_491_dnRAG1_5P_LN_2, logo_491_seq_RAG_2_5P_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_491_dnRAG1_5P_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_491_dnRAG1_5P_LN_2 <- ggseqlogo(seq_logo_491_dnRAG1_5P_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_491_dnRAG1_5P_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_491_dnRAG1_5P_LP_2 <- rbind(logo_491_seq_RAG_1_5P_LP_2, logo_491_seq_RAG_3_5P_LP_2)
+seq_logo_491_dnRAG1_5P_LP_2 <- rbind(seq_logo_491_dnRAG1_5P_LP_2, logo_491_seq_RAG_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_491_dnRAG1_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_491_dnRAG1_5P_LP_2 <- ggseqlogo(seq_logo_491_dnRAG1_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_491_dnRAG1_5P_LP_2.jpeg", width=14, height=10)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_491_VH12_5N_LN_2 <- rbind(logo_491_seq_VH12_1_5N_LN_2, logo_491_seq_VH12_3_5N_LN_2)
+seq_logo_491_VH12_5N_LN_2 <- rbind(seq_logo_491_VH12_5N_LN_2, logo_491_seq_VH12_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_491_VH12_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_491_VH12_5N_LN_2 <- ggseqlogo(seq_logo_491_VH12_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_491_VH12_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_491_VH12_5P_LP_2 <- rbind(logo_491_seq_VH12_1_5P_LP_2, logo_491_seq_VH12_3_5P_LP_2)
+seq_logo_491_VH12_5P_LP_2 <- rbind(seq_logo_491_VH12_5P_LP_2, logo_491_seq_VH12_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_491_VH12_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_491_VH12_5P_LP_2 <- ggseqlogo(seq_logo_491_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_491_VH12_5P_LP_2.jpeg", width=14, height=10)
+#
+# dnRAG1_VH12
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_491_dnRAG1_VH12_5N_LN_2 <- rbind(logo_491_seq_VH12RAG_1_5N_LN_2, logo_491_seq_VH12RAG_3_5N_LN_2)
+seq_logo_491_dnRAG1_VH12_5N_LN_2 <- rbind(seq_logo_491_dnRAG1_VH12_5N_LN_2, logo_491_seq_VH12RAG_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_491_dnRAG1_VH12_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_491_dnRAG1_VH12_5N_LN_2 <- ggseqlogo(seq_logo_491_dnRAG1_VH12_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_491_dnRAG1_VH12_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_491_dnRAG1_VH12_5P_LP_2 <- rbind(logo_491_seq_VH12RAG_1_5P_LP_2, logo_491_seq_VH12RAG_3_5P_LP_2)
+seq_logo_491_dnRAG1_VH12_5P_LP_2 <- rbind(seq_logo_491_dnRAG1_VH12_5P_LP_2, logo_491_seq_VH12RAG_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_491_dnRAG1_VH12_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_491_dnRAG1_VH12_5P_LP_2 <- ggseqlogo(seq_logo_491_dnRAG1_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.1, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_491_dnRAG1_VH12_5P_LP_2.jpeg", width=14, height=10)
+#
+#
+# Vk 14-126
+#
+#
+# WT
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_14126_WT_5N_LN_2 <- rbind(logo_14126_seq_WT_1_5N_LN_2, logo_14126_seq_WT_3_5N_LN_2)
+seq_logo_14126_WT_5N_LN_2 <- rbind(seq_logo_14126_WT_5N_LN_2, logo_14126_seq_WT_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_14126_WT_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_14126_WT_5N_LN_2 <- ggseqlogo(seq_logo_14126_WT_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.05, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_14126_WT_5N_LN_2.jpeg", width=14, height=10)
+#
+# dnRAG1
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_14126_dnRAG1_5N_LN_2 <- rbind(logo_14126_seq_RAG_1_5N_LN_2, logo_14126_seq_RAG_3_5N_LN_2)
+seq_logo_14126_dnRAG1_5N_LN_2 <- rbind(seq_logo_14126_dnRAG1_5N_LN_2, logo_14126_seq_RAG_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_14126_dnRAG1_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_14126_dnRAG1_5N_LN_2 <- ggseqlogo(seq_logo_14126_dnRAG1_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.05, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_14126_dnRAG1_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_14126_dnRAG1_5P_LN_2 <- rbind(logo_14126_seq_RAG_1_5P_LN_2, logo_14126_seq_RAG_3_5P_LN_2)
+seq_logo_14126_dnRAG1_5P_LN_2 <- rbind(seq_logo_14126_dnRAG1_5P_LN_2, logo_14126_seq_RAG_2_5P_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_14126_dnRAG1_5P_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_14126_dnRAG1_5P_LN_2 <- ggseqlogo(seq_logo_14126_dnRAG1_5P_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.05, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_14126_dnRAG1_5P_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_14126_dnRAG1_5P_LP_2 <- rbind(logo_14126_seq_RAG_1_5P_LP_2, logo_14126_seq_RAG_3_5P_LP_2)
+seq_logo_14126_dnRAG1_5P_LP_2 <- rbind(seq_logo_14126_dnRAG1_5P_LP_2, logo_14126_seq_RAG_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_14126_dnRAG1_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_14126_dnRAG1_5P_LP_2 <- ggseqlogo(seq_logo_14126_dnRAG1_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.05, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_14126_dnRAG1_5P_LP_2.jpeg", width=14, height=10)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_14126_VH12_5N_LN_2 <- rbind(logo_14126_seq_VH12_1_5N_LN_2, logo_14126_seq_VH12_3_5N_LN_2)
+seq_logo_14126_VH12_5N_LN_2 <- rbind(seq_logo_14126_VH12_5N_LN_2, logo_14126_seq_VH12_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_14126_VH12_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_14126_VH12_5N_LN_2 <- ggseqlogo(seq_logo_14126_VH12_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.05, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_14126_VH12_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_14126_VH12_5P_LP_2 <- rbind(logo_14126_seq_VH12_1_5P_LP_2, logo_14126_seq_VH12_3_5P_LP_2)
+seq_logo_14126_VH12_5P_LP_2 <- rbind(seq_logo_14126_VH12_5P_LP_2, logo_14126_seq_VH12_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_14126_VH12_5P_LP_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_14126_VH12_5P_LP_2 <- ggseqlogo(seq_logo_14126_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.05, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_14126_VH12_5P_LP_2.jpeg", width=14, height=10)
+#
+# dnRAG1_VH12
+#
+# 5N LN
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_14126_dnRAG1_VH12_5N_LN_2 <- rbind(logo_14126_seq_VH12RAG_1_5N_LN_2, logo_14126_seq_VH12RAG_3_5N_LN_2)
+seq_logo_14126_dnRAG1_VH12_5N_LN_2 <- rbind(seq_logo_14126_dnRAG1_VH12_5N_LN_2, logo_14126_seq_VH12RAG_2_5N_LN_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_14126_dnRAG1_VH12_5N_LN_2$CDR3_AA)
+#
+# Generate the sequence logo using the probablity method and print the number of sequences used for that logo
+#
+graph_seq_logo_14126_dnRAG1_VH12_5N_LN_2 <- ggseqlogo(seq_logo_14126_dnRAG1_VH12_5N_LN_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.05, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_14126_dnRAG1_VH12_5N_LN_2.jpeg", width=14, height=10)
+#
+# 5P LP
+#
+# Combine the mode-selected data frames from the three replicates
+#
+seq_logo_14126_dnRAG1_VH12_5P_LP_2 <- rbind(logo_14126_seq_VH12RAG_1_5P_LP_2, logo_14126_seq_VH12RAG_3_5P_LP_2)
+seq_logo_14126_dnRAG1_VH12_5P_LP_2 <- rbind(seq_logo_14126_dnRAG1_VH12_5P_LP_2, logo_14126_seq_VH12RAG_2_5P_LP_2)
+#
+# Count the number of sequences of the mode length
+#
+N <- length(seq_logo_14126_dnRAG1_VH12_5P_LP_2$CDR3_AA)
+#
+graph_seq_logo_14126_dnRAG1_VH12_5P_LP_2 <- ggseqlogo(seq_logo_14126_dnRAG1_VH12_5P_LP_2$CDR3_AA, method = 'prob')+theme(legend.position = 'none', axis.text.x = element_blank(), axis.text.y=element_text(size=32, face="bold"), axis.title=element_text(size=40, face="bold"))+annotate('text', x=5, y=-0.05, size = 20, fontface="bold", label= paste("n =",N))
+ggsave("graph_seq_logo_14126_dnRAG1_VH12_5P_LP_2.jpeg", width=14, height=10)
+#
+#
+# Length plots of CDR3 sequences
+#
+#
+# WT
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_37_WT_5N_LN <- rbind(pull_37_seq_WT_1_5N_LN_2, pull_37_seq_WT_2_5N_LN_2)
+cdr3_length_37_WT_5N_LN <- rbind(cdr3_length_37_WT_5N_LN, pull_37_seq_WT_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_37_WT_5N_LN <- mutate(cdr3_length_37_WT_5N_LN, CDR3_LENGTH = str_length(cdr3_length_37_WT_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_37_WT_5N_LN_count <- count(cdr3_length_37_WT_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_37_WT_5N_LN_count <- mutate(cdr3_length_37_WT_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_37_WT_5N_LN_count <- mutate(cdr3_length_37_WT_5N_LN_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_37_WT <- cdr3_length_37_WT_5N_LN_count
+#
+# RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_37_RAG_5N_LN <- rbind(pull_37_seq_RAG_1_5N_LN_2, pull_37_seq_RAG_2_5N_LN_2)
+cdr3_length_37_RAG_5N_LN <- rbind(cdr3_length_37_RAG_5N_LN, pull_37_seq_RAG_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_37_RAG_5N_LN <- mutate(cdr3_length_37_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_37_RAG_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_37_RAG_5N_LN_count <- count(cdr3_length_37_RAG_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_37_RAG_5N_LN_count <- mutate(cdr3_length_37_RAG_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_37_RAG_5N_LN_count <- mutate(cdr3_length_37_RAG_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_37_RAG_5P_LN <- rbind(pull_37_seq_RAG_1_5P_LN_2, pull_37_seq_RAG_2_5P_LN_2)
+cdr3_length_37_RAG_5P_LN <- rbind(cdr3_length_37_RAG_5P_LN, pull_37_seq_RAG_3_5P_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_37_RAG_5P_LN <- mutate(cdr3_length_37_RAG_5P_LN, CDR3_LENGTH = str_length(cdr3_length_37_RAG_5P_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_37_RAG_5P_LN_count <- count(cdr3_length_37_RAG_5P_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_37_RAG_5P_LN_count <- mutate(cdr3_length_37_RAG_5P_LN_count, POPULATION = paste("CD5+ PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_37_RAG_5P_LN_count <- mutate(cdr3_length_37_RAG_5P_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_37_RAG_5P_LP <- rbind(pull_37_seq_RAG_1_5P_LP_2, pull_37_seq_RAG_2_5P_LP_2)
+cdr3_length_37_RAG_5P_LP <- rbind(cdr3_length_37_RAG_5P_LP, pull_37_seq_RAG_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_37_RAG_5P_LP <- mutate(cdr3_length_37_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_37_RAG_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_37_RAG_5P_LP_count <- count(cdr3_length_37_RAG_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_37_RAG_5P_LP_count <- mutate(cdr3_length_37_RAG_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_37_RAG_5P_LP_count <- mutate(cdr3_length_37_RAG_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_37_RAG <- rbind(cdr3_length_37_RAG_5N_LN_count, cdr3_length_37_RAG_5P_LP_count)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_37_VH12_5N_LN <- rbind(pull_37_seq_VH12_1_5N_LN_2, pull_37_seq_VH12_2_5N_LN_2)
+cdr3_length_37_VH12_5N_LN <- rbind(cdr3_length_37_VH12_5N_LN, pull_37_seq_VH12_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_37_VH12_5N_LN <- mutate(cdr3_length_37_VH12_5N_LN, CDR3_LENGTH = str_length(cdr3_length_37_VH12_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_37_VH12_5N_LN_count <- count(cdr3_length_37_VH12_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_37_VH12_5N_LN_count <- mutate(cdr3_length_37_VH12_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_37_VH12_5N_LN_count <- mutate(cdr3_length_37_VH12_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_37_VH12_5P_LP <- rbind(pull_37_seq_VH12_1_5P_LP_2, pull_37_seq_VH12_2_5P_LP_2)
+cdr3_length_37_VH12_5P_LP <- rbind(cdr3_length_37_VH12_5P_LP, pull_37_seq_VH12_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_37_VH12_5P_LP <- mutate(cdr3_length_37_VH12_5P_LP, CDR3_LENGTH = str_length(cdr3_length_37_VH12_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_37_VH12_5P_LP_count <- count(cdr3_length_37_VH12_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_37_VH12_5P_LP_count <- mutate(cdr3_length_37_VH12_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_37_VH12_5P_LP_count <- mutate(cdr3_length_37_VH12_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_37_VH12 <- rbind(cdr3_length_37_VH12_5N_LN_count, cdr3_length_37_VH12_5P_LP_count)
+#
+# VH12_RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_37_VH12_RAG_5N_LN <- rbind(pull_37_seq_VH12RAG_1_5N_LN_2, pull_37_seq_VH12RAG_2_5N_LN_2)
+cdr3_length_37_VH12_RAG_5N_LN <- rbind(cdr3_length_37_VH12_RAG_5N_LN, pull_37_seq_VH12RAG_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_37_VH12_RAG_5N_LN <- mutate(cdr3_length_37_VH12_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_37_VH12_RAG_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_37_VH12_RAG_5N_LN_count <- count(cdr3_length_37_VH12_RAG_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_37_VH12_RAG_5N_LN_count <- mutate(cdr3_length_37_VH12_RAG_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_37_VH12_RAG_5N_LN_count <- mutate(cdr3_length_37_VH12_RAG_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_37_VH12_RAG_5P_LP <- rbind(pull_37_seq_VH12RAG_1_5P_LP_2, pull_37_seq_VH12RAG_2_5P_LP_2)
+cdr3_length_37_VH12_RAG_5P_LP <- rbind(cdr3_length_37_VH12_RAG_5P_LP, pull_37_seq_VH12RAG_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_37_VH12_RAG_5P_LP <- mutate(cdr3_length_37_VH12_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_37_VH12_RAG_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_37_VH12_RAG_5P_LP_count <- count(cdr3_length_37_VH12_RAG_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_37_VH12_RAG_5P_LP_count <- mutate(cdr3_length_37_VH12_RAG_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_37_VH12_RAG_5P_LP_count <- mutate(cdr3_length_37_VH12_RAG_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_37_VH12_RAG <- rbind(cdr3_length_37_VH12_RAG_5N_LN_count, cdr3_length_37_VH12_RAG_5P_LP_count)
+#
+# Graph
+#
+# red and black colors
+#
+dodge<-position_dodge(width=2.75, preserve = "single")
+#
+#WT
+#
+plot_cdr3_length_37_WT <- ggplot(data=cdr3_length_37_WT, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk3-7 CDR3 Lengths for WT1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.lticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_37_WT.jpeg", width=14, height=8)
+#
+#dnRAG1
+#
+plot_cdr3_length_37_RAG <- ggplot(data=cdr3_length_37_RAG, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk3-7 CDR3 Lengths for dnRAG1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_37_RAG.jpeg", width=14, height=8)
+#
+#VH12
+#
+plot_cdr3_length_37_VH12 <- ggplot(data=cdr3_length_37_VH12, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk3-7 CDR3 Lengths for VH121 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_37_VH12.jpeg", width=14, height=8)
+#
+#VH12 RAG
+#
+plot_cdr3_length_37_VH12_RAG <- ggplot(data=cdr3_length_37_VH12_RAG, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk3-7 CDR3 Lengths for VH12 dnRAG1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_37_VH12_RAG.jpeg", width=14, height=8)
+#
+# Vk 4-86
+#
+# WT
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_486_WT_5N_LN <- rbind(pull_486_seq_WT_1_5N_LN_2, pull_486_seq_WT_2_5N_LN_2)
+cdr3_length_486_WT_5N_LN <- rbind(cdr3_length_486_WT_5N_LN, pull_486_seq_WT_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_486_WT_5N_LN <- mutate(cdr3_length_486_WT_5N_LN, CDR3_LENGTH = str_length(cdr3_length_486_WT_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_486_WT_5N_LN_count <- count(cdr3_length_486_WT_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_486_WT_5N_LN_count <- mutate(cdr3_length_486_WT_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_486_WT_5N_LN_count <- mutate(cdr3_length_486_WT_5N_LN_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_486_WT <- cdr3_length_486_WT_5N_LN_count
+#
+# RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_486_RAG_5N_LN <- rbind(pull_486_seq_RAG_1_5N_LN_2, pull_486_seq_RAG_2_5N_LN_2)
+cdr3_length_486_RAG_5N_LN <- rbind(cdr3_length_486_RAG_5N_LN, pull_486_seq_RAG_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_486_RAG_5N_LN <- mutate(cdr3_length_486_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_486_RAG_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_486_RAG_5N_LN_count <- count(cdr3_length_486_RAG_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_486_RAG_5N_LN_count <- mutate(cdr3_length_486_RAG_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_486_RAG_5N_LN_count <- mutate(cdr3_length_486_RAG_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_486_RAG_5P_LN <- rbind(pull_486_seq_RAG_1_5P_LN_2, pull_486_seq_RAG_2_5P_LN_2)
+cdr3_length_486_RAG_5P_LN <- rbind(cdr3_length_486_RAG_5P_LN, pull_486_seq_RAG_3_5P_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_486_RAG_5P_LN <- mutate(cdr3_length_486_RAG_5P_LN, CDR3_LENGTH = str_length(cdr3_length_486_RAG_5P_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_486_RAG_5P_LN_count <- count(cdr3_length_486_RAG_5P_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_486_RAG_5P_LN_count <- mutate(cdr3_length_486_RAG_5P_LN_count, POPULATION = paste("CD5+ PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_486_RAG_5P_LN_count <- mutate(cdr3_length_486_RAG_5P_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_486_RAG_5P_LP <- rbind(pull_486_seq_RAG_1_5P_LP_2, pull_486_seq_RAG_2_5P_LP_2)
+cdr3_length_486_RAG_5P_LP <- rbind(cdr3_length_486_RAG_5P_LP, pull_486_seq_RAG_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_486_RAG_5P_LP <- mutate(cdr3_length_486_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_486_RAG_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_486_RAG_5P_LP_count <- count(cdr3_length_486_RAG_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_486_RAG_5P_LP_count <- mutate(cdr3_length_486_RAG_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_486_RAG_5P_LP_count <- mutate(cdr3_length_486_RAG_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_486_RAG <- rbind(cdr3_length_486_RAG_5N_LN_count, cdr3_length_486_RAG_5P_LP_count)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_486_VH12_5N_LN <- rbind(pull_486_seq_VH12_1_5N_LN_2, pull_486_seq_VH12_2_5N_LN_2)
+cdr3_length_486_VH12_5N_LN <- rbind(cdr3_length_486_VH12_5N_LN, pull_486_seq_VH12_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_486_VH12_5N_LN <- mutate(cdr3_length_486_VH12_5N_LN, CDR3_LENGTH = str_length(cdr3_length_486_VH12_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_486_VH12_5N_LN_count <- count(cdr3_length_486_VH12_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_486_VH12_5N_LN_count <- mutate(cdr3_length_486_VH12_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_486_VH12_5N_LN_count <- mutate(cdr3_length_486_VH12_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_486_VH12_5P_LP <- rbind(pull_486_seq_VH12_1_5P_LP_2, pull_486_seq_VH12_2_5P_LP_2)
+cdr3_length_486_VH12_5P_LP <- rbind(cdr3_length_486_VH12_5P_LP, pull_486_seq_VH12_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_486_VH12_5P_LP <- mutate(cdr3_length_486_VH12_5P_LP, CDR3_LENGTH = str_length(cdr3_length_486_VH12_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_486_VH12_5P_LP_count <- count(cdr3_length_486_VH12_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_486_VH12_5P_LP_count <- mutate(cdr3_length_486_VH12_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_486_VH12_5P_LP_count <- mutate(cdr3_length_486_VH12_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_486_VH12 <- rbind(cdr3_length_486_VH12_5N_LN_count, cdr3_length_486_VH12_5P_LP_count)
+#
+# VH12_RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_486_VH12_RAG_5N_LN <- rbind(pull_486_seq_VH12RAG_1_5N_LN_2, pull_486_seq_VH12RAG_2_5N_LN_2)
+cdr3_length_486_VH12_RAG_5N_LN <- rbind(cdr3_length_486_VH12_RAG_5N_LN, pull_486_seq_VH12RAG_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_486_VH12_RAG_5N_LN <- mutate(cdr3_length_486_VH12_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_486_VH12_RAG_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_486_VH12_RAG_5N_LN_count <- count(cdr3_length_486_VH12_RAG_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_486_VH12_RAG_5N_LN_count <- mutate(cdr3_length_486_VH12_RAG_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_486_VH12_RAG_5N_LN_count <- mutate(cdr3_length_486_VH12_RAG_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_486_VH12_RAG_5P_LP <- rbind(pull_486_seq_VH12RAG_1_5P_LP_2, pull_486_seq_VH12RAG_2_5P_LP_2)
+cdr3_length_486_VH12_RAG_5P_LP <- rbind(cdr3_length_486_VH12_RAG_5P_LP, pull_486_seq_VH12RAG_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_486_VH12_RAG_5P_LP <- mutate(cdr3_length_486_VH12_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_486_VH12_RAG_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_486_VH12_RAG_5P_LP_count <- count(cdr3_length_486_VH12_RAG_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_486_VH12_RAG_5P_LP_count <- mutate(cdr3_length_486_VH12_RAG_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_486_VH12_RAG_5P_LP_count <- mutate(cdr3_length_486_VH12_RAG_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_486_VH12_RAG <- rbind(cdr3_length_486_VH12_RAG_5N_LN_count, cdr3_length_486_VH12_RAG_5P_LP_count)
+#
+# Graph
+#
+# red and black colors
+#
+dodge<-position_dodge(width=2.75, preserve = "single")
+#
+# WT
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_486_WT <- ggplot(data=cdr3_length_486_WT, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk4-86 CDR3 Lengths for WT1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_486_WT.jpeg", width=14, height=8)
+#
+# dnRAG1
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_486_RAG <- ggplot(data=cdr3_length_486_RAG, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk4-86 CDR3 Lengths for dnRAG1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_486_RAG.jpeg", width=14, height=8)
+#
+# VH12
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_486_VH12 <- ggplot(data=cdr3_length_486_VH12, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk4-86 CDR3 Lengths for VH121 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_486_VH12.jpeg", width=14, height=8)
+#
+# VH12 RAG
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_486_VH12_RAG <- ggplot(data=cdr3_length_486_VH12_RAG, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk4-86 CDR3 Lengths for VH12 dnRAG1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_486_VH12_RAG.jpeg", width=14, height=8)
+#
+#
+# Vk 4-91
+#
+# WT
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_491_WT_5N_LN <- rbind(pull_491_seq_WT_1_5N_LN_2, pull_491_seq_WT_2_5N_LN_2)
+cdr3_length_491_WT_5N_LN <- rbind(cdr3_length_491_WT_5N_LN, pull_491_seq_WT_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_491_WT_5N_LN <- mutate(cdr3_length_491_WT_5N_LN, CDR3_LENGTH = str_length(cdr3_length_491_WT_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_491_WT_5N_LN_count <- count(cdr3_length_491_WT_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_491_WT_5N_LN_count <- mutate(cdr3_length_491_WT_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_491_WT_5N_LN_count <- mutate(cdr3_length_491_WT_5N_LN_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_491_WT <- cdr3_length_491_WT_5N_LN_count
+#
+# RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_491_RAG_5N_LN <- rbind(pull_491_seq_RAG_1_5N_LN_2, pull_491_seq_RAG_2_5N_LN_2)
+cdr3_length_491_RAG_5N_LN <- rbind(cdr3_length_491_RAG_5N_LN, pull_491_seq_RAG_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_491_RAG_5N_LN <- mutate(cdr3_length_491_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_491_RAG_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_491_RAG_5N_LN_count <- count(cdr3_length_491_RAG_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_491_RAG_5N_LN_count <- mutate(cdr3_length_491_RAG_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_491_RAG_5N_LN_count <- mutate(cdr3_length_491_RAG_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_491_RAG_5P_LN <- rbind(pull_491_seq_RAG_1_5P_LN_2, pull_491_seq_RAG_2_5P_LN_2)
+cdr3_length_491_RAG_5P_LN <- rbind(cdr3_length_491_RAG_5P_LN, pull_491_seq_RAG_3_5P_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_491_RAG_5P_LN <- mutate(cdr3_length_491_RAG_5P_LN, CDR3_LENGTH = str_length(cdr3_length_491_RAG_5P_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_491_RAG_5P_LN_count <- count(cdr3_length_491_RAG_5P_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_491_RAG_5P_LN_count <- mutate(cdr3_length_491_RAG_5P_LN_count, POPULATION = paste("CD5+ PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_491_RAG_5P_LN_count <- mutate(cdr3_length_491_RAG_5P_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_491_RAG_5P_LP <- rbind(pull_491_seq_RAG_1_5P_LP_2, pull_491_seq_RAG_2_5P_LP_2)
+cdr3_length_491_RAG_5P_LP <- rbind(cdr3_length_491_RAG_5P_LP, pull_491_seq_RAG_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_491_RAG_5P_LP <- mutate(cdr3_length_491_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_491_RAG_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_491_RAG_5P_LP_count <- count(cdr3_length_491_RAG_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_491_RAG_5P_LP_count <- mutate(cdr3_length_491_RAG_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_491_RAG_5P_LP_count <- mutate(cdr3_length_491_RAG_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_491_RAG <- rbind(cdr3_length_491_RAG_5N_LN_count, cdr3_length_491_RAG_5P_LP_count)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_491_VH12_5N_LN <- rbind(pull_491_seq_VH12_1_5N_LN_2, pull_491_seq_VH12_2_5N_LN_2)
+cdr3_length_491_VH12_5N_LN <- rbind(cdr3_length_491_VH12_5N_LN, pull_491_seq_VH12_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_491_VH12_5N_LN <- mutate(cdr3_length_491_VH12_5N_LN, CDR3_LENGTH = str_length(cdr3_length_491_VH12_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_491_VH12_5N_LN_count <- count(cdr3_length_491_VH12_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_491_VH12_5N_LN_count <- mutate(cdr3_length_491_VH12_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_491_VH12_5N_LN_count <- mutate(cdr3_length_491_VH12_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_491_VH12_5P_LP <- rbind(pull_491_seq_VH12_1_5P_LP_2, pull_491_seq_VH12_2_5P_LP_2)
+cdr3_length_491_VH12_5P_LP <- rbind(cdr3_length_491_VH12_5P_LP, pull_491_seq_VH12_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_491_VH12_5P_LP <- mutate(cdr3_length_491_VH12_5P_LP, CDR3_LENGTH = str_length(cdr3_length_491_VH12_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_491_VH12_5P_LP_count <- count(cdr3_length_491_VH12_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_491_VH12_5P_LP_count <- mutate(cdr3_length_491_VH12_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_491_VH12_5P_LP_count <- mutate(cdr3_length_491_VH12_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_491_VH12 <- rbind(cdr3_length_491_VH12_5N_LN_count, cdr3_length_491_VH12_5P_LP_count)
+#
+# VH12_RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_491_VH12_RAG_5N_LN <- rbind(pull_491_seq_VH12RAG_1_5N_LN_2, pull_491_seq_VH12RAG_2_5N_LN_2)
+cdr3_length_491_VH12_RAG_5N_LN <- rbind(cdr3_length_491_VH12_RAG_5N_LN, pull_491_seq_VH12RAG_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_491_VH12_RAG_5N_LN <- mutate(cdr3_length_491_VH12_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_491_VH12_RAG_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_491_VH12_RAG_5N_LN_count <- count(cdr3_length_491_VH12_RAG_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_491_VH12_RAG_5N_LN_count <- mutate(cdr3_length_491_VH12_RAG_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_491_VH12_RAG_5N_LN_count <- mutate(cdr3_length_491_VH12_RAG_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_491_VH12_RAG_5P_LP <- rbind(pull_491_seq_VH12RAG_1_5P_LP_2, pull_491_seq_VH12RAG_2_5P_LP_2)
+cdr3_length_491_VH12_RAG_5P_LP <- rbind(cdr3_length_491_VH12_RAG_5P_LP, pull_491_seq_VH12RAG_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_491_VH12_RAG_5P_LP <- mutate(cdr3_length_491_VH12_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_491_VH12_RAG_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_491_VH12_RAG_5P_LP_count <- count(cdr3_length_491_VH12_RAG_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_491_VH12_RAG_5P_LP_count <- mutate(cdr3_length_491_VH12_RAG_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_491_VH12_RAG_5P_LP_count <- mutate(cdr3_length_491_VH12_RAG_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_491_VH12_RAG <- rbind(cdr3_length_491_VH12_RAG_5N_LN_count, cdr3_length_491_VH12_RAG_5P_LP_count)
+#
+# Graph
+#
+# red and black colors
+#
+dodge<-position_dodge(width=2.75, preserve = "single")
+#
+# WT
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_491_WT <- ggplot(data=cdr3_length_491_WT, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk4-91 CDR3 Lengths for WT1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_491_WT.jpeg", width=14, height=8)
+#
+# dnRAG1
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_491_RAG <- ggplot(data=cdr3_length_491_RAG, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk4-91 CDR3 Lengths for dnRAG1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_491_RAG.jpeg", width=14, height=8)
+#
+# VH12
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_491_VH12 <- ggplot(data=cdr3_length_491_VH12, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk4-91 CDR3 Lengths for VH121 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_491_VH12.jpeg", width=14, height=8)
+#
+# VH12 RAG
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_491_VH12_RAG <- ggplot(data=cdr3_length_491_VH12_RAG, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk4-91 CDR3 Lengths for VH12 dnRAG1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_491_VH12_RAG.jpeg", width=14, height=8)
+#
+#
+# Vk 14-126
+#
+# WT
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_14126_WT_5N_LN <- rbind(pull_14126_seq_WT_1_5N_LN_2, pull_14126_seq_WT_2_5N_LN_2)
+cdr3_length_14126_WT_5N_LN <- rbind(cdr3_length_14126_WT_5N_LN, pull_14126_seq_WT_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_14126_WT_5N_LN <- mutate(cdr3_length_14126_WT_5N_LN, CDR3_LENGTH = str_length(cdr3_length_14126_WT_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_14126_WT_5N_LN_count <- count(cdr3_length_14126_WT_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_14126_WT_5N_LN_count <- mutate(cdr3_length_14126_WT_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_14126_WT_5N_LN_count <- mutate(cdr3_length_14126_WT_5N_LN_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_14126_WT <- cdr3_length_14126_WT_5N_LN_count
+#
+# RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_14126_RAG_5N_LN <- rbind(pull_14126_seq_RAG_1_5N_LN_2, pull_14126_seq_RAG_2_5N_LN_2)
+cdr3_length_14126_RAG_5N_LN <- rbind(cdr3_length_14126_RAG_5N_LN, pull_14126_seq_RAG_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_14126_RAG_5N_LN <- mutate(cdr3_length_14126_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_14126_RAG_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_14126_RAG_5N_LN_count <- count(cdr3_length_14126_RAG_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_14126_RAG_5N_LN_count <- mutate(cdr3_length_14126_RAG_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_14126_RAG_5N_LN_count <- mutate(cdr3_length_14126_RAG_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_14126_RAG_5P_LN <- rbind(pull_14126_seq_RAG_1_5P_LN_2, pull_14126_seq_RAG_2_5P_LN_2)
+cdr3_length_14126_RAG_5P_LN <- rbind(cdr3_length_14126_RAG_5P_LN, pull_14126_seq_RAG_3_5P_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_14126_RAG_5P_LN <- mutate(cdr3_length_14126_RAG_5P_LN, CDR3_LENGTH = str_length(cdr3_length_14126_RAG_5P_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_14126_RAG_5P_LN_count <- count(cdr3_length_14126_RAG_5P_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_14126_RAG_5P_LN_count <- mutate(cdr3_length_14126_RAG_5P_LN_count, POPULATION = paste("CD5+ PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_14126_RAG_5P_LN_count <- mutate(cdr3_length_14126_RAG_5P_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_14126_RAG_5P_LP <- rbind(pull_14126_seq_RAG_1_5P_LP_2, pull_14126_seq_RAG_2_5P_LP_2)
+cdr3_length_14126_RAG_5P_LP <- rbind(cdr3_length_14126_RAG_5P_LP, pull_14126_seq_RAG_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_14126_RAG_5P_LP <- mutate(cdr3_length_14126_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_14126_RAG_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_14126_RAG_5P_LP_count <- count(cdr3_length_14126_RAG_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_14126_RAG_5P_LP_count <- mutate(cdr3_length_14126_RAG_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_14126_RAG_5P_LP_count <- mutate(cdr3_length_14126_RAG_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_14126_RAG <- rbind(cdr3_length_14126_RAG_5N_LN_count, cdr3_length_14126_RAG_5P_LP_count)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_14126_VH12_5N_LN <- rbind(pull_14126_seq_VH12_1_5N_LN_2, pull_14126_seq_VH12_2_5N_LN_2)
+cdr3_length_14126_VH12_5N_LN <- rbind(cdr3_length_14126_VH12_5N_LN, pull_14126_seq_VH12_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_14126_VH12_5N_LN <- mutate(cdr3_length_14126_VH12_5N_LN, CDR3_LENGTH = str_length(cdr3_length_14126_VH12_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_14126_VH12_5N_LN_count <- count(cdr3_length_14126_VH12_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_14126_VH12_5N_LN_count <- mutate(cdr3_length_14126_VH12_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_14126_VH12_5N_LN_count <- mutate(cdr3_length_14126_VH12_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_14126_VH12_5P_LP <- rbind(pull_14126_seq_VH12_1_5P_LP_2, pull_14126_seq_VH12_2_5P_LP_2)
+cdr3_length_14126_VH12_5P_LP <- rbind(cdr3_length_14126_VH12_5P_LP, pull_14126_seq_VH12_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_14126_VH12_5P_LP <- mutate(cdr3_length_14126_VH12_5P_LP, CDR3_LENGTH = str_length(cdr3_length_14126_VH12_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_14126_VH12_5P_LP_count <- count(cdr3_length_14126_VH12_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_14126_VH12_5P_LP_count <- mutate(cdr3_length_14126_VH12_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_14126_VH12_5P_LP_count <- mutate(cdr3_length_14126_VH12_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_14126_VH12 <- rbind(cdr3_length_14126_VH12_5N_LN_count, cdr3_length_14126_VH12_5P_LP_count)
+#
+#VH12_RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_14126_VH12_RAG_5N_LN <- rbind(pull_14126_seq_VH12RAG_1_5N_LN_2, pull_14126_seq_VH12RAG_2_5N_LN_2)
+cdr3_length_14126_VH12_RAG_5N_LN <- rbind(cdr3_length_14126_VH12_RAG_5N_LN, pull_14126_seq_VH12RAG_3_5N_LN_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_14126_VH12_RAG_5N_LN <- mutate(cdr3_length_14126_VH12_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_14126_VH12_RAG_5N_LN$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_14126_VH12_RAG_5N_LN_count <- count(cdr3_length_14126_VH12_RAG_5N_LN, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_14126_VH12_RAG_5N_LN_count <- mutate(cdr3_length_14126_VH12_RAG_5N_LN_count, POPULATION = paste("CD5- PtC-, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_14126_VH12_RAG_5N_LN_count <- mutate(cdr3_length_14126_VH12_RAG_5N_LN_count, FREQ = n/sum(n))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_14126_VH12_RAG_5P_LP <- rbind(pull_14126_seq_VH12RAG_1_5P_LP_2, pull_14126_seq_VH12RAG_2_5P_LP_2)
+cdr3_length_14126_VH12_RAG_5P_LP <- rbind(cdr3_length_14126_VH12_RAG_5P_LP, pull_14126_seq_VH12RAG_3_5P_LP_2)
+#
+# Add the length of the CDR3 sequence (in basepairs) to the data frame
+#
+cdr3_length_14126_VH12_RAG_5P_LP <- mutate(cdr3_length_14126_VH12_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_14126_VH12_RAG_5P_LP$CDR3_IMGT))
+#
+# Count the number of sequences with each CDR3 length
+#
+cdr3_length_14126_VH12_RAG_5P_LP_count <- count(cdr3_length_14126_VH12_RAG_5P_LP, CDR3_LENGTH)
+#
+# Add the population type and numbers of sequences to each data frame
+#
+cdr3_length_14126_VH12_RAG_5P_LP_count <- mutate(cdr3_length_14126_VH12_RAG_5P_LP_count, POPULATION = paste("CD5+ PtC+, n =",sum(n)))
+#
+# Calculate the occurrence frequency for each CDR3 length
+#
+cdr3_length_14126_VH12_RAG_5P_LP_count <- mutate(cdr3_length_14126_VH12_RAG_5P_LP_count, FREQ = n/sum(n))
+# 
+# Create one data frame for each phenotype
+#
+cdr3_length_14126_VH12_RAG <- rbind(cdr3_length_14126_VH12_RAG_5N_LN_count, cdr3_length_14126_VH12_RAG_5P_LP_count)
+#
+# Graph
+#
+# red and black colors
+#
+dodge<-position_dodge(width=2.75, preserve = "single")
+#
+# WT
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_14126_WT <- ggplot(data=cdr3_length_14126_WT, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk14-126 CDR3 Lengths for WT1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_14126_WT.jpeg", width=14, height=8)
+#
+# dnRAG1
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_14126_RAG <- ggplot(data=cdr3_length_14126_RAG, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk14-126 CDR3 Lengths for dnRAG1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_14126_RAG.jpeg", width=14, height=8)
+#
+# VH12
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_14126_VH12 <- ggplot(data=cdr3_length_14126_VH12, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk14-126 CDR3 Lengths for VH121 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_14126_VH12.jpeg", width=14, height=8)
+#
+# VH12 RAG
+#
+# Graph the length distribution of of the CDR3 sequences for each animal phenotype
+#
+plot_cdr3_length_14126_VH12_RAG <- ggplot(data=cdr3_length_14126_VH12_RAG, mapping=aes(x=CDR3_LENGTH, y = FREQ, fill=POPULATION))+geom_col(position = dodge, width=2.5)+scale_x_continuous(name="CDR3 Length (bp)", breaks=seq(18,36,3))+coord_cartesian(xlim=c(16,38),ylim=c(0,1))+scale_y_continuous(labels=scales::percent)+ylab("% of Total")+theme(axis.line=element_line(size=2))+theme(axis.text.x=element_text(angle=0, face="bold", size=36, hjust=0.5, vjust=0, color = "black"))+theme(axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))+theme(axis.text.y=element_text(size=36, face="bold", hjust=0.5, vjust=0.5, color = "black"))+theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))+theme(panel.background=element_rect(fill="white"))+ggtitle("Vk14-126 CDR3 Lengths for VH12 dnRAG1 B Cell Subsets")+theme(plot.title=element_text(h=0.5, face="bold", size=36, color="white"))+theme(axis.title = element_text(face="bold", size=36))+theme(axis.ticks.x = element_line(colour = "black", size =2))+theme(axis.ticks.length.x = unit(0.25, "in"))+theme(legend.position = c(0.2, 0.9))+theme(legend.key.size = unit(0.5, "in"))+theme(legend.text = element_text(size=28, face="bold"))+theme(legend.title=element_blank())+scale_fill_manual(values = c("#D62839", "#221E22"))
+ggsave("plot_cdr3_length_14126_VH12_RAG.jpeg", width=14, height=8)
+#
+#
+# Statistical analysis of CDR3 length distributions
+#
+# Vk 3-7
+#
+# Add the sample type to each respective data frame
+#
+pull_37_seq_WT_1_5N_LN_2<-mutate(pull_37_seq_WT_1_5N_LN_2, Sample = "WT CD5- PtC-")
+pull_37_seq_RAG_1_5N_LN_2<-mutate(pull_37_seq_RAG_1_5N_LN_2, Sample = "dnRAG1 CD5- PtC-")
+pull_37_seq_RAG_1_5P_LN_2<-mutate(pull_37_seq_RAG_1_5P_LN_2, Sample = "dnRAG1 CD5+ PtC-")
+pull_37_seq_RAG_1_5P_LP_2<-mutate(pull_37_seq_RAG_1_5P_LP_2, Sample = "dnRAG1 CD5+ PtC+")
+pull_37_seq_VH12_1_5N_LN_2<-mutate(pull_37_seq_VH12_1_5N_LN_2, Sample = "VH12 CD5- PtC-")
+pull_37_seq_VH12_1_5P_LP_2<-mutate(pull_37_seq_VH12_1_5P_LP_2, Sample = "VH12 CD5+ PtC+")
+pull_37_seq_VH12RAG_1_5N_LN_2<-mutate(pull_37_seq_VH12RAG_1_5N_LN_2, Sample = "dnRAG1 VH12 CD5- PtC-")
+pull_37_seq_VH12RAG_1_5P_LP_2<-mutate(pull_37_seq_VH12RAG_1_5P_LP_2, Sample = "dnRAG1 VH12 CD5+ PtC+")
+#
+# WT
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_37_WT_5N_LN <- rbind(pull_37_seq_WT_1_5N_LN_2, pull_37_seq_WT_2_5N_LN_2)
+cdr3_length_stat_37_WT_5N_LN <- rbind(cdr3_length_stat_37_WT_5N_LN, pull_37_seq_WT_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_37_WT_5N_LN <- mutate(cdr3_length_stat_37_WT_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_37_WT_5N_LN$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_37_WT <- cdr3_length_stat_37_WT_5N_LN
+#
+# RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_37_RAG_5N_LN <- rbind(pull_37_seq_RAG_1_5N_LN_2, pull_37_seq_RAG_2_5N_LN_2)
+cdr3_length_stat_37_RAG_5N_LN <- rbind(cdr3_length_stat_37_RAG_5N_LN, pull_37_seq_RAG_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_37_RAG_5N_LN <- mutate(cdr3_length_stat_37_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_37_RAG_5N_LN$CDR3_IMGT))
+#
+# 5P LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_37_RAG_5P_LN <- rbind(pull_37_seq_RAG_1_5P_LN_2, pull_37_seq_RAG_2_5P_LN_2)
+cdr3_length_stat_37_RAG_5P_LN <- rbind(cdr3_length_stat_37_RAG_5P_LN, pull_37_seq_RAG_3_5P_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_37_RAG_5P_LN <- mutate(cdr3_length_stat_37_RAG_5P_LN, CDR3_LENGTH = str_length(cdr3_length_stat_37_RAG_5P_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_37_RAG_5P_LP <- rbind(pull_37_seq_RAG_1_5P_LP_2, pull_37_seq_RAG_2_5P_LP_2)
+cdr3_length_stat_37_RAG_5P_LP <- rbind(cdr3_length_stat_37_RAG_5P_LP, pull_37_seq_RAG_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_37_RAG_5P_LP <- mutate(cdr3_length_stat_37_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_37_RAG_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_37_RAG <- rbind(cdr3_length_stat_37_RAG_5N_LN, cdr3_length_stat_37_RAG_5P_LP)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_37_VH12_5N_LN <- rbind(pull_37_seq_VH12_1_5N_LN_2, pull_37_seq_VH12_2_5N_LN_2)
+cdr3_length_stat_37_VH12_5N_LN <- rbind(cdr3_length_stat_37_VH12_5N_LN, pull_37_seq_VH12_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_37_VH12_5N_LN <- mutate(cdr3_length_stat_37_VH12_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_37_VH12_5N_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_37_VH12_5P_LP <- rbind(pull_37_seq_VH12_1_5P_LP_2, pull_37_seq_VH12_2_5P_LP_2)
+cdr3_length_stat_37_VH12_5P_LP <- rbind(cdr3_length_stat_37_VH12_5P_LP, pull_37_seq_VH12_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_37_VH12_5P_LP <- mutate(cdr3_length_stat_37_VH12_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_37_VH12_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+# VH12_RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_37_VH12_RAG_5N_LN <- rbind(pull_37_seq_VH12RAG_1_5N_LN_2, pull_37_seq_VH12RAG_2_5N_LN_2)
+cdr3_length_stat_37_VH12_RAG_5N_LN <- rbind(cdr3_length_stat_37_VH12_RAG_5N_LN, pull_37_seq_VH12RAG_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_37_VH12_RAG_5N_LN <- mutate(cdr3_length_stat_37_VH12_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_37_VH12_RAG_5N_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_37_VH12_RAG_5P_LP <- rbind(pull_37_seq_VH12RAG_1_5P_LP_2, pull_37_seq_VH12RAG_2_5P_LP_2)
+cdr3_length_stat_37_VH12_RAG_5P_LP <- rbind(cdr3_length_stat_37_VH12_RAG_5P_LP, pull_37_seq_VH12RAG_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_37_VH12_RAG_5P_LP <- mutate(cdr3_length_stat_37_VH12_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_37_VH12_RAG_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_37_VH12_RAG <- rbind(cdr3_length_stat_37_VH12_RAG_5N_LN, cdr3_length_stat_37_VH12_RAG_5P_LP)
+#
+# Compile the tables for the different phenotypes into one data frame
+#
+cdr3_length_stat_37 <- bind_rows(cdr3_length_stat_37_WT, cdr3_length_stat_37_RAG, cdr3_length_stat_37_VH12, cdr3_length_stat_37_VH12_RAG)
+#
+# Assign factors and levels to the sample types to ensure the ANOVA output is in the preferred order
+#
+cdr3_length_stat_37$Sample <- factor(cdr3_length_stat_37$Sample, levels=c("WT CD5- PtC-", "dnRAG1 CD5- PtC-", "dnRAG1 CD5+ PtC-", "dnRAG1 CD5+ PtC+", "VH12 CD5- PtC-", "VH12 CD5+ PtC+", "dnRAG1 VH12 CD5- PtC-", "dnRAG1 VH12 CD5+ PtC+"))
+#
+# Calculate the mean and standard deviation of the CDR3 length distributions
+#
+cdr3_length_stat_37_summary <- group_by(cdr3_length_stat_37, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+cdr3_length_stat_37_summary
+#
+# Perform a one way ANOVA of the CDR3 length distributions by sample type
+#
+aov_37_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = cdr3_length_stat_37)
+summary(aov_37_cdr3)key
+#
+# If the ANOVA shows a statistically significant difference, perform a Tukey post hoc analysis
+#
+aov_tuk_37_cdr3 <- TukeyHSD(aov_37_cdr3)
+aov_tuk_37_cdr3
+#
+# Vk 4-86
+#
+pull_486_seq_WT_1_5N_LN_2<-mutate(pull_486_seq_WT_1_5N_LN_2, Sample = "WT CD5- PtC-")
+pull_486_seq_RAG_1_5N_LN_2<-mutate(pull_486_seq_RAG_1_5N_LN_2, Sample = "dnRAG1 CD5- PtC-")
+pull_486_seq_RAG_1_5P_LN_2<-mutate(pull_486_seq_RAG_1_5P_LN_2, Sample = "dnRAG1 CD5+ PtC-")
+pull_486_seq_RAG_1_5P_LP_2<-mutate(pull_486_seq_RAG_1_5P_LP_2, Sample = "dnRAG1 CD5+ PtC+")
+pull_486_seq_VH12_1_5N_LN_2<-mutate(pull_486_seq_VH12_1_5N_LN_2, Sample = "VH12 CD5- PtC-")
+pull_486_seq_VH12_1_5P_LP_2<-mutate(pull_486_seq_VH12_1_5P_LP_2, Sample = "VH12 CD5+ PtC+")
+pull_486_seq_VH12RAG_1_5N_LN_2<-mutate(pull_486_seq_VH12RAG_1_5N_LN_2, Sample = "dnRAG1 VH12 CD5- PtC-")
+pull_486_seq_VH12RAG_1_5P_LP_2<-mutate(pull_486_seq_VH12RAG_1_5P_LP_2, Sample = "dnRAG1 VH12 CD5+ PtC+")
+#
+# WT
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_486_WT_5N_LN <- rbind(pull_486_seq_WT_1_5N_LN_2, pull_486_seq_WT_2_5N_LN_2)
+cdr3_length_stat_486_WT_5N_LN <- rbind(cdr3_length_stat_486_WT_5N_LN, pull_486_seq_WT_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_486_WT_5N_LN <- mutate(cdr3_length_stat_486_WT_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_486_WT_5N_LN$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_486_WT <- cdr3_length_stat_486_WT_5N_LN
+#
+# RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_486_RAG_5N_LN <- rbind(pull_486_seq_RAG_1_5N_LN_2, pull_486_seq_RAG_2_5N_LN_2)
+cdr3_length_stat_486_RAG_5N_LN <- rbind(cdr3_length_stat_486_RAG_5N_LN, pull_486_seq_RAG_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_486_RAG_5N_LN <- mutate(cdr3_length_stat_486_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_486_RAG_5N_LN$CDR3_IMGT))
+#
+# 5P LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_486_RAG_5P_LN <- rbind(pull_486_seq_RAG_1_5P_LN_2, pull_486_seq_RAG_2_5P_LN_2)
+cdr3_length_stat_486_RAG_5P_LN <- rbind(cdr3_length_stat_486_RAG_5P_LN, pull_486_seq_RAG_3_5P_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_486_RAG_5P_LN <- mutate(cdr3_length_stat_486_RAG_5P_LN, CDR3_LENGTH = str_length(cdr3_length_stat_486_RAG_5P_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_486_RAG_5P_LP <- rbind(pull_486_seq_RAG_1_5P_LP_2, pull_486_seq_RAG_2_5P_LP_2)
+cdr3_length_stat_486_RAG_5P_LP <- rbind(cdr3_length_stat_486_RAG_5P_LP, pull_486_seq_RAG_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_486_RAG_5P_LP <- mutate(cdr3_length_stat_486_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_486_RAG_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_486_RAG <- rbind(cdr3_length_stat_486_RAG_5N_LN, cdr3_length_stat_486_RAG_5P_LP)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_486_VH12_5N_LN <- rbind(pull_486_seq_VH12_1_5N_LN_2, pull_486_seq_VH12_2_5N_LN_2)
+cdr3_length_stat_486_VH12_5N_LN <- rbind(cdr3_length_stat_486_VH12_5N_LN, pull_486_seq_VH12_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_486_VH12_5N_LN <- mutate(cdr3_length_stat_486_VH12_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_486_VH12_5N_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+cdr3_length_stat_486_VH12_5P_LP <- rbind(pull_486_seq_VH12_1_5P_LP_2, pull_486_seq_VH12_2_5P_LP_2)
+cdr3_length_stat_486_VH12_5P_LP <- rbind(cdr3_length_stat_486_VH12_5P_LP, pull_486_seq_VH12_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_486_VH12_5P_LP <- mutate(cdr3_length_stat_486_VH12_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_486_VH12_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_486_VH12 <- rbind(cdr3_length_stat_486_VH12_5N_LN, cdr3_length_stat_486_VH12_5P_LP)
+#
+# VH12_RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_486_VH12_RAG_5N_LN <- rbind(pull_486_seq_VH12RAG_1_5N_LN_2, pull_486_seq_VH12RAG_2_5N_LN_2)
+cdr3_length_stat_486_VH12_RAG_5N_LN <- rbind(cdr3_length_stat_486_VH12_RAG_5N_LN, pull_486_seq_VH12RAG_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_486_VH12_RAG_5N_LN <- mutate(cdr3_length_stat_486_VH12_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_486_VH12_RAG_5N_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_486_VH12_RAG_5P_LP <- rbind(pull_486_seq_VH12RAG_1_5P_LP_2, pull_486_seq_VH12RAG_2_5P_LP_2)
+cdr3_length_stat_486_VH12_RAG_5P_LP <- rbind(cdr3_length_stat_486_VH12_RAG_5P_LP, pull_486_seq_VH12RAG_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_486_VH12_RAG_5P_LP <- mutate(cdr3_length_stat_486_VH12_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_486_VH12_RAG_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_486_VH12_RAG <- rbind(cdr3_length_stat_486_VH12_RAG_5N_LN, cdr3_length_stat_486_VH12_RAG_5P_LP)
+#
+# Compile the tables for the different phenotypes into one data frame
+#
+cdr3_length_stat_486 <- bind_rows(cdr3_length_stat_486_WT, cdr3_length_stat_486_RAG, cdr3_length_stat_486_VH12, cdr3_length_stat_486_VH12_RAG)
+#
+# Assign factors and levels to the sample types to ensure the ANOVA output is in the preferred order
+#
+cdr3_length_stat_486$Sample <- factor(cdr3_length_stat_486$Sample, levels=c("WT CD5- PtC-", "dnRAG1 CD5- PtC-", "dnRAG1 CD5+ PtC-", "dnRAG1 CD5+ PtC+", "VH12 CD5- PtC-", "VH12 CD5+ PtC+", "dnRAG1 VH12 CD5- PtC-", "dnRAG1 VH12 CD5+ PtC+"))
+#
+# Calculate the mean and standard deviation of the CDR3 length distributions
+#
+cdr3_length_stat_486_summary <- group_by(cdr3_length_stat_486, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+cdr3_length_stat_486_summary
+#
+# Perform a one way ANOVA of the CDR3 length distributions by sample type
+#
+aov_486_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = cdr3_length_stat_486)
+summary(aov_486_cdr3)
+#
+# If the ANOVA shows a statistically significant difference, perform a Tukey post hoc analysis
+#
+aov_tuk_486_cdr3 <- TukeyHSD(aov_486_cdr3)
+aov_tuk_486_cdr3
+#
+# Vk 4-91
+#
+pull_491_seq_WT_1_5N_LN_2<-mutate(pull_491_seq_WT_1_5N_LN_2, Sample = "WT CD5- PtC-")
+pull_491_seq_RAG_1_5N_LN_2<-mutate(pull_491_seq_RAG_1_5N_LN_2, Sample = "dnRAG1 CD5- PtC-")
+pull_491_seq_RAG_1_5P_LN_2<-mutate(pull_491_seq_RAG_1_5P_LN_2, Sample = "dnRAG1 CD5+ PtC-")
+pull_491_seq_RAG_1_5P_LP_2<-mutate(pull_491_seq_RAG_1_5P_LP_2, Sample = "dnRAG1 CD5+ PtC+")
+pull_491_seq_VH12_1_5N_LN_2<-mutate(pull_491_seq_VH12_1_5N_LN_2, Sample = "VH12 CD5- PtC-")
+pull_491_seq_VH12_1_5P_LP_2<-mutate(pull_491_seq_VH12_1_5P_LP_2, Sample = "VH12 CD5+ PtC+")
+pull_491_seq_VH12RAG_1_5N_LN_2<-mutate(pull_491_seq_VH12RAG_1_5N_LN_2, Sample = "dnRAG1 VH12 CD5- PtC-")
+pull_491_seq_VH12RAG_1_5P_LP_2<-mutate(pull_491_seq_VH12RAG_1_5P_LP_2, Sample = "dnRAG1 VH12 CD5+ PtC+")
+#
+# WT
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_491_WT_5N_LN <- rbind(pull_491_seq_WT_1_5N_LN_2, pull_491_seq_WT_2_5N_LN_2)
+cdr3_length_stat_491_WT_5N_LN <- rbind(cdr3_length_stat_491_WT_5N_LN, pull_491_seq_WT_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_491_WT_5N_LN <- mutate(cdr3_length_stat_491_WT_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_491_WT_5N_LN$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_491_WT <- cdr3_length_stat_491_WT_5N_LN
+#
+# RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_491_RAG_5N_LN <- rbind(pull_491_seq_RAG_1_5N_LN_2, pull_491_seq_RAG_2_5N_LN_2)
+cdr3_length_stat_491_RAG_5N_LN <- rbind(cdr3_length_stat_491_RAG_5N_LN, pull_491_seq_RAG_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_491_RAG_5N_LN <- mutate(cdr3_length_stat_491_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_491_RAG_5N_LN$CDR3_IMGT))
+#
+# 5P LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_491_RAG_5P_LN <- rbind(pull_491_seq_RAG_1_5P_LN_2, pull_491_seq_RAG_2_5P_LN_2)
+cdr3_length_stat_491_RAG_5P_LN <- rbind(cdr3_length_stat_491_RAG_5P_LN, pull_491_seq_RAG_3_5P_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_491_RAG_5P_LN <- mutate(cdr3_length_stat_491_RAG_5P_LN, CDR3_LENGTH = str_length(cdr3_length_stat_491_RAG_5P_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_491_RAG_5P_LP <- rbind(pull_491_seq_RAG_1_5P_LP_2, pull_491_seq_RAG_2_5P_LP_2)
+cdr3_length_stat_491_RAG_5P_LP <- rbind(cdr3_length_stat_491_RAG_5P_LP, pull_491_seq_RAG_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_491_RAG_5P_LP <- mutate(cdr3_length_stat_491_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_491_RAG_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_491_RAG <- rbind(cdr3_length_stat_491_RAG_5N_LN, cdr3_length_stat_491_RAG_5P_LP)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_491_VH12_5N_LN <- rbind(pull_491_seq_VH12_1_5N_LN_2, pull_491_seq_VH12_2_5N_LN_2)
+cdr3_length_stat_491_VH12_5N_LN <- rbind(cdr3_length_stat_491_VH12_5N_LN, pull_491_seq_VH12_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_491_VH12_5N_LN <- mutate(cdr3_length_stat_491_VH12_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_491_VH12_5N_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_491_VH12_5P_LP <- rbind(pull_491_seq_VH12_1_5P_LP_2, pull_491_seq_VH12_2_5P_LP_2)
+cdr3_length_stat_491_VH12_5P_LP <- rbind(cdr3_length_stat_491_VH12_5P_LP, pull_491_seq_VH12_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_491_VH12_5P_LP <- mutate(cdr3_length_stat_491_VH12_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_491_VH12_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_491_VH12 <- rbind(cdr3_length_stat_491_VH12_5N_LN, cdr3_length_stat_491_VH12_5P_LP)
+#
+# VH12_RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_491_VH12_RAG_5N_LN <- rbind(pull_491_seq_VH12RAG_1_5N_LN_2, pull_491_seq_VH12RAG_2_5N_LN_2)
+cdr3_length_stat_491_VH12_RAG_5N_LN <- rbind(cdr3_length_stat_491_VH12_RAG_5N_LN, pull_491_seq_VH12RAG_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_491_VH12_RAG_5N_LN <- mutate(cdr3_length_stat_491_VH12_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_491_VH12_RAG_5N_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_491_VH12_RAG_5P_LP <- rbind(pull_491_seq_VH12RAG_1_5P_LP_2, pull_491_seq_VH12RAG_2_5P_LP_2)
+cdr3_length_stat_491_VH12_RAG_5P_LP <- rbind(cdr3_length_stat_491_VH12_RAG_5P_LP, pull_491_seq_VH12RAG_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_491_VH12_RAG_5P_LP <- mutate(cdr3_length_stat_491_VH12_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_491_VH12_RAG_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_491_VH12_RAG <- rbind(cdr3_length_stat_491_VH12_RAG_5N_LN, cdr3_length_stat_491_VH12_RAG_5P_LP)
+#
+# Compile the tables for the different phenotypes into one data frame
+#
+cdr3_length_stat_491 <- bind_rows(cdr3_length_stat_491_WT, cdr3_length_stat_491_RAG, cdr3_length_stat_491_VH12, cdr3_length_stat_491_VH12_RAG)
+#
+# Assign factors and levels to the sample types to ensure the ANOVA output is in the preferred order
+#
+cdr3_length_stat_491$Sample <- factor(cdr3_length_stat_491$Sample, levels=c("WT CD5- PtC-", "dnRAG1 CD5- PtC-", "dnRAG1 CD5+ PtC-", "dnRAG1 CD5+ PtC+", "VH12 CD5- PtC-", "VH12 CD5+ PtC+", "dnRAG1 VH12 CD5- PtC-", "dnRAG1 VH12 CD5+ PtC+"))
+#
+# Calculate the mean and standard deviation of the CDR3 length distributions
+#
+cdr3_length_stat_491_summary <- group_by(cdr3_length_stat_491, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+cdr3_length_stat_491_summary
+#
+# Perform a one way ANOVA of the CDR3 length distributions by sample type
+#
+aov_491_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = cdr3_length_stat_491)
+summary(aov_491_cdr3)
+#
+# If the ANOVA shows a statistically significant difference, perform a Tukey post hoc analysis
+#
+aov_tuk_491_cdr3 <- TukeyHSD(aov_491_cdr3)
+aov_tuk_491_cdr3
+#
+#
+# Vk 14-126
+#
+pull_14126_seq_WT_1_5N_LN_2<-mutate(pull_14126_seq_WT_1_5N_LN_2, Sample = "WT CD5- PtC-")
+pull_14126_seq_RAG_1_5N_LN_2<-mutate(pull_14126_seq_RAG_1_5N_LN_2, Sample = "dnRAG1 CD5- PtC-")
+pull_14126_seq_RAG_1_5P_LN_2<-mutate(pull_14126_seq_RAG_1_5P_LN_2, Sample = "dnRAG1 CD5+ PtC-")
+pull_14126_seq_RAG_1_5P_LP_2<-mutate(pull_14126_seq_RAG_1_5P_LP_2, Sample = "dnRAG1 CD5+ PtC+")
+pull_14126_seq_VH12_1_5N_LN_2<-mutate(pull_14126_seq_VH12_1_5N_LN_2, Sample = "VH12 CD5- PtC-")
+pull_14126_seq_VH12_1_5P_LP_2<-mutate(pull_14126_seq_VH12_1_5P_LP_2, Sample = "VH12 CD5+ PtC+")
+pull_14126_seq_VH12RAG_1_5N_LN_2<-mutate(pull_14126_seq_VH12RAG_1_5N_LN_2, Sample = "dnRAG1 VH12 CD5- PtC-")
+pull_14126_seq_VH12RAG_1_5P_LP_2<-mutate(pull_14126_seq_VH12RAG_1_5P_LP_2, Sample = "dnRAG1 VH12 CD5+ PtC+")
+#
+# WT
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_14126_WT_5N_LN <- rbind(pull_14126_seq_WT_1_5N_LN_2, pull_14126_seq_WT_2_5N_LN_2)
+cdr3_length_stat_14126_WT_5N_LN <- rbind(cdr3_length_stat_14126_WT_5N_LN, pull_14126_seq_WT_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_14126_WT_5N_LN <- mutate(cdr3_length_stat_14126_WT_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_14126_WT_5N_LN$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_14126_WT <- cdr3_length_stat_14126_WT_5N_LN
+#
+# RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_14126_RAG_5N_LN <- rbind(pull_14126_seq_RAG_1_5N_LN_2, pull_14126_seq_RAG_2_5N_LN_2)
+cdr3_length_stat_14126_RAG_5N_LN <- rbind(cdr3_length_stat_14126_RAG_5N_LN, pull_14126_seq_RAG_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_14126_RAG_5N_LN <- mutate(cdr3_length_stat_14126_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_14126_RAG_5N_LN$CDR3_IMGT))
+#
+# 5P LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_14126_RAG_5P_LN <- rbind(pull_14126_seq_RAG_1_5P_LN_2, pull_14126_seq_RAG_2_5P_LN_2)
+cdr3_length_stat_14126_RAG_5P_LN <- rbind(cdr3_length_stat_14126_RAG_5P_LN, pull_14126_seq_RAG_3_5P_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_14126_RAG_5P_LN <- mutate(cdr3_length_stat_14126_RAG_5P_LN, CDR3_LENGTH = str_length(cdr3_length_stat_14126_RAG_5P_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_14126_RAG_5P_LP <- rbind(pull_14126_seq_RAG_1_5P_LP_2, pull_14126_seq_RAG_2_5P_LP_2)
+cdr3_length_stat_14126_RAG_5P_LP <- rbind(cdr3_length_stat_14126_RAG_5P_LP, pull_14126_seq_RAG_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_14126_RAG_5P_LP <- mutate(cdr3_length_stat_14126_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_14126_RAG_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_14126_RAG <- rbind(cdr3_length_stat_14126_RAG_5N_LN, cdr3_length_stat_14126_RAG_5P_LP)
+#
+# VH12
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_14126_VH12_5N_LN <- rbind(pull_14126_seq_VH12_1_5N_LN_2, pull_14126_seq_VH12_2_5N_LN_2)
+cdr3_length_stat_14126_VH12_5N_LN <- rbind(cdr3_length_stat_14126_VH12_5N_LN, pull_14126_seq_VH12_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_14126_VH12_5N_LN <- mutate(cdr3_length_stat_14126_VH12_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_14126_VH12_5N_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_14126_VH12_5P_LP <- rbind(pull_14126_seq_VH12_1_5P_LP_2, pull_14126_seq_VH12_2_5P_LP_2)
+cdr3_length_stat_14126_VH12_5P_LP <- rbind(cdr3_length_stat_14126_VH12_5P_LP, pull_14126_seq_VH12_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_14126_VH12_5P_LP <- mutate(cdr3_length_stat_14126_VH12_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_14126_VH12_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_14126_VH12 <- rbind(cdr3_length_stat_14126_VH12_5N_LN, cdr3_length_stat_14126_VH12_5P_LP)
+#
+# VH12_RAG
+#
+# 5N LN
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_14126_VH12_RAG_5N_LN <- rbind(pull_14126_seq_VH12RAG_1_5N_LN_2, pull_14126_seq_VH12RAG_2_5N_LN_2)
+cdr3_length_stat_14126_VH12_RAG_5N_LN <- rbind(cdr3_length_stat_14126_VH12_RAG_5N_LN, pull_14126_seq_VH12RAG_3_5N_LN_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_14126_VH12_RAG_5N_LN <- mutate(cdr3_length_stat_14126_VH12_RAG_5N_LN, CDR3_LENGTH = str_length(cdr3_length_stat_14126_VH12_RAG_5N_LN$CDR3_IMGT))
+#
+# 5P LP
+#
+# Combine the replicates into one data frame per sample type
+#
+cdr3_length_stat_14126_VH12_RAG_5P_LP <- rbind(pull_14126_seq_VH12RAG_1_5P_LP_2, pull_14126_seq_VH12RAG_2_5P_LP_2)
+cdr3_length_stat_14126_VH12_RAG_5P_LP <- rbind(cdr3_length_stat_14126_VH12_RAG_5P_LP, pull_14126_seq_VH12RAG_3_5P_LP_2)
+#
+# Add the CDR3 sequence length (in basepairs)
+#
+cdr3_length_stat_14126_VH12_RAG_5P_LP <- mutate(cdr3_length_stat_14126_VH12_RAG_5P_LP, CDR3_LENGTH = str_length(cdr3_length_stat_14126_VH12_RAG_5P_LP$CDR3_IMGT))
+#
+# Create one data frame for each phenotype
+#
+cdr3_length_stat_14126_VH12_RAG <- rbind(cdr3_length_stat_14126_VH12_RAG_5N_LN, cdr3_length_stat_14126_VH12_RAG_5P_LP)
+#
+# Compile the tables for the different phenotypes into one data frame
+#
+cdr3_length_stat_14126 <- bind_rows(cdr3_length_stat_14126_WT, cdr3_length_stat_14126_RAG, cdr3_length_stat_14126_VH12, cdr3_length_stat_14126_VH12_RAG)
+#
+# Assign factors and levels to the sample types to ensure the ANOVA output is in the preferred order
+#
+cdr3_length_stat_14126$Sample <- factor(cdr3_length_stat_14126$Sample, levels=c("WT CD5- PtC-", "dnRAG1 CD5- PtC-", "dnRAG1 CD5+ PtC-", "dnRAG1 CD5+ PtC+", "VH12 CD5- PtC-", "VH12 CD5+ PtC+", "dnRAG1 VH12 CD5- PtC-", "dnRAG1 VH12 CD5+ PtC+"))
+#
+# Calculate the mean and standard deviation of the CDR3 length distributions
+#
+cdr3_length_stat_14126_summary <- group_by(cdr3_length_stat_14126, Sample) %>%
+  summarise(
+    count = n(),
+    mean = mean(CDR3_LENGTH, na.rm = TRUE),
+    sd = sd(CDR3_LENGTH, na.rm = TRUE)
+  )
+cdr3_length_stat_14126_summary
+#
+# Perform a one way ANOVA of the CDR3 length distributions by sample type
+#
+aov_14126_cdr3 <- aov(CDR3_LENGTH ~ Sample, data = cdr3_length_stat_14126)
+summary(aov_14126_cdr3)
+#
+# If the ANOVA shows a statistically significant difference, perform a Tukey post hoc analysis
+#
+aov_tuk_14126_cdr3 <- TukeyHSD(aov_14126_cdr3)
+aov_tuk_14126_cdr3
+#
+#
