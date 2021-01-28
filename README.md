@@ -38,13 +38,11 @@ Annotated Code
 * Annotated NP and CDR3 Length Anovas
 * Annotated RDI Code
 
-Sample Files
+Sample Files (All data can be found at GEO: https://www.ncbi.nlm.nih.gov/geo/. Accession number: **TBD**)
 * Sample Sheet Example
-* Sample demultiplexed data WT_5N_LN R1.fastq
-* Sample demultiplexed data WT_5N_LN R2.fastq
 * Sample pRESTO output WT_5N_LN.fasta
 * Sample IMGT output WT_5N_LN.txz
-* Sample annotated functional sequences WT_5N_LN.tab
+* Sample annotated functional sequences WT_5N_LN.tab.zip
 
 Functions and Primers
 * C_primers.fasta
