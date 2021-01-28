@@ -30,7 +30,6 @@ All repertoires analyzed in the study were compared by calculating the Repertoir
 LIST OF FILES, HARDWARE, AND SOFTWARE
 
 Annotated Code
-* Sample Sheet Example
 * Annotated Sample pRESTO Code
 * Annotated Sample Change-O Code
 * Annotated Assembly of Combined Graphs
@@ -38,6 +37,14 @@ Annotated Code
 * Annotated Combined Sequence Logos
 * Annotated NP and CDR3 Length Anovas
 * Annotated RDI Code
+
+Sample Files
+* Sample Sheet Example
+* Sample demultiplexed data WT_5N_LN R1.fastq
+* Sample demultiplexed data WT_5N_LN R2.fastq
+* Sample pRESTO output WT_5N_LN.fasta
+* Sample IMGT output WT_5N_LN.txz
+* Sample annotated functional sequences WT_5N_LN.tab
 
 Functions and Primers
 * C_primers.fasta
