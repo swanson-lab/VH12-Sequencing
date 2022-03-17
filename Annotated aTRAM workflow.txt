@@ -1,0 +1,72 @@
+
+# Directory set up
+# In the working directory create a subdirectory for this set of experiments
+#
+mkdir "DATE"_WGS_data
+#
+#
+# Enter the subdirectory
+cd "DATE"_WGS_data
+#
+#
+# Create a subdirectory for the sample to be analyzed
+#
+mkdir "SAMPLE_NAME"
+#
+# enter the sample subdirectory
+#
+cd "SAMPLE_NAME"
+#
+# Upload WGS fastq files (Read 1 and Read 2) for the sample to its appropriate directory
+# This step was done using a free FTP program like FileZilla
+#
+# Create an aTRAM directory for the output files
+mkdir "path to working directory"/atram_db
+#
+#
+# Set your path variables
+export PATH=$PATH:"path to SPAdes"/SPAdes-3.15.3-Linux/bin
+export PATH=$PATH:"path to ncbi blast"/ncbi-blast-2.12.0+/bin
+#
+#
+# Direct temporary files to a directory with sufficient space 
+# (files are automatically removed when the run is complete)
+#
+export SQLITE_TMPDIR="path to working directory"/atram_db/temp_files
+#
+#
+# Remove the sequencing adapters
+# "WGSadapt.fasta" contains platform specific sequencing adapters
+# Using default/recommended parameters from trimmomatic
+#
+trimmomatic PE -phred33 "SAMPLE_NAME"_"RUN_and_FLOW_CELL_information"_1.clean.fq.gz "SAMPLE_NAME"_"RUN_and_FLOW_CELL_information"_2.clean.fq.gz "SAMPLE_NAME"_forward_paired.fq.gz "SAMPLE_NAME"_forward_unpaired.fq.gz "SAMPLE_NAME"_reverse_paired.fq.gz "SAMPLE_NAME"_reverse_unpaired.fq.gz ILLUMINACLIP:"path to fasta file with adapter sequences"/WGSadapt.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+#
+#
+# Preparing the library
+# aTRAM is building BLAST databases and an SQLite3 database for rapid read retrieval
+# "python3" specifies which version of python to use if multiple are installed
+# --cpus specifies the number of computer cores to use
+# "SAMPLE_LIBRARY" specifies the prefix/name for the library being built
+# -t specifies location of temp files if different from default
+#
+python3 "path_to_aTRAM_package"/aTRAM/atram_preprocessor.py --cpus 8 --blast-db "path to working directory"/atram_db/"SAMPLE_LIBRARY" --end-1 "path to working directory"/"DATE"_WGS_data/"SAMPLE_NAME"/"SAMPLE_NAME"_forward_paired.fq.gz --end-2 "path to working directory"/"DATE"_WGS_data/"SAMPLE_NAME"/"SAMPLE_NAME"_reverse_paired.fq.gz -t "path to working directory"/atram_db/temp_files
+#
+# Assembling Loci
+# aTRAM searches the databases built in the previous step for the sequence of interest
+# "python3" specifies which version of python to use if multiple are installed
+# --cpus specifies the number of computer cores to use
+# "TRANSGENE_SEQUENCE".fasta contains the sequence of interest (the transgene) in fasta format
+# -a specifies which assembler is being used
+# -i specifies how many iterations/successive searches should be performed
+#
+python3 /usr/local/bin/aTRAM/atram.py --cpus 8 --blast-db "path to working directory"/atram_db/"SAMPLE_LIBRARY" \
+-Q "path to working directory"/"DATE"_WGS_data/"TRANSGENE_SEQUENCE".fasta \
+-o "path to working directory"/"DATE"_WGS_data/"SAMPLE_NAME"/"SAMPLE_NAME".fasta \
+--log-file "path to working directory"/"DATE"_WGS_data/"SAMPLE_NAME"/"SAMPLE_NAME".log -a spades -i 20
+
+
+
+
+
+
+
