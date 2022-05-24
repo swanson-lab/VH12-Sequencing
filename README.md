@@ -38,7 +38,7 @@ Annotated Code
 * Annotated NP and CDR3 Length Anovas
 * Annotated RDI Code
 
-Sample Files (All data can be found at GEO: https://www.ncbi.nlm.nih.gov/geo/. Accession number: **TBD**)
+Sample Files (All data can be found at GEO: https://www.ncbi.nlm.nih.gov/geo/. Accession number: GSE165776)
 * Sample Sheet Example
 * Sample pRESTO output WT_5N_LN.fasta
 * Sample IMGT output WT_5N_LN.txz
